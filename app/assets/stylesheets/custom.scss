@@ -34,19 +34,6 @@ textarea {
 
 /* typography */
 
-.update_info {
-  font-size: 1.4em;
-  border-bottom: 1px solid $gray-medium-light;
-  border-top: 1px solid $gray-medium-light;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-
-.update_list {
-  font-size: 0.9em;
-}
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -76,10 +63,12 @@ p {
 
 /* header */
 
+
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 1.5em;
   color: white;
   // text-transform: uppercase;
   letter-spacing: -1px;
@@ -127,6 +116,20 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+.update_info {
+  font-size: 1.4em;
+  border-bottom: 1px solid $gray-medium-light;
+  border-top: 1px solid $gray-medium-light;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.update_list {
+  font-size: 0.9em;
 }
 
 /* miscellaneous */
@@ -232,6 +235,7 @@ input {
   }
   .content {
     display: block;
+    font-size: 3.5em;
     margin-left: 60px;
     img {
       display: block;
@@ -252,7 +256,7 @@ input {
 
 aside {
   textarea {
-    height: 100px;
+    height: 3em;
     margin-bottom: 5px;
   }
 }

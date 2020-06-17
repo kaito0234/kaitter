@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: djyfpdnb7
+  api_key: '443165694445684'
+  api_secret: lCeTw-6yByg90eUjq3c1QTatTpc
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: djyfpdnb7
+  api_key: '443165694445684'
+  api_secret: lCeTw-6yByg90eUjq3c1QTatTpc
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: djyfpdnb7
+  api_key: '443165694445684'
+  api_secret: lCeTw-6yByg90eUjq3c1QTatTpc
+  enhance_image_tag: true
+  static_file_support: false
