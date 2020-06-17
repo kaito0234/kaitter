@@ -230,12 +230,14 @@ input {
     border-top: 1px solid #e8e8e8;
   }
   .user {
+    font-size: 1.5em;
     margin-top: 5em;
     padding-top: 0;
   }
   .content {
     display: block;
-    font-size: 3.5em;
+    font-size: 2.5em;
+    padding-bottom: 15px;
     margin-left: 60px;
     img {
       display: block;
@@ -256,7 +258,7 @@ input {
 
 aside {
   textarea {
-    height: 3em;
+    height: 5em;
     margin-bottom: 5px;
   }
 }
