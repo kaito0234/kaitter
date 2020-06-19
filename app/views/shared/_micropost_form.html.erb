@@ -4,9 +4,9 @@
     <%= f.text_area :content, placeholder: "ツイートを入力…" %>
   </div>
 <%= f.submit "ツイートする", class: "btn btn-primary btn-lg" %>
-<!-- <span class="picture">
+<span class="picture">
 <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
-</span> -->
+</span>
 <% end %>
 
 <nav class="navbar navbar-fixed-bottom navbar-inverse">
@@ -27,7 +27,7 @@
       </ul>
     </nav>
   </div>
-</nav> 
+</nav>
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {
