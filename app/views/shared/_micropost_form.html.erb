@@ -1,13 +1,25 @@
-<%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "ツイートを入力…" %>
+<nav class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="container">
+    <nav id="nav01">
+      <ul>
+        <li class="navli1">
+          <%= form_for(@micropost) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="field">
+              <%= f.text_area :content, placeholder: "ツイートを入力…" %>
+            </div>
+        </li>
+        <li class="navli2">
+          <%= f.submit "ツイートする", class: "btn btn-primary btn-lg" %>
+    <!-- <span class="picture">
+      <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
+    </span> -->
+          <% end %>
+          </li>
+      </ul>
+    </nav>
   </div>
-  <%= f.submit "ツイートする", class: "btn btn-primary" %>
-  <span class="picture">
-    <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
-<% end %>
+</nav>
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {

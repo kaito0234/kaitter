@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
+  <%= link_to gravatar_for(@user, size: 100 ), root_path %>
         <%= @user.name %>
       </h1>
     </section>
@@ -15,7 +15,7 @@
   <div class=""col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>ツイート一覧 (<%= @user.microposts.count %>)</h3>
+      <h3><%= @user.name %>のツイート一覧 (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
