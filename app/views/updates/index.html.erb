@@ -1,0 +1,38 @@
+<% provide(:title, "Update") %>
+<h1>アップデート情報</h1>
+
+<div>
+  <% if logged_in? %>
+  <% if current_user.admin? && !current_user?(@user) %>
+      <%= link_to "update create", new_update_path %>
+    <% end %>
+  <% end %>
+</div>
+
+<ul>
+  <% @updates.each do |update| %>
+    <li>
+      <div class="update_info">
+        <%= update.title %>
+        <% if logged_in? %>
+          <% if current_user.admin? && !current_user?(@user) %>
+          <%= link_to '[Edit]', edit_update_path(update), class: 'command' %>
+          <%= link_to '[x]',update_path(update),
+          method: :delete,class: 'command',data: { confirm: 'Sure?' } %>
+          <% end %>
+        <% end %>
+         </div>
+    </li>
+    <ul class="update_list">
+      <%= simple_format update.text %>
+    </ul>
+  <% end %>
+</ul>
+
+<div>
+  <% if logged_in? %>
+  <% if current_user.admin? && !current_user?(@user) %>
+      <%= link_to "update create", new_update_path %>
+    <% end %>
+  <% end %>
+</div>

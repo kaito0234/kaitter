@@ -14,9 +14,7 @@ $gray-medium-light: #eaeaea;
 /* micropost navbar */
 
 #nav01 ul {
-
     overflow: hidden;
-
     border-right: none;
 }
 #nav01 ul .navli1 {
@@ -85,8 +83,6 @@ p {
 
 /* header */
 
-
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -121,6 +117,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+  margin-bottom: 60px;
   a {
     color: $gray;
     &:hover {
@@ -145,7 +142,7 @@ footer {
   border-bottom: 1px solid $gray-medium-light;
   border-top: 1px solid $gray-medium-light;
   margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
   padding-bottom: 5px;
   padding-top: 5px;
 }
