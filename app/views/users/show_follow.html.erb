@@ -2,7 +2,11 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-        <%= gravatar_for @user %>
+      <% if @user.icon.present? %>
+        <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 200 ), @user %></div>
+      <% else %>
+        <%= link_to gravatar_for(@user, size: 200 ), @user %>
+      <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "My Profile", @user %></span>
       <span><b>ツイート数：</b> <%= @user.microposts.count %>
@@ -14,7 +18,11 @@
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
-            <%= link_to gravatar_for(user, size: 30), user %>
+          <% if user.icon.present? %>
+            <div class="icon"><%= link_to image_tag("#{user.icon}", size: 30 ), user %></div>
+          <% else %>
+            <%= link_to gravatar_for(user, size: 30 ), user %>
+          <% end %>
           <% end %>
         </div>
       <% end %>
