@@ -1,9 +1,9 @@
 <% if current_user.icon.present? %>
   <div class="icon">
-    <%= link_to image_tag("#{current_user.icon}", size: 100), current_user %>
+    <%= link_to image_tag("#{current_user.icon}", size: 150), current_user %>
   </div>
 <% else %>
-    <%= link_to gravatar_for(current_user, size: 100), current_user %>
+    <%= link_to gravatar_for(current_user, size: 150), current_user %>
 <% end %>
 
 
