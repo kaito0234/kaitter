@@ -13,5 +13,10 @@
   <%= f.label :password_confirmation, "Password　確認" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <% if logged_in? %>
+  <%= f.label :icon , "合言葉" %>
+  <%= f.text_field :icon, class: 'form-control' %>
+  <% end %>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

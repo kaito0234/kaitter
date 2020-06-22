@@ -1,4 +1,4 @@
-<% provide(:title, "Update") %>
+<% provide(:title, "Update info") %>
 <h1>アップデート情報</h1>
 
 <div>
@@ -28,11 +28,3 @@
     </ul>
   <% end %>
 </ul>
-
-<div>
-  <% if logged_in? %>
-  <% if current_user.admin? && !current_user?(@user) %>
-      <%= link_to "update create", new_update_path %>
-    <% end %>
-  <% end %>
-</div>

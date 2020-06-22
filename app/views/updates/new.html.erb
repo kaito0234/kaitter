@@ -1,4 +1,10 @@
-<% provide(:title, 'update create') %>
-<% provide(:button_text, 'update作成') %>
-<h1>新規登録</h1>
-  <%= render 'form' %>
+<% provide(:title, 'create update') %>
+<% provide(:button_text, 'アップデート情報を作成する') %>
+<h1>アップデート情報作成</h1>
+<div>
+  <% if logged_in? %>
+    <% if current_user.admin? && !current_user?(@user) %>
+      <%= render 'form' %>
+    <% end %>
+  <% end %>
+</div>

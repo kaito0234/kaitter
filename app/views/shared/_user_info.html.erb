@@ -1,4 +1,12 @@
-<%= link_to gravatar_for(current_user, size: 50 ), current_user %>
+<% if current_user.icon.present? %>
+  <div class="icon">
+    <%= link_to image_tag("#{current_user.icon}", size: 100), current_user %>
+  </div>
+<% else %>
+    <%= link_to gravatar_for(current_user, size: 100), current_user %>
+<% end %>
+
+
 <h1><%= current_user.name %></h1>
 <span><%= link_to "自分のツイート", current_user %></span>
 <span>ツイート数 (<%= current_user.microposts.count %>)</span>

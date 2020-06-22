@@ -1,2 +1,11 @@
-<h2>Edit Update</h2>
-<%= render 'form' %>
+<% provide(:title, 'edit update') %>
+<% provide(:button_text, 'アップデート情報更新') %>
+
+<h1>アップデート情報編集</h1>
+<div>
+  <% if logged_in? %>
+    <% if current_user.admin? && !current_user?(@user) %>
+      <%= render 'form' %>
+    <% end %>
+  <% end %>
+</div>

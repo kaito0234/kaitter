@@ -1,5 +1,9 @@
 <li>
-  <%= link_to gravatar_for(micropost.user, size: 50 ), micropost.user %>
+  <% if micropost.user.icon.present? %>
+    <div class="icon"><%= link_to image_tag("#{micropost.user.icon}", size: 50), micropost.user %></div>
+  <% else %>
+    <%= link_to gravatar_for(micropost.user, size: 50 ), micropost.user %>
+  <% end %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">
     <%= micropost.content %>
