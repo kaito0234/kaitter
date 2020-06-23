@@ -11,6 +11,21 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.icon_box {
+float: left;
+flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.a1 {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 15px;
+}
+
 /* micropost navbar */
 
 #nav01 ul {

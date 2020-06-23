@@ -16,6 +16,7 @@
   <% if logged_in? %>
   <%= f.label :icon , "アイコン　合言葉" %>
   <%= f.text_field :icon, class: 'form-control' %>
+  <%= link_to "アイコン一覧", about_path %>
   <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
