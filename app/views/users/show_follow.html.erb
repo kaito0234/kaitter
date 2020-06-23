@@ -8,8 +8,8 @@
         <%= link_to gravatar_for(@user, size: 200 ), @user %>
       <% end %>
       <h1><%= @user.name %></h1>
-      <span><%= link_to "My Profile", @user %></span>
-      <span><b>ツイート数：</b> <%= @user.microposts.count %>
+      <span><%= link_to "自分のツイート", @user %></span>
+      <span><b>ツイート数 (<%= @user.microposts.count %>)</b>
       </span>
     </section>
 

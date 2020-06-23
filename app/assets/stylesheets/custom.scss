@@ -11,12 +11,6 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-.icon {
-  float: left;
-  margin-right: 10px;
-}
-
-
 /* micropost navbar */
 
 #nav01 ul {
@@ -196,7 +190,10 @@ aside {
 }
 
 .gravatar {
+  border-radius: 50%;
   float: left;
+  margin-top: 2px;
+  margin-bottom: 2px;
   margin-right: 10px;
 }
 
@@ -269,7 +266,7 @@ input {
     border-top: 1px solid #e8e8e8;
   }
   .user {
-    font-size: 1.5em;
+    font-size: 3em;
     margin-top: 5em;
     padding-top: 0;
     margin-left: 10px;
@@ -286,10 +283,10 @@ input {
   }
   .timestamp {
     color: $gray-light;
-    display: block;
-    margin-left: 100px;
+    margin-left: 5px;
   }
   .gravatar {
+    border-radius: 50%;
     float: left;
     margin-right: 10px;
     margin-top: 15px;
@@ -299,6 +296,11 @@ input {
     margin-right: 10px;
     margin-top: 15px;
   }
+}
+
+.icon {
+  float: left;
+  margin-right: 15px;
 }
 
 aside {
