@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gooder_id: 1
+  gooded_id: 1
+
+two:
+  gooder_id: 1
+  gooded_id: 1

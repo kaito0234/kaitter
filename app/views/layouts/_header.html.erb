@@ -7,9 +7,8 @@
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <div class="menu">menu
-            <b class="caret"></b></div></a>
-            <ul class="dropdown-menu">
+            <div class="menu">menu<b class="caret"></b></div></a>
+            <ul class="dropdown-menu", id="dropdown-menu">
               <li class="menu_list"><%= link_to "ホーム", root_path %></li>
               <li class="divider"></li>
               <li class="menu_list"><%= link_to "全てのユーザー", users_path %></li>
