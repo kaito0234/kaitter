@@ -1,25 +1,28 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "K a i t t e r . j p　", root_path, id: "logo" %>
-    <p class="p1">β ver.0.7.2</p>
+    <p class="ver">β ver.0.7.2</p>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              menu <b class="caret"></b></a>
+            <div class="menu">menu
+            <b class="caret"></b></div></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "All Users", users_path %></li>
-              <li><%= link_to "My Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="menu_list"><%= link_to "ホーム", root_path %></li>
               <li class="divider"></li>
-              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+              <li class="menu_list"><%= link_to "全てのユーザー", users_path %></li>
+              <li class="divider"></li>
+              <li class="menu_list"><%= link_to "自分のツイート", current_user %></li>
+              <li class="divider"></li>
+              <li class="menu_list"><%= link_to "設定", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li class="menu_list"><%= link_to "ログアウト", logout_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li class="menu"><%= link_to "ログイン", login_path %></li>
         <% end %>
       </ul>
     </nav>

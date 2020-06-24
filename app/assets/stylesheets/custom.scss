@@ -11,6 +11,8 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+/* all icon code */
+
 .icon_box {
 float: left;
 flex-wrap: wrap;
@@ -24,10 +26,11 @@ flex-wrap: wrap;
   width: 200px;
   height: 200px;
   text-align: center;
-  margin: 40px 15px;
+    line-height: 90px;
+  margin: 60px 15px;
 }
 
-/* micropost navbar */
+/* micropost navbar bottom */
 
 #nav01 ul {
     overflow: hidden;
@@ -102,11 +105,11 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.5em;
+  font-size: 2em;
   color: white;
   // text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 4px;
   font-weight: bold;
   &:hover {
     color: white;
@@ -114,7 +117,7 @@ p {
   }
 }
 
-.p1 {
+.ver {
   float: left;
   margin-left: -18px;
   font-size: 1.2em;
@@ -125,6 +128,15 @@ p {
   font-weight: bold;
 }
 
+.menu {
+    float: right;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.menu_list {
+    font-size: 3em;
+}
 
 /* footer */
 
