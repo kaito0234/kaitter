@@ -15,7 +15,7 @@
 
   <% if logged_in? %>
     <%= f.label :icon , "アイコン・コード" %>
-    <%= link_to "　　アイコン・コード一覧", about_path %>
+    <%= link_to "( アイコン・コード一覧 )", icon_path %>
     <%= f.text_field :icon, class: 'form-control' %>
   <% end %>
 
