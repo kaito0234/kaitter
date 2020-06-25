@@ -6,6 +6,13 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   validate :picture_size
 
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
+
+  def liked?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
 
   private
 

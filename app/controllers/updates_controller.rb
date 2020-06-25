@@ -9,6 +9,7 @@ class UpdatesController < ApplicationController
   end
 
   def create
+    admin_user
     @update = Update.new(update_params)
     if @update.save
       redirect_to updates_path
@@ -18,6 +19,7 @@ class UpdatesController < ApplicationController
   end
 
   def edit
+    admin_user
     @update = Update.find(params[:id])
   end
 
@@ -26,12 +28,14 @@ class UpdatesController < ApplicationController
   end
 
   def destroy
+    admin_user
     @update = Update.find(params[:id])
     @update.destroy
-    redirect_to update_path
+    redirect_to updates_path
   end
 
   def update
+    admin_user
     @update = Update.find(params[:id])
     if @update.update (update_params)
       redirect_to update_path
@@ -45,11 +49,6 @@ class UpdatesController < ApplicationController
 
     def update_params
       params.require(:update).permit(:title, :text)
-    end
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
     end
 
     def admin_user
