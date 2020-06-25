@@ -21,7 +21,7 @@
   </span>
 
   <span class="like">
-    <P><% if micropost.liked?(current_user) %>
+    <% if micropost.liked?(current_user) %>
       <%= link_to micropost_likes_path(micropost.id), method: :delete do %>
         <i class="fas fa-heart"></i>
       <% end %>
@@ -30,6 +30,6 @@
         <i class="far fa-heart"></i>
       <% end %>
     <% end %>
-    <%= micropost.likes.count %></P>
+    <%= micropost.likes.count %>
   </span>
 </li>
