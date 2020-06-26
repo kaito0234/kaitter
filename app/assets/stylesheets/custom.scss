@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+html {
+  font-size: 10px;
+}
 
 /* mixins, variables, etc. */
 
@@ -294,14 +300,14 @@ input {
     border-top: 1px solid #e8e8e8;
   }
   .user {
-    font-size: 2.5em;
+    font-size: 3.3rem;
     margin-top: 10px;
     padding-top: 0;
     margin-left: 10px;
   }
   .content {
     display: block;
-    font-size: 2.5em;
+    font-size: 3.3rem;
     padding-bottom: 15px;
     margin-left: 120px;
     img {
@@ -316,6 +322,7 @@ input {
   .like {
     display: block;
     color: $gray-light;
+    font-size: 2rem;
     margin-left: 120px;
   }
   .gravatar {
