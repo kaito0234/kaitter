@@ -195,7 +195,6 @@ footer {
   list-style-type: square;
 }
 
-
 .update_info {
   font-size: 1.4em;
   border-bottom: 1px solid $gray-medium-light;
@@ -379,5 +378,54 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  #logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 2em;
+    color: white;
+    letter-spacing: 2px;
+    padding-top: 4px;
+    font-weight: bold;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  .ver {
+    float: left;
+    font-size: 1.2em;
+    padding-top: 15px;
+    font-weight: bold;
+  }
+  .menu {
+    width: 60px;
+    height: 40px;
+    display: flex;
+    float: right;
+    margin-top: -10px;
+    i {
+      color: white;
+      transform: scaleX(1.5);
+      font-size: 2.7em;
+      margin: auto;
+    }
+  }
+  .menu_login {
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    float: right;
+  }
+  #dropdown-menu {
+    margin-top: 0.4em;
+  }
+  .menu_list {
+      font-size: 3em;
   }
 }
