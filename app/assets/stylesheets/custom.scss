@@ -114,7 +114,7 @@ p {
   margin-right: 10px;
   font-size: 2em;
   color: white;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
   padding-top: 4px;
   font-weight: bold;
   &:hover {
@@ -125,20 +125,27 @@ p {
 
 .ver {
   float: left;
-  margin-left: -18px;
   font-size: 1.2em;
-  letter-spacing: -1px;
   padding-top: 15px;
   font-weight: bold;
 }
 
 .menu {
-    float: right;
-    font-size: 2em;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  float: right;
+  margin-top: -10px;
+  i {
+    color: white;
+    transform: scaleX(1.5);
+    font-size: 2.7em;
+    margin: auto;
+  }
 }
 
 #dropdown-menu {
-  margin-top: 15px;
+  margin-top: 0.4em;
 }
 
 .menu_list {
@@ -173,6 +180,13 @@ footer {
   }
 }
 
+/* update */
+
+.update_ul {
+  list-style-type: square;
+}
+
+
 .update_info {
   font-size: 1.4em;
   border-bottom: 1px solid $gray-medium-light;
@@ -185,6 +199,7 @@ footer {
 
 .update_list {
   font-size: 0.9em;
+  list-style-type: disc;
 }
 
 /* miscellaneous */
@@ -280,6 +295,7 @@ input {
 }
 
 /*  Users index */
+
 .users {
   list-style: none;
   margin: 0;
