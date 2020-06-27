@@ -170,6 +170,7 @@ footer {
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   margin-bottom: 100px;
+  margin-right: 0;
   a {
     color: $gray;
     &:hover {
@@ -177,14 +178,20 @@ footer {
     }
   }
   small {
+    // font-size: 0.1em;
+    margin-right: 0;
     float: left;
   }
   ul {
     float: right;
     list-style: none;
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0;
     li {
-      float: left;
-      margin-left: 15px;
+      // font-size: 0.2em;
+      margin-right: 0;
+      margin-left: 0;
     }
   }
 }
@@ -381,51 +388,145 @@ span.picture {
   }
 }
 
-@media screen and (min-width: 481px) {
-  #logo {
-    float: left;
-    margin-right: 10px;
-    font-size: 2em;
-    color: white;
-    letter-spacing: 2px;
-    padding-top: 4px;
-    font-weight: bold;
-    &:hover {
-      color: white;
-      text-decoration: none;
-    }
-  }
-  .ver {
-    float: left;
-    font-size: 1.2em;
-    padding-top: 15px;
-    font-weight: bold;
-  }
-  .menu {
-    width: 60px;
-    height: 40px;
-    display: flex;
-    float: right;
-    margin-top: -10px;
-    i {
-      color: white;
-      transform: scaleX(1.5);
-      font-size: 2.7em;
-      margin: auto;
-    }
-  }
-  .menu_login {
-    font-size: 1.5em;
-    font-weight: bold;
-    width: 120px;
-    height: 40px;
-    display: flex;
-    float: right;
-  }
-  #dropdown-menu {
-    margin-top: 0.4em;
-  }
-  .menu_list {
-      font-size: 3em;
-  }
-}
+// @media screen and (min-width: 481px) {
+//   #logo {
+//     float: left;
+//     margin-right: 10px;
+//     font-size: 2em;
+//     color: white;
+//     letter-spacing: 2px;
+//     padding-top: 4px;
+//     font-weight: bold;
+//     &:hover {
+//       color: white;
+//       text-decoration: none;
+//     }
+//   }
+//   .ver {
+//     float: left;
+//     font-size: 1.2em;
+//     padding-top: 15px;
+//     font-weight: bold;
+//   }
+//   .menu {
+//     width: 60px;
+//     height: 40px;
+//     display: flex;
+//     float: right;
+//     margin-top: -10px;
+//     i {
+//       color: white;
+//       transform: scaleX(1.5);
+//       font-size: 2.7em;
+//       margin: auto;
+//     }
+//   }
+//   .menu_login {
+//     font-size: 1.5em;
+//     font-weight: bold;
+//     width: 120px;
+//     height: 40px;
+//     display: flex;
+//     float: right;
+//   }
+//   #dropdown-menu {
+//     margin-top: 0.4em;
+//   }
+//   .menu_list {
+//       font-size: 3em;
+//   }
+// /* microposts */
+// 
+// .microposts {
+//   list-style: none;
+//   padding: 0;
+//   li {
+//     padding: 10px 0;
+//     border-top: 1px solid #e8e8e8;
+//   }
+//   .user {
+//     font-size: 3.5rem;
+//     margin-top: 10px;
+//     padding-top: 0;
+//     margin-left: 10px;
+//   }
+//   .content {
+//     display: block;
+//     font-size: 3.5rem;
+//     padding-bottom: 15px;
+//     margin-left: 120px;
+//     img {
+//       display: block;
+//       padding: 5px 0;
+//     }
+//   }
+//   .timestamp {
+//     color: $gray-light;
+//     margin-left: 5px;
+//   }
+//   .like {
+//     display: block;
+//     color: $gray-light;
+//     font-size: 3rem;
+//     margin-left: 120px;
+//   }
+//   .gravatar {
+//     border-radius: 50%;
+//     float: left;
+//     margin-right: 10px;
+//     margin-top: 15px;
+//   }
+//   .icon {
+//     float: left;
+//     margin-right: 10px;
+//     margin-top: 15px;
+//   }
+// }
+
+// .icon {
+//   float: left;
+//   margin-right: 15px;
+// }
+
+// aside {
+//   textarea {
+//     height: 5em;
+//     margin-bottom: 5px;
+//   }
+// }
+
+// span.picture {
+//   margin-top: 10px;
+//   input {
+//     border: 0;
+//   }
+// }
+// }
+// /* footer */
+// 
+// footer {
+//   clear: both;
+//   margin-top: 45px;
+//   padding-top: 5px;
+//   border-top: 1px solid $gray-medium-light;
+//   color: $gray-light;
+//   margin-bottom: 100px;
+//   a {
+//     color: $gray;
+//     &:hover {
+//       color: $gray-darker;
+//     }
+//   }
+//   small {
+//     float: left;
+//   }
+//   ul {
+//     float: right;
+//     list-style: none;
+//     li {
+//       float: left;
+//       margin-left: 15px;
+//     }
+//   }
+// }
+// }
