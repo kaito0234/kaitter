@@ -31,5 +31,10 @@
       <% end %>
     <% end %>
     <%= micropost.likes.count %>
+
+    <%= link_to micropost_path(micropost.id) do %>
+      <i class="far fa-comment-alt"></i>
+    <% end %>
+    <%= micropost.comments.count %>
   </span>
 </li>

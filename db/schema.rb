@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200625085753) do
+ActiveRecord::Schema.define(version: 20200630235156) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "user_id"
+    t.integer "micropost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+    t.index ["text"], name: "index_comments_on_text"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -59,6 +70,7 @@ ActiveRecord::Schema.define(version: 20200625085753) do
     t.string "remember_digest"
     t.string "icon"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
 end

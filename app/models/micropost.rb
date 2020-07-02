@@ -9,6 +9,8 @@ class Micropost < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
 
+  has_many :comments, dependent: :destroy
+
   def liked?(user)
     likes.where(user_id: user.id).exists?
   end

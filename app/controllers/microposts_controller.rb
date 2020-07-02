@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
 
-  before_action :logged_in_user, only:[:create, :destroy]
+  before_action :logged_in_user, only:[:create, :destroy, :show]
   before_action :correct_user, only: :destroy
 
   def create
@@ -20,6 +20,11 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def show
+    @micropost = Micropost.find(params[:id])
+    @comments = @micropost.comments.includes(:user)
+    @comment = Comment.new
+  end
 
   private
 
