@@ -38,6 +38,7 @@
     <% end %>
 
     <%= @micropost.likes.count %>
+    <p style="display:inline;">　</p>
     <%= link_to micropost_path(@micropost.id) do %>
       <i class="far fa-comment-alt"></i>
     <% end %>
