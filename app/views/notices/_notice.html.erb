@@ -1,0 +1,47 @@
+<% visitor = notice.visitor %>
+<% visited = notice.visited %>
+<li>
+<span>
+  <%= link_to user_path(visitor) do %>
+    <% if visitor.icon.present? %>
+      <div class="icon"><%= image_tag("#{visitor.icon}", size: 30, style: 'border-radius: 50%;' ) %></div>
+    <% else %>
+      <%= gravatar_for(visitor, size: 30 ) %>
+    <% end %>
+    <strong><%= visitor.name %></strong>
+    さんが
+  <% end %>
+
+  <% case notice.action %>
+    <% when 'follow' then %>
+      あなたをフォローしました
+      （<%= time_ago_in_words(notice.created_at) %>前）
+    <% when 'like' then %>
+      <%= link_to 'あなたの投稿', notice.micropost, style: "font-weight: bold;" %>
+      にいいねしました
+      （<%= time_ago_in_words(notice.created_at) %>前）
+    <% when 'comment' then %>
+      <% if notice.micropost.user_id == visited.id %>
+        <%= link_to 'あなたの投稿', notice.micropost, style: "font-weight: bold;" %>
+          にコメントしました
+          （<%= time_ago_in_words(notice.created_at) %>前）
+        <p><%= Comment.find_by(id: notice.comment_id)&.text %></p>
+      <% else %>
+        <%= link_to micropost_path(notice.micropost) do %>
+          <%= link_to user_path(visitor) do %>
+            <% if visitor.icon.present? %>
+              <div class="icon"><%= image_tag("#{visitor.icon}", size: 50, style: 'border-radius: 50%;' ) %></div>
+            <% else %>
+              <%= gravatar_for(visitor, size: 50 ) %>
+            <% end %>
+            <%= notice.micopost.user.name %>
+            さんの投稿にコメントしました
+            （<%= time_ago_in_words(notice.created_at) %>前）
+          <% end %>
+        <% end %>
+        <%= Comment.find_by(id: notice.comment_id)&.text %>
+      <% end %> 
+    <% end %> 
+    <p>　</p>
+</span>
+</li>

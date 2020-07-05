@@ -12,6 +12,8 @@ html {
 
 $gray-medium-light: #eaeaea;
 
+
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -524,6 +526,23 @@ input {
   }
   .menu_list {
       font-size: 2em;
+  }
+
+  .bell {
+    font-size: 1.4em;
+    width: 60px;
+    height: 40px;
+    float: right;
+    margin-top: -3px;
+    margin-right: 5px;
+  }
+  
+  .fa_maru {
+    font-size: 1em;
+    position: absolute;
+    padding-left: 1.3em;
+    padding-top: 0;
+    color: #efa04c;
   }
 
 // /* microposts */

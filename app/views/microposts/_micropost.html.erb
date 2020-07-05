@@ -8,7 +8,7 @@
   </span>
   <span class="timestamp">
     <%= micropost.created_at.strftime("%Y-%m-%d %H:%M") %>
-    に投稿 <%= time_ago_in_words(micropost.created_at) %> ago.
+    に投稿 （<%= time_ago_in_words(micropost.created_at) %>前）
     <% if current_user?(micropost.user) %>
       <%= link_to "ツイートを削除", micropost, method: :delete,
           data: { confirm: "本当にこのツイートを削除しますか？" } %>

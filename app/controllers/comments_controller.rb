@@ -6,10 +6,11 @@ class CommentsController < ApplicationController
     @comment =  Comment.new(comment_params)
     # @comment = Comment.new(text: comment_params[:text], micropost_id: comment_params[:micropost_id], user_id: current_user.id)
     if @comment.save
+      @comment.micropost.create_notice_comment(current_user, @comment.id)
       flash[:success] = "コメントを送信しました!"
       redirect_back(fallback_location: root_path)
     else
-      flash[:success] = "送信に失敗!"
+      flash[:danger] = "送信に失敗!"
       redirect_back(fallback_location: root_path)
     end
   end

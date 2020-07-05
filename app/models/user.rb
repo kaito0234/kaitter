@@ -16,6 +16,10 @@ class User < ApplicationRecord
   
   has_many :comments
 
+  has_many :active_notices, class_name: "Notice", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notices, class_name: "Notice", foreign_key: "visited_id", dependent: :destroy
+
+
   attr_accessor :remember_token
 
   before_save { email.downcase! }
@@ -26,7 +30,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-
 
   def User.digest(string)
   cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -66,5 +69,13 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def create_notice_follow(current_user)
+    temp = Notice.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    if temp.blank?
+      notice = current_user.active_notices.new(visited_id: id, action: 'follow')
+      notice.save if notice.valid?
+    end
   end
 end
