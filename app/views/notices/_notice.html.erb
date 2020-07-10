@@ -34,7 +34,7 @@
             <% else %>
               <%= gravatar_for(visitor, size: 50 ) %>
             <% end %>
-            <%= notice.micopost.user.name %>
+            <%= notice.micropost.user.name %>
             さんの投稿にコメントしました
             （<%= time_ago_in_words(notice.created_at) %>前）
           <% end %>

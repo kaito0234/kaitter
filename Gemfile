@@ -18,7 +18,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'rest-client',  '2.0.2'
 gem 'sassc',        '2.4.0'
 gem 'font-awesome-sass', '~> 5.4.1'
-
+gem 'simple_calendar', '~> 2.0'
 
 
 group :development, :test do

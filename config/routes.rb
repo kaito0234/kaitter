@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :meetings
   get 'likes/create'
   get 'likes/destroy'
 
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :notices, only: [:index]
   resources :updates
+  resources :calendars
 end
