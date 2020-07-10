@@ -1,0 +1,17 @@
+<% if logged_in? %>
+  <% provide(:title, "Search") %>
+  <h1>検索</h1>
+  <%= form_tag(search_path, :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索', :name => nil %>
+  <% end %>
+
+  <% if @microposts.nil? %>
+
+  <% else %>
+  <ol class="microposts">
+    <%= render @microposts %>
+  </ol>
+    <%= will_paginate @microposts %>
+  <% end %>
+<% end %>

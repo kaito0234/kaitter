@@ -26,6 +26,13 @@ class MicropostsController < ApplicationController
     @comment = Comment.new
   end
 
+  def search
+    @microposts = Micropost.paginate(page: params[:page]).search(params[:search])
+    if @microposts.blank?
+      flash.now[:danger] = "一致するツイートが見つかりませんでした"
+    end
+  end
+
   private
 
     def micropost_params

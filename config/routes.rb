@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
   get  '/signup', to: 'users#new'
   post '/signup',  to: 'users#create'
-  get '/show_microposts', to: 'microposts#show_microposts'
+  get '/search', to: 'microposts#search'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
