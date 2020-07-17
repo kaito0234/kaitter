@@ -9,9 +9,8 @@
       <%= gravatar_for(visitor, size: 30 ) %>
     <% end %>
     <strong><%= visitor.name %></strong>
-    さんが
   <% end %>
-
+  さんが
   <% case notice.action %>
     <% when 'follow' then %>
       あなたをフォローしました
@@ -29,19 +28,13 @@
       <% else %>
         <%= link_to micropost_path(notice.micropost) do %>
           <%= link_to user_path(visitor) do %>
-            <% if visitor.icon.present? %>
-              <div class="icon"><%= image_tag("#{visitor.icon}", size: 50, style: 'border-radius: 50%;' ) %></div>
-            <% else %>
-              <%= gravatar_for(visitor, size: 50 ) %>
-            <% end %>
-            <%= notice.micropost.user.name %>
-            さんの投稿にコメントしました
-            （<%= time_ago_in_words(notice.created_at) %>前）
+            <%= notice.micropost.user.name %>さんの投稿
           <% end %>
         <% end %>
-        <%= Comment.find_by(id: notice.comment_id)&.text %>
+        にコメントしました
+        （<%= time_ago_in_words(notice.created_at) %>前）
+        <p><%= Comment.find_by(id: notice.comment_id)&.text %></p>
       <% end %> 
     <% end %> 
-    <p>　</p>
 </span>
 </li>
