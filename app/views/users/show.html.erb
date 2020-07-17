@@ -2,35 +2,73 @@
 <div class="row">
   <aside class="col-md-6">
     <section class="user_info">
-      <h1>
         <% if @user.icon.present? %>
           <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 300), root_path %></div>
         <% else %>
-          <%= link_to gravatar_for(@user, size: 300 ), root_path %>
+          <%= link_to gravatar_for(@user, size: 300), root_path %>
         <% end %>
-        <%= @user.name %>
-      </h1>
     </section>
     <section class="stats">
+     <h1><%= @user.name %></h1>
       <%= render 'shared/stats' %>
     </section>
   </aside>
 
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
+
+<ul class="nav nav-tabs mt-3" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">ツイート</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">いいね</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item3-tab" data-toggle="tab" href="#item3" role="tab" aria-controls="item3" aria-selected="false">コメント</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+  
+     <% if @user.microposts.any? %>
       <h3><%= @user.name %>のツイート 一覧 (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
-      <%= will_paginate @microposts %>
-
-      <h3><%= @user.name %>のいいねしたツイート 一覧 (<%= @like_microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @like_microposts %>
-      </ol>
-      <%= will_paginate @like_microposts %>
-
+        <%= will_paginate @microposts %>
     <% end %>
+  
+  </div>
+  <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
+  
+  <% if @user.microposts.any? %>
+    <h3><%= @user.name %>のいいねしたツイート 一覧 (<%= @like_microposts.count %>)</h3>
+    <ol class="microposts">
+      <%= render @like_microposts %>
+    </ol>
+      <%= will_paginate @like_microposts %>
+  <% end %>
+  
+  </div>
+  <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
+    <% if @user.microposts.any? %>
+      <h3><%= @user.name %>のコメントしたツイート 一覧 (<%= @comment_microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @comment_microposts %>
+      </ol>
+       <%= will_paginate@comment_microposts %>
+    <% end %>
+  
+  
+  </div>
+</div>
+
+
+
+
+
+
+
   </div>
 </div>

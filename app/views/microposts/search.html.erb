@@ -2,6 +2,7 @@
 <h1>検索</h1>
 <%= form_tag(search_path, :method => 'get') do %>
   <%= text_field_tag :search %>
+  <div class="mb-3"></div>
   <%= submit_tag '検索', :name => nil %>
 <% end %>
 

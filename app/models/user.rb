@@ -3,7 +3,6 @@ class User < ApplicationRecord
 
   has_many :microposts, dependent: :destroy
   has_many :meetings, dependent: :destroy
-  has_many :comments
 
   has_many :active_notices, class_name: "Notice", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notices, class_name: "Notice", foreign_key: "visited_id", dependent: :destroy
@@ -19,6 +18,9 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :like_microposts, through: :likes, source: :micropost
+
+  has_many :comments, dependent: :destroy
+  has_many :comment_microposts, through: :comments, source: :micropost
   
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true

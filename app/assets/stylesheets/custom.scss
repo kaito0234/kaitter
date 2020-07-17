@@ -31,13 +31,13 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  // color: $#e8e8e8-light;
+  color: #e8e8e8;
 }
 
 h6 {
   font-size: 1.2em;
   margin: -20px 0 10px 15px;
-  // color: $#e8e8e8-light;
+  color: gray;
 }
 
 p {
@@ -174,18 +174,14 @@ footer {
   clear: both;
   margin-top: 45px;
   padding-top: 5px;
-  // border-top: 1px solid $#e8e8e8-medium-light;
   border-top: 1px solid #e8e8e8;
   color: #e8e8e8;
-  // color: $#e8e8e8-light;
   margin-bottom: 100px;
   margin-right: 0;
   a {
     color: gray;
-    // color: $#e8e8e8;
     &:hover {
       color: #e8e8e8;
-      // color: $#e8e8e8-darker;
     }
   }
   i {
@@ -257,23 +253,24 @@ footer li {
 
 .update_ul {
   list-style-type: square;
+  padding-left: 10px;
 }
 
 .update_info {
   font-size: 1.4em;
   border-bottom: 1px solid #e8e8e8;
   border-top: 1px solid #e8e8e8;
-  // border-bottom: 1px solid $#e8e8e8-medium-light;
-  // border-top: 1px solid $#e8e8e8-medium-light;
   margin-bottom: 15px;
   margin-top: 30px;
   padding-bottom: 5px;
   padding-top: 5px;
+
 }
 
 .update_list {
   font-size: 0.9em;
   list-style-type: disc;
+  padding-left: 10px;
 }
 
 /* miscellaneous */
@@ -508,6 +505,13 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+
+
+.stats {
+  padding: 0;
+  margin: 0;
 }
 
  /* microposts */
