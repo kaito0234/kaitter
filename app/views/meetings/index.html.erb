@@ -26,11 +26,11 @@
     <% @meetings.each do |meeting| %>
       <tr>
         <td><%= meeting.name %></td>
-        <td><%= meeting.start_time %></td>
+        <td><%= meeting.start_time.strftime("%Y年%m月%d日%H時%M分") %></td>
         <% if current_user?(meeting.user) %>  
-          <td><%= link_to '| Show ', user_meeting_path(current_user, meeting) %></td>
-          <td><%= link_to '| Edit |', edit_user_meeting_path(current_user, meeting) %></td>
-          <td><%= link_to ' Destroy |', user_meeting_path(current_user, meeting), method: :delete, data: { confirm: '予定を削除しますか?' } %></td>
+          <td><%= link_to '|　詳細　', user_meeting_path(current_user, meeting) %></td>
+          <td><%= link_to '|　編集　|', edit_user_meeting_path(current_user, meeting) %></td>
+          <td><%= link_to '　削除　|', user_meeting_path(current_user, meeting), method: :delete, data: { confirm: '予定を削除しますか?' } %></td>
         <% end %>
       </tr>
     <% end %>

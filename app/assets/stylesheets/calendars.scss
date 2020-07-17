@@ -24,3 +24,28 @@
 
   .has-events {}
 }
+
+.simple-calendar td {
+  padding: 6px;
+  vertical-align: top;
+  width: 14%;
+  border: 1px solid lightgray;
+  border-top-color: #dddddd;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: lightgray;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: lightgray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: lightgray;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border: 1px 1px 2px 1px solid lightgray;
+  text-align: center;
+}

@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :start_time %>
-    <%= f.datetime_select :start_time, id: :meeting_start_time %>
+    <%= f.datetime_select :start_time, id: :meeting_start_time, start_hour: 00, minute_step: 10, default: Date.today + 00.hour %>
   </div>
 
   <div class="actions">

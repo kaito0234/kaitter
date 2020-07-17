@@ -6,7 +6,7 @@
 
   <p>
     <strong>Start time:</strong>
-    <%= @meeting.start_time %>
+    <%= @meeting.start_time.strftime("%Y年%m月%d日%H時%M分") %>
   </p>
 
   <%= link_to 'Edit', edit_user_meeting_path(current_user, @meeting) %> |
