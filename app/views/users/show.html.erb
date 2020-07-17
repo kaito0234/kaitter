@@ -4,9 +4,9 @@
     <section class="user_info">
       <h1>
         <% if @user.icon.present? %>
-          <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 500), root_path %></div>
+          <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 300), root_path %></div>
         <% else %>
-          <%= link_to gravatar_for(@user, size: 500 ), root_path %>
+          <%= link_to gravatar_for(@user, size: 300 ), root_path %>
         <% end %>
         <%= @user.name %>
       </h1>
@@ -16,7 +16,7 @@
     </section>
   </aside>
 
-  <div class=""col-md-8">
+  <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3><%= @user.name %>のツイート 一覧 (<%= @user.microposts.count %>)</h3>

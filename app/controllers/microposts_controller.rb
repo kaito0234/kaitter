@@ -1,11 +1,11 @@
 class MicropostsController < ApplicationController
 
-  before_action :logged_in_user, only:[:create, :destroy, :show]
+  before_action :logged_in_user, only:[:create, :destroy, :show, :search]
   before_action :correct_user, only: :destroy
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
-    if @micropost.save
+    @post = current_user.microposts.build(micropost_params)
+    if @post.save
       flash[:success] = "ツイートを送信しました!"
       redirect_to root_url
     else

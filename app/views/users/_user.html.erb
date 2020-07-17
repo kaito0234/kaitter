@@ -1,10 +1,10 @@
 <li>
   <% if user.icon.present? %>
     <div class="icon">
-      <%= link_to image_tag("#{user.icon}", size: 100, style: 'border-radius: 50%;'), user %>
+      <%= link_to image_tag("#{user.icon}", size: 50, style: 'border-radius: 50%;'), user %>
     </div>
   <% else %>
-        <%= link_to gravatar_for(user, size: 100 ), user %>
+        <%= link_to gravatar_for(user, size: 50 ), user %>
   <% end %>
   <%= link_to user.name, user, style: 'color: black; font-weight: bold;' %>
   <% if current_user.admin? && !current_user?(user) %>

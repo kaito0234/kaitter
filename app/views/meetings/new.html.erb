@@ -1,5 +1,7 @@
+<% provide(:title, "New Calebdar") %>
+<% provide(:path, user_meetings_path(current_user.id)) %>
 <h1>New Meeting</h1>
 
 <%= render 'form', meeting: @meeting %>
 
-<%= link_to 'Back', meetings_path %>
+<%= link_to 'Back', user_meetings_path %>

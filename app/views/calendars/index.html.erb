@@ -1,9 +1,0 @@
-<%= month_calendar events: @calendars do |date, calendars| %>
-  <%= date %>
-
-  <% calendars.each do |calendar| %>
-    <div>
-      <%= calendar.memo %>
-    </div>
-  <% end %>
-<% end %>

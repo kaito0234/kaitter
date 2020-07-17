@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
-  resources :meetings
+  root 'static_pages#home'
+  
   get 'likes/create'
   get 'likes/destroy'
-
-  root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/icon',   to: 'static_pages#icon'
   get  '/contact', to: 'static_pages#contact'
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users do
+    resources :meetings
     member do
       get :following, :followers
     end
@@ -26,5 +25,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :notices, only: [:index]
   resources :updates
-  resources :calendars
+
 end

@@ -1,18 +1,14 @@
 <li>
   <% if micropost.user.icon.present? %>
-    <div class="icon"><%= link_to image_tag("#{micropost.user.icon}", size: 100, style: 'border-radius: 50%;' ), micropost.user %></div>
+    <div class="icon"><%= link_to image_tag("#{micropost.user.icon}", size: 50, style: 'border-radius: 50%;' ), micropost.user %></div>
   <% else %>
-    <%= link_to gravatar_for(micropost.user, size: 100 ), micropost.user %>
+    <%= link_to gravatar_for(micropost.user, size: 50 ), micropost.user %>
   <% end %>
   <span class="user"><%= link_to micropost.user.name, micropost.user, style: 'color: black; font-weight: bold;' %>
   </span>
   <span class="timestamp">
     <%= micropost.created_at.strftime("%Y-%m-%d %H:%M") %>
     に投稿 （<%= time_ago_in_words(micropost.created_at) %>前）
-    <% if current_user?(micropost.user) %>
-      <%= link_to "ツイートを削除", micropost, method: :delete,
-          data: { confirm: "本当にこのツイートを削除しますか？" } %>
-    <% end %>
   </span>
 
   <span class="content">
@@ -30,11 +26,17 @@
         <i class="far fa-heart"></i>
       <% end %>
     <% end %>
+
     <%= micropost.likes.count %>
     <p style="display:inline;">　</p>
     <%= link_to micropost_path(micropost.id) do %>
       <i class="far fa-comment-alt"></i>
     <% end %>
     <%= micropost.comments.count %>
+
+      <% if current_user?(micropost.user) %>
+      <%= link_to "削除", micropost, method: :delete,
+          data: { confirm: "本当にこのツイートを削除しますか？" }, class: "delete" %>
+    <% end %>
   </span>
 </li>

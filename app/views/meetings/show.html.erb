@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Calender Name") %>
+  <p>
+    <strong>Name:</strong>
+    <%= @meeting.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @meeting.name %>
-</p>
+  <p>
+    <strong>Start time:</strong>
+    <%= @meeting.start_time %>
+  </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @meeting.start_time %>
-</p>
-
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+  <%= link_to 'Edit', edit_user_meeting_path(current_user, @meeting) %> |
+  <%= link_to 'Back', user_meetings_path %>

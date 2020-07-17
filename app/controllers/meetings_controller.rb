@@ -1,74 +1,71 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
+  before_action :correct_user
+  
 
-  # GET /meetings
-  # GET /meetings.json
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.where(user_id: params[:user_id])
   end
 
-  # GET /meetings/1
-  # GET /meetings/1.json
+  def index_week
+    @meetings = Meeting.where(user_id: params[:user_id])
+  end
+
   def show
+    @meeting = Meeting.find(params[:id])
   end
 
-  # GET /meetings/new
   def new
     @meeting = Meeting.new
   end
 
-  # GET /meetings/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @meeting = Meeting.find(params[:id])
   end
 
-  # POST /meetings
-  # POST /meetings.json
   def create
     @meeting = Meeting.new(meeting_params)
-
-    respond_to do |format|
-      if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
-        format.json { render :show, status: :created, location: @meeting }
-      else
-        format.html { render :new }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
-      end
-    end
+    if @meeting.save
+      redirect_to user_meeting_path(current_user, @meeting)
+      flash[:success] = "予定を作成しました!"
+    else
+      flash.now[:danger] = "入力項目が足りません!"
+      render 'new'
+    end    
   end
 
-  # PATCH/PUT /meetings/1
-  # PATCH/PUT /meetings/1.json
   def update
-    respond_to do |format|
-      if @meeting.update(meeting_params)
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @meeting }
-      else
-        format.html { render :edit }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
-      end
+    @meeting = Meeting.find(params[:id])
+    if @meeting.update_attributes(meeting_params)
+      redirect_to user_meeting_path(current_user, @meeting)
+      flash[:success] = "予定を更新しました!"
+    else
+      flash.now[:danger] = "入力項目が足りません!"
+      render 'edit'
     end
   end
 
-  # DELETE /meetings/1
-  # DELETE /meetings/1.json
   def destroy
     @meeting.destroy
-    respond_to do |format|
-      format.html { redirect_to meetings_url, notice: 'Meeting was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "予定を削除しました"
+    redirect_to request.referrer || root_url
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meeting
-      @meeting = Meeting.find(params[:id])
-    end
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_meeting
+        @meeting = Meeting.find(params[:id])
+      end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def meeting_params
-      params.require(:meeting).permit(:name, :start_time).merge(user_id: current_user.id)
-    end
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def meeting_params
+        params.require(:meeting).permit(:name, :start_time, :memo, :place).merge(user_id: current_user.id)
+      end
+
+      def correct_user
+        user = User.find(params[:user_id])
+        redirect_to(root_url) unless current_user?(user)
+      end
 end

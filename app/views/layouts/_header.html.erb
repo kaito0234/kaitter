@@ -1,36 +1,35 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Kaitter.jp", root_path, id: "logo" %>
-    <div class="ver"><%= link_to "β ver.0.9.2", updates_path, style: 'color: gray;' %></div>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+<div class="container-fuild">
+  <div class="row">
+    <header class="navbar fixed-top navbar-dark bg-dark">
+    <div class="d-flex flex-colum col-4 order-2">
+    <div class="h-100">
+      <%= link_to "Kaitter.jp", root_path, id:"logo", class:"navbar-brand" %>
+      <%= link_to "β ver.0.9.3", updates_path, style:'color: gray;', class:"ver" %>
+    </div>
+    </div>
+      <nav class="col-5 order-1">
         <% if logged_in? %>
-        <li class="bell"><%= render 'shared/notice_maru' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <div class="menu"><i class="fas fa-bars"></i></div></a>
-            <ul class="dropdown-menu", id="dropdown-menu">
-              <li class="menu_list"><%= link_to "ホーム", root_path %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "ツイート検索", search_path %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "通知", notices_path %></li>
-              <li class="divider"></li>
-              <%# <li class="menu_list"><%= link_to "カレンダー", meetings_path %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "全てのユーザー", users_path %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "アイコン一覧", icon_path %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "設定", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li class="menu_list"><%= link_to "ログアウト", logout_path, method: :delete %></li>
-            </ul>
-          </li>
+          <div class="dropdown">
+            <button type="button" class="navbar-toggler" id="dropdown1" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="dropdown-menu" aria-labelleby="dropdown1">
+              <%= link_to "ホーム", root_path, class:"dropdown-item menu_list" %>
+              <div class="dropdoown-divider"></div>
+              <%= link_to "ツイート検索", search_path, class:"dropdown-item menu_list" %>
+              <div class="dropdoown-divider"></div>
+              <%= link_to "通知", notices_path, class:"dropdown-item menu_list" %>
+              <%= link_to "カレンダー", user_meetings_path(current_user), class:"dropdown-item menu_list" %>
+              <%= link_to "全てのユーザー", users_path, class:"dropdown-item menu_list" %>
+              <%= link_to "アイコン一覧", icon_path, class:"dropdown-item menu_list" %>
+              <%= link_to "設定", edit_user_path(current_user), class:"dropdown-item menu_list" %>
+              <%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item menu_list" %>
+            </div>
+          </div>
         <% else %>
-          <li class="menu_login"><%= link_to "ログイン", login_path %></li>
+          <div class="menu_login"><%= link_to "ログイン", login_path %></div>
         <% end %>
-      </ul>
-    </nav>
+      </nav>
+    </header>
   </div>
-</header>
+</div>

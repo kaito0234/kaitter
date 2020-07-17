@@ -19,18 +19,18 @@
         <div class="user_avatars">
           <% @users.each do |user| %>
           <% if user.icon.present? %>
-            <div class="icon"><%= link_to image_tag("#{user.icon}", size: 30 ), user %></div>
+            <div class="icon"><%= link_to image_tag("#{user.icon}", size: 20 ), user %></div>
           <% else %>
-            <%= link_to gravatar_for(user, size: 30 ), user %>
+            <%= link_to gravatar_for(user, size: 20 ), user %>
           <% end %>
           <% end %>
         </div>
       <% end %>
     </section>
   </aside>
-
-  <div class=""col-md-8">
-    <h3><%= @title %></h3>
+  
+  <div class="col-md-8">
+    <h3 class="user_follow"><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
         <%= render @users %>

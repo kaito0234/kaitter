@@ -1,12 +1,10 @@
-<% if logged_in? %>
-  <% provide(:title, "Notice") %>
-  <% @notices.where.not(visitor_id: current_user.id) %>
-  <% if @notices.exists? %>
-    <ol class="microposts">
-      <%= render @notices %>
-      <%= will_paginate @notices %>
-    </ol>
-  <% else %>
-    <p>| 通知はありません</p>
-  <% end %>
+<% provide(:title, "Notice") %>
+<% @notices.where.not(visitor_id: current_user.id) %>
+<% if @notices.exists? %>
+  <ol class="microposts">
+    <%= render @notices %>
+    <%= will_paginate @notices %>
+  </ol>
+<% else %>
+  <p>| 通知はありません</p>
 <% end %>

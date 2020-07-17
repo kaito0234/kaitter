@@ -1,6 +1,8 @@
+<% provide(:title, "Edit Calendar") %>
+<% provide(:path, user_meeting_path(current_user.id)) %>
 <h1>Editing Meeting</h1>
 
 <%= render 'form', meeting: @meeting %>
 
-<%= link_to 'Show', @meeting %> |
-<%= link_to 'Back', meetings_path %>
+<%= link_to 'Show', user_meeting_path(current_user, @meeting) %> |
+<%= link_to 'Back', user_meetings_path %>

@@ -11,7 +11,6 @@ class Micropost < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
 
   has_many :comments, dependent: :destroy
-
   has_many :notices, dependent: :destroy
 
   def liked?(user)
