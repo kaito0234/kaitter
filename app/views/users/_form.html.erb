@@ -16,8 +16,13 @@
   <% if logged_in? %>
     <%= f.label :icon , "アイコン・コード" %>
     <%= link_to "( アイコン・コード一覧 )", icon_path %>
-    <%= f.text_field :icon, class: 'form-control' %>
-  <% end %>
 
+    <% if current_user.id.in?([107, 103, 106, 1]) %>
+      <%= f.select :icon, ['', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'sweets.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg'], class: 'form-control' %>
+    <% else %>
+      <%= f.select :icon, ['','neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'sweets.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg'], class: 'form-control' %>
+    <% end %>
+  <% end %>
+  <div class="mb-4"></div>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
