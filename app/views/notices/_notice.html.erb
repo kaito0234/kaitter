@@ -4,7 +4,7 @@
 <span>
   <%= link_to user_path(visitor) do %>
     <% if visitor.icon.present? %>
-      <div class="icon"><%= image_tag("#{visitor.icon}", size: 30, style: 'border-radius: 50%;' ) %></div>
+      <div class="icon_notice"><%= image_tag("#{visitor.icon}", size: 30, style: 'border-radius: 50%;' ) %></div>
     <% else %>
       <%= gravatar_for(visitor, size: 30 ) %>
     <% end %>
@@ -14,28 +14,23 @@
   <% case notice.action %>
     <% when 'follow' then %>
       あなたをフォローしました
-      （<%= time_ago_in_words(notice.created_at) %>前）
+      （<%= time_ago_in_words(notice.created_at) %>前）<p>　</p>
     <% when 'like' then %>
       <%= link_to 'あなたの投稿', notice.micropost, style: "font-weight: bold;" %>
       にいいねしました
-      （<%= time_ago_in_words(notice.created_at) %>前）
+      （<%= time_ago_in_words(notice.created_at) %>前）<p>　</p>
     <% when 'comment' then %>
       <% if notice.micropost.user_id == visited.id %>
         <%= link_to 'あなたの投稿', notice.micropost, style: "font-weight: bold;" %>
           にコメントしました
           （<%= time_ago_in_words(notice.created_at) %>前）
-        <p><%= Comment.find_by(id: notice.comment_id)&.text %></p>
+        <p><strong><%= Comment.find_by(id: notice.comment_id)&.text %></strong></p>
       <% else %>
-        <%= link_to micropost_path(notice.micropost) do %>
-          <%= link_to user_path(visitor) do %>
-            <%= notice.micropost.user.name %>さんの投稿
-          <% end %>
-        <% end %>
+        <%= link_to "#{notice.micropost.user.name}さんの投稿", micropost_path(notice.micropost), style: "font-weight: bold;" %>
         にコメントしました
         （<%= time_ago_in_words(notice.created_at) %>前）
-        <p><%= Comment.find_by(id: notice.comment_id)&.text %></p>
+        <p><strong><%= Comment.find_by(id: notice.comment_id)&.text %></strong></p>
       <% end %> 
     <% end %> 
-    <p>　</p>
 </span>
 </li>
