@@ -1,4 +1,6 @@
 <%= form_for(current_user.active_relationships.build) do |f| %>
   <div><%= hidden_field_tag :followed_id, @user.id %></div>
-  <%= f.submit "フォローする", class: "btn btn-primary" %>
+    <div class="row justify-content-end">
+  <%= f.submit "フォローする", class: "btn btn-primary col-5 my-3 mr-3" %>
+    </div>
 <% end %>

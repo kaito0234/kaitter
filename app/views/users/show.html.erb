@@ -1,11 +1,11 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-6">
+  <aside class="col-md-4">
     <section class="user_info">
         <% if @user.icon.present? %>
-          <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 300), root_path %></div>
+          <div class="icon"><%= link_to image_tag("#{@user.icon}", size: 350), root_path %></div>
         <% else %>
-          <%= link_to gravatar_for(@user, size: 300), root_path %>
+          <%= link_to gravatar_for(@user, size: 350), root_path %>
         <% end %>
     </section>
     <section class="stats">

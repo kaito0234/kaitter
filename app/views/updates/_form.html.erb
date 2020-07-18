@@ -4,7 +4,7 @@
   <%= f.text_field :title, class: 'form-control' %>
 
   <%= f.label :text %>
-  <%= f.text_area :text, class: 'form-control' %>
+  <%= f.text_area :text, class: 'form-control mb-3', style:'height:150px;' %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

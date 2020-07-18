@@ -2,6 +2,7 @@
 <% visited = notice.visited %>
 <li>
 <span>
+<div class="d-block text-truncate">
   <%= link_to user_path(visitor) do %>
     <% if visitor.icon.present? %>
       <div class="icon_notice"><%= image_tag("#{visitor.icon}", size: 30, style: 'border-radius: 50%;' ) %></div>
@@ -32,5 +33,6 @@
         <p><strong><%= Comment.find_by(id: notice.comment_id)&.text %></strong></p>
       <% end %> 
     <% end %> 
+</div>
 </span>
 </li>
