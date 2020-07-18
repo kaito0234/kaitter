@@ -22,7 +22,8 @@
                 <%= link_to "ツイート検索", search_path, class:"dropdown-item menu_list" %>
                 <div class="dropdoown-divider"></div>
                 <%= link_to "通知", notices_path, class:"dropdown-item menu_list" %>
-                <%= link_to "カレンダー", user_meetings_path(current_user), class:"dropdown-item menu_list" %>
+                <%= link_to "カレンダー(Month)", user_meetings_path(current_user), class:"dropdown-item menu_list" %>
+                <%= link_to "カレンダー(Week)", index_week_user_meetings_path(current_user), class:"dropdown-item menu_list" %>
                 <%= link_to "全てのユーザー", users_path, class:"dropdown-item menu_list" %>
                 <%= link_to "アイコン一覧", icon_path, class:"dropdown-item menu_list" %>
                 <%= link_to "設定", edit_user_path(current_user), class:"dropdown-item menu_list" %>

@@ -1,6 +1,6 @@
 <% provide(:title, "Calendar") %>
 
-<%= month_calendar events: @meetings do |date, meetings| %>
+<%= week_calendar events: @meetings do |date, meetings| %>
   <%= date %>
 
   <% meetings.each do |meeting| %>
@@ -11,6 +11,7 @@
 <% end %>
 
 <%= link_to '予定を作成する', new_user_meeting_path(current_user) %>
+<%= link_to "カレンダー(Month)", user_meetings_path(current_user), style:'float: right; font-size: 1.5rem;' %>
 
 <br>
 <table>
@@ -26,11 +27,11 @@
     <% @meetings.each do |meeting| %>
       <tr>
         <td><%= meeting.name %></td>
-        <td><%= meeting.start_time %></td>
+        <td><%= meeting.start_time.strftime("%Y年%m月%d日%H時%M分") %></td>
         <% if current_user?(meeting.user) %>  
-          <td><%= link_to '| Show ', user_meeting_path(current_user, meeting) %></td>
-          <td><%= link_to '| Edit |', edit_user_meeting_path(current_user, meeting) %></td>
-          <td><%= link_to ' Destroy |', user_meeting_path(current_user, meeting), method: :delete, data: { confirm: '予定を削除しますか?' } %></td>
+          <td><%= link_to '|　詳細　', user_meeting_path(current_user, meeting) %></td>
+          <td><%= link_to '|　編集　|', edit_user_meeting_path(current_user, meeting) %></td>
+          <td><%= link_to '　削除　|', user_meeting_path(current_user, meeting), method: :delete, data: { confirm: '予定を削除しますか?' } %></td>
         <% end %>
       </tr>
     <% end %>
