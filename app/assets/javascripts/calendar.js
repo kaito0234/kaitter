@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   var select = function(start, end) { //空のイベント範囲を選択したときに実行
-    var title = window.prompt("予定","予定を入力...");
+    var title = window.prompt("予定");
     start_time = start.unix()
     var d = new Date( start_time * 1000 );
     var year = d.getYear() + 1900;
