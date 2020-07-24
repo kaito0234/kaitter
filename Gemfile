@@ -13,7 +13,7 @@ gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
-gem 'jquery-rails', '4.3.1'
+gem 'jquery-rails', '4.3.3'
 gem 'jquery-ui-rails'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
@@ -21,6 +21,8 @@ gem 'rest-client',  '2.0.2'
 gem 'sassc',        '2.4.0'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'simple_calendar', '~> 2.0'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 
 

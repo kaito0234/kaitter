@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :comment_microposts, through: :comments, source: :micropost
+
+  has_many :events, dependent: :destroy
   
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true

@@ -1,5 +1,5 @@
 <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-                                          html: { method: :delete }) do |f| %>
+                                          html: { method: :delete }, remote: true) do |f| %>
   <div class="row justify-content-center">
   <%= f.submit "フォローを解除する", class: "btn btn-primary col-5 my-3" %>
   </div>

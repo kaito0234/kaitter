@@ -1,0 +1,17 @@
+<% provide(:title, "Show Calendar") %>
+<h1>Events#show</h1>
+
+  <p>タイトル：<strong><%= @event.title %></strong></p>
+  <p>開始時間：<strong><%= @event.start.strftime("%Y年%m月%d日%H時%M分") %> ～</strong></p>
+  <p>終了時間：<strong><%= @event.end.strftime("%Y年%m月%d日%H時%M分") %> まで</strong></p>
+  <p>メモ：<strong><%= @event.memo %></strong></p>
+  <p>場所：<strong><%= @event.place %></strong></p>
+  <p>カラー：<strong><%= @event.color %></strong></p>
+
+<% if @event.user_id == current_user.id %>
+        <%= link_to "削除 |", @event, method: :delete,
+          data: { confirm: "本当にこの予定を削除しますか？" }, class: "delete" %>
+          <%= link_to '編集 |', edit_event_path(@event) %>
+<% end %>
+
+<%= link_to '戻る', events_path %>

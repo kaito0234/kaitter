@@ -1,0 +1,36 @@
+<%= form_for(@event, url: yield(:path)) do |f| %>
+
+  <div class="field">
+    <%= f.label :title, "予定 ※必須項目" %>
+    <%= f.text_field :title, id: :event_title, placeholder: "予定を入力…" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, id: :event_memo, placeholder: "メモを入力…" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place, "場所" %>
+    <%= f.text_field :place, id: :event_place, placeholder: "場所を入力…" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :color, "カラーを選択" %>
+    <%= f.select :color, ['', 'red', 'blue', 'green', 'pink', 'orange', 'gray', 'yellow', 'skyblue'], class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start, "開始時間" %>
+    <%= f.datetime_select :start, id: :event_start, start_hour: 00, minute_step: 10, default: Date.today + 00.hour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end, "終了時間" %>
+    <%= f.datetime_select :end, id: :event_end, start_hour: 00, minute_step: 10, default: Date.today + 1.day %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

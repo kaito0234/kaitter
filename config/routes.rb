@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'static_pages#home'
   
   get 'likes/create'
@@ -23,12 +24,14 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+
   resources :microposts, only:[:create, :destroy, :show] do
     resource :likes, only:[:create, :destroy]
     resources :comments, only:[:create, :destroy]
   end
+
   resources :relationships, only: [:create, :destroy]
   resources :notices, only: [:index]
   resources :updates
-
+  resources :events
 end
