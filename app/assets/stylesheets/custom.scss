@@ -12,6 +12,10 @@ html {
   box-sizing:         border-box;
 }
 
+
+
+
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -43,6 +47,13 @@ h6 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.margin_top5 {
+  margin-top: 5px;
+}
+.margin_top10 {
+  margin-top: 10px;
 }
 
 // header SS
@@ -377,6 +388,20 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing;
 }
+
+.field {
+  font-weight: bold;
+  margin-top: 8px;
+  span {
+  color: red;
+  }
+}
+
+.actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 
 input {
   height: auto !important;

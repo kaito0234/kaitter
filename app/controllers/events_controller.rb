@@ -45,29 +45,29 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
-    if @event.update_attributes(event_params)
-      flash[:success] = "予定を更新しました!"
-      redirect_to events_path
-    else
-      flash.now[:danger] = "入力項目が足りません!"
-      render 'index'
-    end
-    # respond_to do |format|
-    #   if @event.update(event_params)
-    #     format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @event }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
+    # @event = Event.find(params[:id])
+    # if @event.update_attributes(event_params)
+    #   flash[:success] = "予定を更新しました!"
+    #   redirect_to events_path
+    # else
+    #   flash.now[:danger] = "入力項目が足りません!"
+    #   render 'index'
     # end
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to user_event_path(current_user, @event) , notice: 'Event was successfully updated.' }
+        format.json { render :show, status: :ok, location: @event }
+      else
+        format.html { render :edit }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to user_events_path(current_user), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,6 +80,11 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :memo, :place,
         :start, :end, :color, :allday).merge(user_id: current_user.id)
+    end
+
+    def correct_user
+      @user = User.find(params[:user_id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 
 end

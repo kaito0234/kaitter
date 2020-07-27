@@ -12,13 +12,49 @@
 //
 
 //= require jquery3
-//= require moment
-//= require fullcalendar
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require jquery-ui
 //= require turbolinks
+//= require moment
+//= require fullcalendar
 //= require_tree .
+
+// $(document).ready(function() {
+//   var select = function(start, end, allDay) {
+//       var title = window.prompt("title");
+//       var start = moment(event.start).format('Y-MM-DD HH:mm:ss');
+//       var end = moment(event.end).format('Y-MM-DD HH:mm:ss');
+//       var data = {event: {title: title,
+//                           start: start,
+//                           end: end, 
+//                           allDay: allDay}};
+//       $.ajax({
+//           type: "POST",
+//           url: "/users/id/events",
+//           data: data,
+//           success: function() {
+//               calendar.fullCalendar('refetchEvents');
+//           }
+//       });
+//       calendar.fullCalendar('unselect');
+//   };
+
+//   var calendar = $('#calendar').fullCalendar({
+//       events: '/users/id/events.json',
+//       selectable: true,
+//       selectHelper: true,
+//       ignoreTimezone: false,
+//       select: select
+//   });
+// });
+
+
+
+
+
+
 
 // $(function () {
 //   // 画面遷移を検知

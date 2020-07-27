@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :events
     resources :meetings do
       collection do
         get :index_week
@@ -33,5 +34,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :notices, only: [:index]
   resources :updates
-  resources :events
+ 
 end

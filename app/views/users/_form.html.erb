@@ -18,9 +18,9 @@
     <%= link_to "( アイコン・コード一覧 )", icon_path %>
 
     <% if current_user.id.in?([107, 103, 106, 1]) %>
-      <%= f.select :icon, ['', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'sweets.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg'], class: 'form-control' %>
+      <%= f.select :icon, ['', 'yuzu2.jpg', 'momiman.jpg', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg', 'sweets.jpg'], class: 'form-control' %>
     <% else %>
-      <%= f.select :icon, ['', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'sweets.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg'], class: 'form-control' %>
+      <%= f.select :icon, ['', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'momiman.jpg', 'momijif.jpg', 'furoshiki.jpg', 'sweets.jpg'], class: 'form-control' %>
     <% end %>
   <% end %>
   <div class="mb-4"></div>

@@ -1,7 +1,7 @@
 <% provide(:title, "New Calendar") %>
-<% provide(:path,  events_path) %>
+<% provide(:path,  user_events_path(current_user)) %>
 <h1>予定作成</h1>
 
 <%= render 'form', event: @event %>
 
-<%= link_to '戻る', events_path %>
+<%= link_to '戻る', user_events_path(current_user) %>
