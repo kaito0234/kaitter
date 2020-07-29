@@ -13,8 +13,14 @@
   </div>
   <div class="field">
     <%= f.label :color, "カラーを選択" %>
-    <%= f.select :color, ['', 'red', 'blue', 'green', 'pink', 'orange', 'gray', 'yellow', 'skyblue'], class: 'form-control' %>
+    <%= f.select :color, ['', 'red', 'blue', 'green', 'pink', 'orange', 'gray', 'yellow', 'skyblue', 'lime', 'white', 'maroon'], class: 'form-control' %>
   </div>
+
+  <%# <div class="field"> %>
+    <%# <%= f.label :allday, "終日" %>
+    <%# <%= f.select :allday, ['false', 'allDay'], class: 'form-control' %>
+  <%# </div> %>
+
   <div class="field">
     <%= f.label :start, "開始時間" %>
     <%= f.datetime_select :start, id: :event_start, start_hour: 00, minute_step: 5, default: Date.today + 00.hour %>

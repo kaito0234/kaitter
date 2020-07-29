@@ -47,6 +47,9 @@ $(document).ready(function() {
     },
     axisFormat: 'H:mm',
     timeFormat: 'H:mm',
+    // timeFormat: {
+    //   agenda: 'H:mm{ - H:mm}'
+    // },
     monthNames: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     monthNamesShort: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
@@ -68,6 +71,7 @@ $(document).ready(function() {
       week:     '週',
       day:      '日'
     },
+    contentHeight: 'auto',
     aspectRatio: 1,             // カレンダー全体の高さ aspectRatio: 1 比率
     defaultView: 'agendaWeek',             // 初期表示ビュー
     eventLimit: true,                      // allow "more" link when too many events
@@ -80,36 +84,41 @@ $(document).ready(function() {
     minTime: "00:00:00",                   // スケジュールの開始時間
     maxTime: "24:00:00",                   // スケジュールの最終時間
     defaultTimedEventDuration: '00:00:00', // 画面上に表示する初めの時間(スクロールされている場所)
-    allDaySlot: false,                     // 終日スロットを非表示
+    allDaySlot: true,                     // 終日スロットを非表示
+    // allDayDefault: true,               //終日のみ表示
     allDayText:'終日',                   // 終日スロットのタイトル
     slotMinutes: 10,                       // スロットの分
     snapMinutes: 10,                       // 選択する時間間隔
     firstHour: 9,                          // スクロール開始時間
     eventClick: function(event) { //イベントをクリックしたときに実行
       var id = event.id
-      var show_url = "/users/id/events/"+id
+      var user_id = event.user_id
+      var show_url = "/users/"+user_id+"/events/"+id
       location.href = show_url;
     },
     eventResize: function(event) { //イベントをサイズ変更した際に実行
       var id = event.id
-      var update_url = "/users/id/events/"+id
-      var event_start_time = event._start._d
-      var year = event_start_time.getYear() + 1900
-      var month = event_start_time.getMonth() + 1;
-      var day   = event_start_time.getDate();
-      var hour  = ( event_start_time.getHours()   < 10 ) ? '0' + event_start_time.getHours()   : event_start_time.getHours();
-      var min   = ( event_start_time.getMinutes() < 10 ) ? '0' + event_start_time.getMinutes() : event_start_time.getMinutes();
+      var user_id = event.user_id
+      var update_url = "/users/"+user_id+"/events/"+id
+      start_time = event.start.unix()
+      var d = new Date( start_time * 1000 );
+      var year = d.getYear() + 1900;
+      var month = d.getMonth() + 1;
+      var day   = d.getDate();
+      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
       var start_time = moment(moment_start).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
-      var event_end_time = event._end._d
-      var year = event_end_time.getYear() + 1900;
-      var month = event_end_time.getMonth() + 1;
-      var day   = event_end_time.getDate();
-      var hour  = ( event_end_time.getHours()   < 10 ) ? '0' + event_end_time.getHours()   : event_end_time.getHours();
-      var min   = ( event_end_time.getMinutes() < 10 ) ? '0' + event_end_time.getMinutes() : event_end_time.getMinutes();
+      end_time = event.end.unix()
+      var d = new Date( end_time * 1000 );
+      var year = d.getYear() + 1900;
+      var month = d.getMonth() + 1;
+      var day   = d.getDate();
+      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
       var end_time = moment(moment_end).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
-      var data = {
+      var data = {_method: 'PUT',
         event: {
           title: event.title,
           start: start_time,
@@ -118,7 +127,7 @@ $(document).ready(function() {
         }
       }
       $.ajax({
-       type: "PATCH",
+       type: "POST",
        url: update_url,
        data: data,
        success: function() {
@@ -127,26 +136,40 @@ $(document).ready(function() {
       });
       calendar.fullCalendar('unselect');
     },
+    // dayClick: function(date, allDay) {
+
+    //   var title = prompt('予定を入力してください:');
+      
+    //   $('#calendar').fullCalendar('addEventSource', [{
+    //   title: title,
+    //   start: date,
+    //   allDay: allDay
+    //   }]);
+      
+    //   },
     eventDrop: function(event) { //イベントをドラッグ&ドロップした際に実行
       var id = event.id
-      var update_url = "/users/id/events/"+id
-      var event_start_time = event._start._d
-      var year = event_start_time.getYear() + 1900;
-      var month = event_start_time.getMonth() + 1;
-      var day   = event_start_time.getDate();
-      var hour  = ( event_start_time.getHours()   < 10 ) ? '0' + event_start_time.getHours()   : event_start_time.getHours();
-      var min   = ( event_start_time.getMinutes() < 10 ) ? '0' + event_start_time.getMinutes() : event_start_time.getMinutes();
+      var user_id = event.user_id
+      var update_url = "/users/"+user_id+"/events/"+id
+      start_time = event.start.unix()
+      var d = new Date( start_time * 1000 );
+      var year = d.getYear() + 1900;
+      var month = d.getMonth() + 1;
+      var day   = d.getDate();
+      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
       var start_time = moment(moment_start).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
-      var event_end_time = event._end._d
-      var year = event_end_time.getYear() + 1900;
-      var month = event_end_time.getMonth() + 1;
-      var day   = event_end_time.getDate();
-      var hour  = ( event_end_time.getHours()   < 10 ) ? '0' + event_end_time.getHours()   : event_end_time.getHours();
-      var min   = ( event_end_time.getMinutes() < 10 ) ? '0' + event_end_time.getMinutes() : event_end_time.getMinutes();
+      end_time = event.end.unix()
+      var d = new Date( end_time * 1000 );
+      var year = d.getYear() + 1900;
+      var month = d.getMonth() + 1;
+      var day   = d.getDate();
+      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
       var end_time = moment(moment_end).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
-      var data = {
+      var data = {_method: 'PUT',
         event: {
           title: event.title,
           start: start_time,
@@ -155,7 +178,7 @@ $(document).ready(function() {
         }
       }
       $.ajax({
-       type: "PATCH",
+       type: "POST",
        url: update_url,
        data: data,
        success: function() {

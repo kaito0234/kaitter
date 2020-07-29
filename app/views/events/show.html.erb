@@ -7,6 +7,7 @@
 <p>場所：<strong><%= @event.place %></strong></p>
 <p>メモ：<strong><%= simple_format @event.memo %></strong></p>
 <p>カラー：<strong><%= @event.color %></strong></p>
+<p>終日：<strong><%= @event.allday %></strong></p>
 
 <% if @event.user_id == current_user.id %>
   <%= link_to '|　編集　|', edit_user_event_path(current_user, @event) %>
