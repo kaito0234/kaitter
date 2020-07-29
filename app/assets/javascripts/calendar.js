@@ -26,7 +26,7 @@ $(document).ready(function() {
         title: title,
         start: start_time,
         end: end_time,
-        allday: false
+        allDay: false
       }
     }
     $.ajax({
@@ -54,7 +54,7 @@ $(document).ready(function() {
     monthNamesShort: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
     dayNamesShort: ['日','月','火','水','木','金','土'],
-    events: "/users/id/events",
+    events: "/users/id/events.json",
     editable: true,        // 編集可
     selectable: true,      // 選択可
     selectHelper: true,    // 選択時にプレースホルダーを描画
@@ -90,6 +90,7 @@ $(document).ready(function() {
     slotMinutes: 10,                       // スロットの分
     snapMinutes: 10,                       // 選択する時間間隔
     firstHour: 9,                          // スクロール開始時間
+    slotEventOverlap: true,
     eventClick: function(event) { //イベントをクリックしたときに実行
       var id = event.id
       var user_id = event.user_id
@@ -123,7 +124,7 @@ $(document).ready(function() {
           title: event.title,
           start: start_time,
           end: end_time,
-          allday: false
+          allDay: false
         }
       }
       $.ajax({
@@ -174,7 +175,7 @@ $(document).ready(function() {
           title: event.title,
           start: start_time,
           end: end_time,
-          allday: false
+          allDay: false
         }
       }
       $.ajax({

@@ -8,7 +8,8 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.datetime :start
       t.datetime :end
       t.string :color
-      t.boolean :allday
+      t.boolean :allDay
+      t.string :textColor
 
       t.timestamps
     end
@@ -19,6 +20,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
     add_index :events, :start
     add_index :events, :end
     add_index :events, :color
-    add_index :events, :allday
+    add_index :events, :allDay
+    add_index :events, :textColor
   end
 end

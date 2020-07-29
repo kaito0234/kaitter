@@ -3,11 +3,14 @@
 
 <p>タイトル：<strong><%= @event.title %></strong></p>
 <p>開始時間：<strong><%= @event.start.strftime("%Y年　%m月%d日　%H時%M分　") %> ～</strong></p>
-<p>終了時間：<strong><%= @event.end.strftime("%Y年　%m月%d日　%H時%M分　") %> まで</strong></p>
+<% if @event.end.present?%>
+ <p>終了時間：<strong><%= @event.end.strftime("%Y年　%m月%d日　%H時%M分　") %> まで</strong></p>
+<% end %>
 <p>場所：<strong><%= @event.place %></strong></p>
 <p>メモ：<strong><%= simple_format @event.memo %></strong></p>
-<p>カラー：<strong><%= @event.color %></strong></p>
-<p>終日：<strong><%= @event.allday %></strong></p>
+<p>背景：<strong><%= @event.color %></strong></p>
+<p>文字：<strong><%= @event.textColor %></strong></p>
+<p>終日：<strong><%= @event.allDay %></strong></p>
 
 <% if @event.user_id == current_user.id %>
   <%= link_to '|　編集　|', edit_user_event_path(current_user, @event) %>

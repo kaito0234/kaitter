@@ -25,23 +25,16 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save
-      flash.now[:success] = "予定を作成しました!"
-      render 'index'
-    else
-      flash.now[:danger] = "入力項目が足りません!"
-      render 'new'
-    end  
 
-    # respond_to do |format|
-    #   if @event.save
-    #     format.html { redirect_to :index, notice: 'Event was successfully created.' }
-    #     format.json { render :index, status: :created, location: @event }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to edit_user_event_path(current_user,@event), notice: '予定を作成しました！' }
+        format.json { render :index, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
@@ -55,8 +48,8 @@ class EventsController < ApplicationController
     # end
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to user_event_path(current_user, @event) , notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+        format.html { redirect_to @event, notice: '予定を更新しました!' }
+        format.json { render :index, status: :ok, location: @event }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -67,7 +60,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to user_events_path(current_user), notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to user_events_path(current_user), notice: '予定を削除しました' }
       format.json { head :no_content }
     end
   end
@@ -79,7 +72,7 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:title, :memo, :place,
-        :start, :end, :color, :allday).merge(user_id: current_user.id)
+        :start, :end, :color, :allDay, :textColor).merge(user_id: current_user.id)
     end
 
     def correct_user

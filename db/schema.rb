@@ -31,15 +31,17 @@ ActiveRecord::Schema.define(version: 20200723031034) do
     t.datetime "start"
     t.datetime "end"
     t.string "color"
-    t.boolean "allday"
+    t.boolean "allDay"
+    t.string "textColor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["allday"], name: "index_events_on_allday"
+    t.index ["allDay"], name: "index_events_on_allDay"
     t.index ["color"], name: "index_events_on_color"
     t.index ["end"], name: "index_events_on_end"
     t.index ["memo"], name: "index_events_on_memo"
     t.index ["place"], name: "index_events_on_place"
     t.index ["start"], name: "index_events_on_start"
+    t.index ["textColor"], name: "index_events_on_textColor"
     t.index ["title"], name: "index_events_on_title"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
