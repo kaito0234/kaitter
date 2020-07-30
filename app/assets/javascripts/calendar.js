@@ -33,6 +33,7 @@ $(document).ready(function() {
      type: "POST",
      url: "/users/id/events",
      data: data,
+     dataType: 'json',
      success: function() {
        calendar.fullCalendar('refetchEvents');
      }
@@ -72,9 +73,9 @@ $(document).ready(function() {
       day:      '日'
     },
     contentHeight: 'auto',
-    aspectRatio: 1,             // カレンダー全体の高さ aspectRatio: 1 比率
+    aspectRatio: 1.8,             // カレンダー全体の高さ aspectRatio: 1 比率
     defaultView: 'agendaWeek',             // 初期表示ビュー
-    eventLimit: true,                      // allow "more" link when too many events
+    eventLimit: false,                      // allow "more" link when too many events
     firstDay: 1,                           // 最初の曜日, 0:日曜日
     weekends: true,                        // 土曜、日曜を表示
     weekMode: 'fixed',                     // 週モード (fixed, liquid, variable)
@@ -131,6 +132,7 @@ $(document).ready(function() {
        type: "POST",
        url: update_url,
        data: data,
+       dataType: 'json',
        success: function() {
          calendar.fullCalendar('refetchEvents');
        }
@@ -182,6 +184,7 @@ $(document).ready(function() {
        type: "POST",
        url: update_url,
        data: data,
+       dataType: 'json',
        success: function() {
          calendar.fullCalendar('refetchEvents');
        }
