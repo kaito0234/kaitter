@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200723031034) do
+ActiveRecord::Schema.define(version: 20200730025254) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20200723031034) do
     t.datetime "end"
     t.string "color"
     t.boolean "allDay"
-    t.string "textColor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "textColor"
     t.index ["allDay"], name: "index_events_on_allDay"
     t.index ["color"], name: "index_events_on_color"
     t.index ["end"], name: "index_events_on_end"
