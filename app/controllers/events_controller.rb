@@ -24,44 +24,44 @@ class EventsController < ApplicationController
   end
 
   def create
-    # @event = Event.new(event_params)
-    # if @event.save
-    #   flash[:success] = "予定を作成しました!"
-    #   redirect_to @event
-    # else
-    #   flash.now[:danger] = "入力項目が足りません!"
-    #   render 'new'
-    # end
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to edit_user_event_path(current_user,@event), notice: '予定を作成しました！' }
-        format.json { render :index, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:success] = "予定を作成しました!"
+      redirect_to @event
+    else
+      flash.now[:danger] = "入力項目が足りません!"
+      render 'new'
     end
+
+    # respond_to do |format|
+    #   if @event.save
+    #     format.html { redirect_to edit_user_event_path(current_user,@event), notice: '予定を作成しました！' }
+    #     format.json { render :index, status: :created, location: @event }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def update
-    # @event = Event.find(params[:id])
-    # if @event.update_attributes(event_params)
-    #   flash[:success] = "予定を更新しました!"
-    #   redirect_to @event
-    # else
-    #   flash.now[:danger] = "入力項目が足りません!"
-    #   render 'index'
-    # end
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: '予定を更新しました!' }
-        format.json { render :index, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      flash[:success] = "予定を更新しました!"
+      redirect_to @event
+    else
+      flash.now[:danger] = "入力項目が足りません!"
+      render 'index'
     end
+    # respond_to do |format|
+    #   if @event.update(event_params)
+    #     format.html { redirect_to @event, notice: '予定を更新しました!' }
+    #     format.json { render :index, status: :ok, location: @event }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
