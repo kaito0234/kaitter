@@ -1,7 +1,19 @@
 <%= form_for(@event, url: yield(:path)) do |f| %>
   <div class="field">
-    <%= f.label :title, "予定" %>
+    <%= f.label :title, "予定" %><span>　※ 入力必須項目</span>
     <%= f.text_field :title, id: :event_title, placeholder: "予定を入力…" %>
+  </div>
+  <div class="field">
+    <%= f.label :start, "開始時間" ,style:'color:blue;' %>
+    <%= f.datetime_select :start, id: :event_start, start_hour: 00, minute_step: 5, default: Date.today + 00.hour %>
+  </div>
+  <div class="field">
+    <%= f.label :end, "終了時間" ,style:'color:blue;' %>
+    <%= f.datetime_select :end, id: :event_end, minute_step: 5, default: Date.today + 00.hour %>
+  </div>
+  <div class="field">
+    <%= f.label :allDay, "終日" %><span>　※ 終了時間が翌日 00:00 以降の場合以外は選択しないで下さい</span>
+    <%= f.select :allDay, ['', 'true'], class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :place, "場所" %>
@@ -18,18 +30,6 @@
   <div class="field">
     <%= f.label :textColor, "文字の色を選択" %>
     <%= f.select :textColor, ['', 'red', 'blue', 'green', 'pink', 'orange', 'gray', 'yellow', 'skyblue', 'lime', 'white', 'black', 'maroon'], class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :allDay, "終日" %><span>　※ 終了時間が 00:00 の予定以外は選択しないで下さい</span>
-    <%= f.select :allDay, ['false', 'allDay'], class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :start, "開始時間" %>
-    <%= f.datetime_select :start, id: :event_start, start_hour: 00, minute_step: 5, default: Date.today + 00.hour %>
-  </div>
-  <div class="field">
-    <%= f.label :end, "終了時間" %>
-    <%= f.datetime_select :end, id: :event_end, placeholder:"xxxx-xx-xx", minute_step: 5, default: Date.today + 00.hour %>
   </div>
   <div class="actions">
     <%= f.submit %>

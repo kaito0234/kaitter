@@ -1,10 +1,13 @@
 <% provide(:title, "Edit Calendar") %>
-
 <% provide(:path,  user_event_path(current_user, @event)) %>
-<span><%= link_to '詳細', user_event_path(current_user, @event) %> |
-<%= link_to '戻る', user_events_path(current_user) %><h1>予定編集</h1></span>
+
+<span>
+  <%= link_to '戻る', user_events_path(current_user) %> |
+  <%= link_to '詳細', user_event_path(current_user, @event) %>
+  <h1>予定編集</h1>
+</span>
 
 <%= render 'form', event: @event %>
 
-<%= link_to '詳細', user_event_path(current_user, @event) %> |
-<%= link_to '戻る', user_events_path(current_user) %>
+<%= link_to '戻る', user_events_path(current_user) %> |
+<%= link_to '詳細', user_event_path(current_user, @event) %>
