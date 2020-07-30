@@ -33,6 +33,7 @@ $(document).ready(function() {
      type: "POST",
      url: "/users/id/events",
      data: data,
+     dataType: 'json',
      success: function() {
        calendar.fullCalendar('refetchEvents');
      }
@@ -131,6 +132,7 @@ $(document).ready(function() {
        type: "POST",
        url: update_url,
        data: data,
+       dataType: 'json',
        success: function() {
          calendar.fullCalendar('refetchEvents');
        }
@@ -182,6 +184,7 @@ $(document).ready(function() {
        type: "POST",
        url: update_url,
        data: data,
+       dataType: 'json',
        success: function() {
          calendar.fullCalendar('refetchEvents');
        }
