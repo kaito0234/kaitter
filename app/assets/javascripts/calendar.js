@@ -11,7 +11,7 @@ $(document).ready(function() {
     var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
     var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
     var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-    var start_time = moment(moment_start).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+    var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
     end_time = end.unix()
     var d = new Date( end_time * 1000 );
     var year = d.getYear() + 1900;
@@ -20,7 +20,7 @@ $(document).ready(function() {
     var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
     var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
     var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-    var end_time = moment(moment_end).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+    var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
     var data = {
       event: {
         title: title,
@@ -109,7 +109,7 @@ $(document).ready(function() {
       var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
       var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var start_time = moment(moment_start).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+      var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
       end_time = event.end.unix()
       var d = new Date( end_time * 1000 );
       var year = d.getYear() + 1900;
@@ -118,7 +118,7 @@ $(document).ready(function() {
       var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
       var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var end_time = moment(moment_end).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+      var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
       var data = {_method: 'PUT',
         event: {
           title: event.title,
@@ -160,7 +160,7 @@ $(document).ready(function() {
       var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
       var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var start_time = moment(moment_start).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+      var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
       end_time = event.end.unix()
       var d = new Date( end_time * 1000 );
       var year = d.getYear() + 1900;
@@ -169,7 +169,7 @@ $(document).ready(function() {
       var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
       var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
       var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var end_time = moment(moment_end).add(-9, 'hour').format("YYYY-MM-DD HH:mm");
+      var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
       var data = {_method: 'PUT',
         event: {
           title: event.title,

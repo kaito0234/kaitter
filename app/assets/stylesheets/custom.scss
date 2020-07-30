@@ -12,6 +12,10 @@ html {
   box-sizing:         border-box;
 }
 
+div.container-fluid {
+  padding: 0 5px;
+}
+
 .fc-sun {
   color: red;
   background-color: #fff0f0;
@@ -326,7 +330,7 @@ footer li {
 /* universal */
 
 body {
-  padding-top: 70px;
+  padding-top: 55px;
 }
 
 section {
