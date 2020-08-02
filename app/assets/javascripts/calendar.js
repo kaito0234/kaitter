@@ -50,7 +50,7 @@ $(document).ready(function() {
       // title, prev, next, prevYear, nextYear, today
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay,listMonth'
+      right: 'month,agendaWeek,agendaDay,listMonth,listDay'
     },
     buttonText: {
       prev:     '<',   // &lsaquo;
@@ -59,6 +59,7 @@ $(document).ready(function() {
       nextYear: '>>',  // &raquo;
       today:    '今日',
       listMonth:'list',
+      listDay:'ToDo',
       month:    '月',
       week:     '週',
       day:      '日'
@@ -71,22 +72,22 @@ $(document).ready(function() {
     views: {
       month: { // name of view
         titleFormat: 'YYYY年 M月',
-        columnHeaderFormat:'dddd'
+        columnHeaderFormat:'ddd'
       },
       week: { // name of view
         titleFormat: 'M月D日',
-        columnHeaderFormat:'D ddd'
+        // columnHeaderFormat:'D ddd'
       },
       day: { // name of view
-        titleFormat: 'M月D日 ddd',
-        columnHeaderFormat:'D日 ddd'
+        titleFormat: 'M月D日',
+        // columnHeaderFormat:'D日 ddd'
       }
     },
 
     monthNames: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     monthNamesShort: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
-    dayNamesShort: ['(日)','(月)','(火)','(水)','(木)','(金)','(土)'],
+    dayNamesShort: ['日','月','火','水','木','金','土'],
     events: "/users/id/events.json",
     editable: true,        // 編集可
     selectable: true,      // 選択可
