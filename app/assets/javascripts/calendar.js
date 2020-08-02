@@ -1,33 +1,32 @@
 
 $(document).ready(function() {
 
-  var select = function(start, end) { //空のイベント範囲を選択したときに実行
+  var select = function(startDate, endDate) { //空のイベント範囲を選択したときに実行
     var title = window.prompt("予定");
-    start_time = start.unix()
-    var d = new Date( start_time * 1000 );
-    var year = d.getYear() + 1900;
-    var month = d.getMonth() + 1;
-    var day   = d.getDate();
-    var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-    var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-    end_time = end.unix()
-    var d = new Date( end_time * 1000 );
-    var year = d.getYear() + 1900;
-    var month = d.getMonth() + 1;
-    var day   = d.getDate();
-    var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-    var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-
+    // start_time = start.unix()
+    // var d = new Date( start_time * 1000 );
+    // var year = d.getYear() + 1900;
+    // var month = d.getMonth() + 1;
+    // var day   = d.getDate();
+    // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+    // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+    // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
+    // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+    // end_time = end.unix()
+    // var d = new Date( end_time * 1000 );
+    // var year = d.getYear() + 1900;
+    // var month = d.getMonth() + 1;
+    // var day   = d.getDate();
+    // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+    // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+    // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
+    // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+    
     var data = {
       event: {
         title: title,
-        start: start_time,
-        end: end_time,
-        allDay: false,
+        start: startDate.format(),
+        end: endDate.format(),
       }
     }
 
@@ -39,6 +38,28 @@ $(document).ready(function() {
      success: function() {
        calendar.fullCalendar('refetchEvents');
      }
+    });
+    calendar.fullCalendar('unselect');
+  };
+
+  var dayClick = function(date) {
+    var title = prompt('終日予定');
+    var start_time = date.format()
+    var data = {
+      event: {
+        title: title,
+        start: start_time,
+        allDay: true,
+      }
+    }
+    $.ajax({
+    type: "POST",
+    url: "/users/id/events",
+    data: data,
+    dataType: 'json',
+    success: function() {
+      calendar.fullCalendar('refetchEvents');
+    }
     });
     calendar.fullCalendar('unselect');
   };
@@ -58,9 +79,9 @@ $(document).ready(function() {
       prevYear: '<<',  // &laquo;
       nextYear: '>>',  // &raquo;
       today:    '今日',
-      listMonth:'-月',
-      listWeek:'-週',
-      listDay:'-日',
+      listMonth:'M',
+      listWeek:'W',
+      listDay:'D',
       month:    '月',
       week:     '週',
       day:      '日'
@@ -100,7 +121,9 @@ $(document).ready(function() {
     selectable: true,      // 選択可
     selectHelper: true,    // 選択時にプレースホルダーを描画
     ignoreTimezone: false, // 自動選択解除
+    selectMinDistance: 1,
     select: select,        // 選択時に関数にパラメータ引き渡す
+    dayClick: dayClick,
     // unselectAuto: true,  // 自動選択解除対象外の要素
     
     //height: 700,                         // 高さ(px)
@@ -188,17 +211,8 @@ $(document).ready(function() {
       });
       calendar.fullCalendar('unselect');
     },
-    // dayClick: function(date, allDay) {
 
-    //   var title = prompt('予定を入力してください:');
-      
-    //   $('#calendar').fullCalendar('addEventSource', [{
-    //   title: title,
-    //   start: date,
-    //   allDay: allDay
-    //   }]);
-      
-    //   },
+
 
     eventDrop: function(event) { //イベントをドラッグ&ドロップした際に実行
       var id = event.id
