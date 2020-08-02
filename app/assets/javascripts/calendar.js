@@ -21,15 +21,15 @@ $(document).ready(function() {
     // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
     // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
     // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-    
+    var allDay = !endDate.hasTime();
     var data = {
       event: {
         title: title,
         start: startDate.format(),
         end: endDate.format(),
+        allDay: allDay
       }
     }
-
     $.ajax({
      type: "POST",
      url: "/users/id/events",
@@ -38,28 +38,6 @@ $(document).ready(function() {
      success: function() {
        calendar.fullCalendar('refetchEvents');
      }
-    });
-    calendar.fullCalendar('unselect');
-  };
-
-  var dayClick = function(date) {
-    var title = prompt('終日予定');
-    var start_time = date.format()
-    var data = {
-      event: {
-        title: title,
-        start: start_time,
-        allDay: true,
-      }
-    }
-    $.ajax({
-    type: "POST",
-    url: "/users/id/events",
-    data: data,
-    dataType: 'json',
-    success: function() {
-      calendar.fullCalendar('refetchEvents');
-    }
     });
     calendar.fullCalendar('unselect');
   };
@@ -123,8 +101,6 @@ $(document).ready(function() {
     ignoreTimezone: false, // 自動選択解除
     selectMinDistance: 1,
     select: select,        // 選択時に関数にパラメータ引き渡す
-    dayClick: dayClick,
-    // unselectAuto: true,  // 自動選択解除対象外の要素
     
     //height: 700,                         // 高さ(px)
     contentHeight: 'auto',                 // コンテンツの高さ(px,auto)
@@ -173,30 +149,29 @@ $(document).ready(function() {
       var id = event.id
       var user_id = event.user_id
       var update_url = "/users/"+user_id+"/events/"+id
-      start_time = event.start.unix()
-      var d = new Date( start_time * 1000 );
-      var year = d.getYear() + 1900;
-      var month = d.getMonth() + 1;
-      var day   = d.getDate();
-      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-      end_time = event.end.unix()
-      var d = new Date( end_time * 1000 );
-      var year = d.getYear() + 1900;
-      var month = d.getMonth() + 1;
-      var day   = d.getDate();
-      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+      // start_time = event.start.unix()
+      // var d = new Date( start_time * 1000 );
+      // var year = d.getYear() + 1900;
+      // var month = d.getMonth() + 1;
+      // var day   = d.getDate();
+      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+      // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
+      // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+      // end_time = event.end.unix()
+      // var d = new Date( end_time * 1000 );
+      // var year = d.getYear() + 1900;
+      // var month = d.getMonth() + 1;
+      // var day   = d.getDate();
+      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+      // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
+      // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
 
       var data = {_method: 'PUT',
         event: {
           title: event.title,
-          start: start_time,
-          end: end_time,
+          end: event.end.format(),
         }
       }
 
@@ -218,30 +193,31 @@ $(document).ready(function() {
       var id = event.id
       var user_id = event.user_id
       var update_url = "/users/"+user_id+"/events/"+id
-      start_time = event.start.unix()
-      var d = new Date( start_time * 1000 );
-      var year = d.getYear() + 1900;
-      var month = d.getMonth() + 1;
-      var day   = d.getDate();
-      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-      end_time = event.end.unix()
-      var d = new Date( end_time * 1000 );
-      var year = d.getYear() + 1900;
-      var month = d.getMonth() + 1;
-      var day   = d.getDate();
-      var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-
+      // start_time = event.start.unix()
+      // var d = new Date( start_time * 1000 );
+      // var year = d.getYear() + 1900;
+      // var month = d.getMonth() + 1;
+      // var day   = d.getDate();
+      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+      // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
+      // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+      // end_time = event.end.unix()
+      // var d = new Date( end_time * 1000 );
+      // var year = d.getYear() + 1900;
+      // var month = d.getMonth() + 1;
+      // var day   = d.getDate();
+      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+      // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
+      // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+      var allDay = !event.end.hasTime();
       var data = {_method: 'PUT',
         event: {
           title: event.title,
-          start: start_time,
-          end: end_time
+          start: event.start.format(),
+          end: event.end.format(),
+          allDay: allDay,
         }
       }
 
