@@ -50,7 +50,7 @@ $(document).ready(function() {
       // title, prev, next, prevYear, nextYear, today
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay,listMonth,listDay'
+      right: 'month,agendaWeek,agendaDay,listMonth,listWeek,listDay'
     },
     buttonText: {
       prev:     '<',   // &lsaquo;
@@ -58,8 +58,9 @@ $(document).ready(function() {
       prevYear: '<<',  // &laquo;
       nextYear: '>>',  // &raquo;
       today:    '今日',
-      listMonth:'list',
-      listDay:'ToDo',
+      listMonth:'-月',
+      listWeek:'-週',
+      listDay:'-日',
       month:    '月',
       week:     '週',
       day:      '日'
@@ -83,6 +84,12 @@ $(document).ready(function() {
         // columnHeaderFormat:'D日 ddd'
       }
     },
+    listDayFormat: 'M月D日',
+    listDayAltFormat: 'dddd',
+    listWeekFormat: 'M月D日',
+    listWeekltFormat: 'dddd',
+    listMonthFormat: 'M月D日',
+    listMonthAltFormat: 'dddd',
 
     monthNames: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     monthNamesShort: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
