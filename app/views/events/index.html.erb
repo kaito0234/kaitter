@@ -1,8 +1,8 @@
-
 <h1>カレンダー</h1>
+<div id="params_user" data-params_user="<%= @user.to_json %>"></div>
 <div id='calendar-container'>
-<div class="row">
-  <div id='calendar'></div>
+  <div class="row">
+    <div id='calendar'></div>
   </div>
 </div>
 <%= link_to '予定作成', new_user_event_path(current_user) %>

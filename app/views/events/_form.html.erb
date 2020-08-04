@@ -4,24 +4,16 @@
     <%= f.text_field :title, id: :event_title, placeholder: "予定を入力…" %>
   </div>
   <div class="field">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_area :memo, id: :event_memo, placeholder: "メモを入力…", style:'height:50px;' %>
+  </div>
+  <div class="field">
     <%= f.label :start, "開始時間" ,style:'color:blue;' %>
     <%= f.datetime_select :start, id: :event_start, start_hour: 00, minute_step: 5, default: Date.today + 00.hour %>
   </div>
   <div class="field">
     <%= f.label :end, "終了時間" ,style:'color:blue;' %>
     <%= f.datetime_select :end, id: :event_end, minute_step: 5, default: Date.today + 00.hour %>
-  </div>
-  <div class="field">
-    <%= f.label :allDay, "終日" %><span>　※ 終了時間が翌日 00:00 以降の場合以外は選択しないで下さい</span>
-    <%= f.select :allDay, ['', 'true'], class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :place, "場所" %>
-    <%= f.text_field :place, id: :event_place, placeholder: "場所を入力…" %>
-  </div>
-  <div class="field">
-    <%= f.label :memo, "メモ" %>
-    <%= f.text_area :memo, id: :event_memo, placeholder: "メモを入力…", style:'height:50px;' %>
   </div>
   <div class="field">
     <%= f.label :color, "背景の色を選択" %>

@@ -13,13 +13,15 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
     @like_microposts = @user.like_microposts.paginate(page: params[:page])
     @comment_microposts = @user.comment_microposts.paginate(page: params[:page])
-  end
-  
-  def show_event
-    @user = User.find(params[:id])
     @events = Event.where(user_id: @user.id)
     @event = Event.new
   end
+  
+  # def show_event
+  #   @user = User.find(params[:id])
+  #   @events = Event.where(user_id: @user.id)
+  #   @event = Event.new
+  # end
 
   def new
     @user = User.new

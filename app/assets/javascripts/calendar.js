@@ -1,26 +1,11 @@
 
 $(document).ready(function() {
-
+  var params_userHash = $('#params_user').data('params_user');
+  var params_user_id = params_userHash.id
+  var params_user_url = "/users/"+params_user_id+"/events.json"
   var select = function(startDate, endDate) { //空のイベント範囲を選択したときに実行
     var title = window.prompt("予定");
-    // start_time = start.unix()
-    // var d = new Date( start_time * 1000 );
-    // var year = d.getYear() + 1900;
-    // var month = d.getMonth() + 1;
-    // var day   = d.getDate();
-    // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-    // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-    // end_time = end.unix()
-    // var d = new Date( end_time * 1000 );
-    // var year = d.getYear() + 1900;
-    // var month = d.getMonth() + 1;
-    // var day   = d.getDate();
-    // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-    // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+
     var allDay = !endDate.hasTime();
     var data = {
       event: {
@@ -32,7 +17,7 @@ $(document).ready(function() {
     }
     $.ajax({
      type: "POST",
-     url: "/users/id/events",
+     url: params_user_url,
      data: data,
      dataType: 'json',
      success: function() {
@@ -43,6 +28,7 @@ $(document).ready(function() {
   };
 
   // Documentの読み込みが完了するまで待機し、カレンダーを初期化します。
+
   var calendar = $('#calendar').fullCalendar({
     // ヘッダーのタイトルとボタン
     header: {
@@ -70,15 +56,15 @@ $(document).ready(function() {
     slotLabelFormat: 'H:mm',
     timeFormat: 'H:mm',
     views: {
-      month: { // name of view
+      month: {
         titleFormat: 'YYYY年 M月',
         columnHeaderFormat:'ddd'
       },
-      week: { // name of view
+      week: {
         titleFormat: 'M月D日',
         // columnHeaderFormat:'D ddd'
       },
-      day: { // name of view
+      day: {
         titleFormat: 'M月D日',
         // columnHeaderFormat:'D日 ddd'
       }
@@ -94,7 +80,8 @@ $(document).ready(function() {
     monthNamesShort: ['１月','２月','３月','４月','５月','６月','７月','８月','９月','１０月','１１月','１２月'],
     dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
     dayNamesShort: ['日','月','火','水','木','金','土'],
-    events: "/users/id/events.json",
+
+    events: "events.json",
     editable: true,        // 編集可
     selectable: true,      // 選択可
     selectHelper: true,    // 選択時にプレースホルダーを描画
@@ -149,24 +136,6 @@ $(document).ready(function() {
       var id = event.id
       var user_id = event.user_id
       var update_url = "/users/"+user_id+"/events/"+id
-      // start_time = event.start.unix()
-      // var d = new Date( start_time * 1000 );
-      // var year = d.getYear() + 1900;
-      // var month = d.getMonth() + 1;
-      // var day   = d.getDate();
-      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-      // end_time = event.end.unix()
-      // var d = new Date( end_time * 1000 );
-      // var year = d.getYear() + 1900;
-      // var month = d.getMonth() + 1;
-      // var day   = d.getDate();
-      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
 
       var data = {_method: 'PUT',
         event: {
@@ -187,30 +156,11 @@ $(document).ready(function() {
       calendar.fullCalendar('unselect');
     },
 
-
-
     eventDrop: function(event) { //イベントをドラッグ&ドロップした際に実行
       var id = event.id
       var user_id = event.user_id
       var update_url = "/users/"+user_id+"/events/"+id
-      // start_time = event.start.unix()
-      // var d = new Date( start_time * 1000 );
-      // var year = d.getYear() + 1900;
-      // var month = d.getMonth() + 1;
-      // var day   = d.getDate();
-      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      // var moment_start = year+"-"+month+"-"+day+" "+hour+":"+min;
-      // var start_time = moment(moment_start, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
-      // end_time = event.end.unix()
-      // var d = new Date( end_time * 1000 );
-      // var year = d.getYear() + 1900;
-      // var month = d.getMonth() + 1;
-      // var day   = d.getDate();
-      // var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-      // var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-      // var moment_end = year+"-"+month+"-"+day+" "+hour+":"+min;
-      // var end_time = moment(moment_end, "YYYY-MM-DD HH:mm").add(-9, 'hour').format();
+
       var allDay = !event.end.hasTime();
       var data = {_method: 'PUT',
         event: {

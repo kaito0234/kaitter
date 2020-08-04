@@ -1,0 +1,6 @@
+<% if @user != current_user %>
+  <div class="margin_top10"></div>
+  <div class="stats">
+    <%= link_to "カレンダー", user_events_path(params[:id])%>
+  </div>
+<% end %>

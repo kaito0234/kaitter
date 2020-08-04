@@ -1,9 +1,18 @@
 class EventsController < ApplicationController
   before_action :logged_in_user
   before_action :set_event, only: [:show, :edit, :update, :destroy] #パラメータのidからレコードを特定するメソッド
+  before_action :correct_user, only: [:create, :new, :edit, :update, :destroy]
 
   def index
-    @events = Event.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @events = Event.where(user_id: params[:user_id])
+    
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.xml { render :xml => {:events => @events, :user => @user }}
+  #     format.json { render :json => {:events => @events, :user => @user }}
+  #   end
+  # end
 
     respond_to do |format|
       format.html # index.html.erb
