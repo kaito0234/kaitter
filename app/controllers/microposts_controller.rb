@@ -10,7 +10,8 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/home'
+      flash[:danger] = "ツイートの文字数は140文字以内です"
+      redirect_to request.referrer || root_url
     end
   end
 

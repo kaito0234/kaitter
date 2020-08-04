@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_action :show_user, only: :show
 
   def index
-    @user = User.find(current_user.id)
+    @user = User.find(params[:user_id])
     @events = Event.where(user_id: params[:user_id])
     
   #   respond_to do |format|

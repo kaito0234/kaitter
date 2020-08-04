@@ -28,7 +28,9 @@ $(document).ready(function() {
   };
 
   // Documentの読み込みが完了するまで待機し、カレンダーを初期化します。
-
+  var params_userHash = $('#params_user').data('params_user');
+  var params_user_id = params_userHash.id
+  var params_user_url = "/users/"+params_user_id+"/events.json"
   var calendar = $('#calendar').fullCalendar({
     // ヘッダーのタイトルとボタン
     header: {
@@ -81,7 +83,7 @@ $(document).ready(function() {
     dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
     dayNamesShort: ['日','月','火','水','木','金','土'],
 
-    events: "events.json",
+    events: params_user_url,
     editable: true,        // 編集可
     selectable: true,      // 選択可
     selectHelper: true,    // 選択時にプレースホルダーを描画

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
-  resources :events, only:[:index, :create, :update]
+  resources :events, only:[ :create, :update]
   get 'likes/create'
   get 'likes/destroy'
   get  '/help',    to: 'static_pages#help'

@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "ツイートを入力…" %>
+    <%= f.text_area :content, placeholder: "ツイートを入力（140文字以内）" %>
   </div>
 <%= f.submit "ツイートする", class: "btn btn-primary btn-lg" %>
 <span class="picture">
