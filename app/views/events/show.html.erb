@@ -13,5 +13,5 @@
   <%= link_to "　削除　|", user_event_path(current_user,@event), method: :delete, data: { confirm: "本当にこの予定を削除しますか？" }, class: "delete" %>
 <% end %>
 <div class="margin_top10">
-  <p><%= link_to '戻る', user_events_path(params[:user_id]) %></p>
+  <p><%= link_to '戻る', user_events_path(@event.user_id) %></p>
 </div>

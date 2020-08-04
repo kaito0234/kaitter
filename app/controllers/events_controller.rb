@@ -64,7 +64,7 @@ class EventsController < ApplicationController
     # end
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: '予定を更新しました!' }
+        format.html { redirect_to user_event_path(current_user,@event), notice: '予定を更新しました!' }
         format.json { render :index, status: :ok, location: @event }
       else
         format.html { render :edit }
