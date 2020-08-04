@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
-  var params_userHash = $('#params_user').data('params_user');
-  var params_user_id = params_userHash.id
-  var params_user_url = "/users/"+params_user_id+"/events.json"
+
   var select = function(startDate, endDate) { //空のイベント範囲を選択したときに実行
     var title = window.prompt("予定");
-
+    var params_userHash = $('#params_user').data('params_user');
+    var params_user_id = params_userHash.id
+    var params_user_url = "/users/"+params_user_id+"/events.json"
     var allDay = !endDate.hasTime();
     var data = {
       event: {
