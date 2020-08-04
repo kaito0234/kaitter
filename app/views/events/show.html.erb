@@ -5,7 +5,7 @@
 <% if @event.end.present?%>
   <p>終了時間：<strong><%= @event.end.strftime("%Y年　%m月%d日　%H時%M分　") %> まで</strong></p>
 <% end %>
-<p>場所：<strong><%= @event.place %></strong></p>
+<p>メモ：<strong><%= @event.memo %></strong></p>
 <p>背景：<strong><%= @event.color %></strong></p>
 <p>文字：<strong><%= @event.textColor %></strong></p>
 <% if @event.user_id == current_user.id %>
