@@ -1,9 +1,50 @@
 <h1>体調</h1>
 <div class="row">
-<canvas id="myChart" width="auto" height="300"></canvas> 
-
-<script>draw_graph();</script> 
+<div class="chart-container" style="position: relative; height:70vh; width:95vw">
+  <canvas id="myChart"></canvas>
 </div>
+<script>
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: gon.timedata,
+      datasets: [{
+          label: '# of Votes',
+          data: gon.bardata,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }, {
+          label: 'Line Dataset',
+          data: gon.linedata,
+          type: 'line'
+        }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        // xAxes: [{
+        //   type: 'time',
+        //   distribution: 'linear',
+        //   ticks: {
+        //     'data': 'data'
+        //   }
+        // }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            max: 100
+          }
+        }]
+      }
+    }
+  });
+
+</script> 
+</div>
+
 <p><%= link_to '体調', new_user_condition_path(current_user) %></p>
 
 <% @conditions.each do |condition| %>
@@ -16,3 +57,4 @@
     method: :delete,class: 'command',data: { confirm: 'Sure?' } %>
   </p>
 <% end %>
+

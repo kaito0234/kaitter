@@ -12,6 +12,15 @@ html {
   box-sizing:         border-box;
 }
 
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 95vw;
+}
+
+
 .fc-sun {
   color: red;
   background-color: #fff0f0;
