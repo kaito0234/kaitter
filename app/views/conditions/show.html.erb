@@ -1,0 +1,13 @@
+<% provide(:title, "Show Condition") %>
+<h1>体調詳細</h1>
+<p>体調：<strong><%= @condition.level %></strong></p>
+<p>メモ：<strong><%= @condition.memo %></strong></p>
+<p>時間：<strong><%= @condition.date.strftime("%Y年　%m月%d日　%H時%M分") %> </strong></p>
+
+<% if @condition.user_id == current_user.id %>
+  <%= link_to '[ 編集 ]', edit_user_condition_path(current_user, @condition) %>
+  <%= link_to "[ 削除 ]", user_condition_path(current_user,@condition), method: :delete, data: { confirm: "本当にこの体調詳細を削除しますか？" }, class: "delete" %>
+<% end %>
+<div class="margin_top10">
+  <p><%= link_to '[ 戻る ]', user_conditions_path(@condition.user_id) %></p>
+</div>

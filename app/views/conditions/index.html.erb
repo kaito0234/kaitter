@@ -11,13 +11,13 @@
     data: {
       labels: gon.timedata,
       datasets: [{
-          label: '# of Votes',
+          label: 'bar',
           data: gon.bardata,
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         }, {
-          label: 'Line Dataset',
+          label: 'line',
           data: gon.linedata,
           type: 'line'
         }]
@@ -27,9 +27,9 @@
       scales: {
         // xAxes: [{
         //   type: 'time',
-        //   distribution: 'linear',
-        //   ticks: {
-        //     'data': 'data'
+        //   time: {
+        //     unit: 'hour',
+        //     fomat: 'H'
         //   }
         // }],
         yAxes: [{
@@ -49,11 +49,11 @@
 
 <% @conditions.each do |condition| %>
   <p>
-
   <%= condition.date.strftime("%m月%d日　%H時%M分") %>　
   <strong><%= condition.level %></strong>　
-  <%= link_to '[Edit]', edit_user_condition_path(current_user,condition), class: 'command' %>
-  <%= link_to '[x]', user_condition_path(current_user,condition),
+  <%= link_to '[詳細]', user_condition_path(current_user,condition), class: 'command' %>
+  <%= link_to '[編集]', edit_user_condition_path(current_user,condition), class: 'command' %>
+  <%= link_to '[削除]', user_condition_path(current_user,condition),
     method: :delete,class: 'command',data: { confirm: 'Sure?' } %>
   </p>
 <% end %>

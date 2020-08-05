@@ -14,7 +14,12 @@
     <%= f.label :date, "時間" ,style:'color:blue;' %>
     <%= f.datetime_select :date %>
   </div>
+    <div class="field">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, placeholder: "メモを入力…" %>
+  </div>
 
   <%= f.submit%>
 <% end %>
 
+<%= link_to '[ 戻る ]', user_conditions_path(params[:user_id]) %>

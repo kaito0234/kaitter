@@ -120,7 +120,7 @@ class ConditionsController < ApplicationController
   private
 
     def condition_params
-      params.require(:condition).permit(:level, :date).merge(user_id: current_user.id)
+      params.require(:condition).permit(:level, :date, :memo).merge(user_id: current_user.id)
     end
 
     def correct_user
