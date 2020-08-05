@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200730025254) do
+ActiveRecord::Schema.define(version: 2020_08_04_142944) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20200730025254) do
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["text"], name: "index_comments_on_text"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.integer "level"
+    t.datetime "date"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_conditions_on_date"
+    t.index ["level"], name: "index_conditions_on_level"
+    t.index ["user_id"], name: "index_conditions_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|

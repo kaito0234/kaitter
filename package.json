@@ -1,5 +1,7 @@
 {
-  "name": "sample_app",
+  "name": "kaitter",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^2.7.1"
+  }
 }

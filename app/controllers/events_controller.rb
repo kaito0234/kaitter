@@ -8,6 +8,9 @@ class EventsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @events = Event.where(user_id: params[:user_id])
+
+    gon.params_user_id = @user.id
+
     
   #   respond_to do |format|
   #     format.html # index.html.erb

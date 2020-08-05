@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :events
+    resources :conditions
     resources :meetings do
       collection do
         get :index_week
@@ -34,5 +35,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :notices, only: [:index]
   resources :updates
+
  
 end

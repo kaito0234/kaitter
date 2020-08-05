@@ -1,0 +1,20 @@
+<%= form_for(@condition, url: user_conditions_path(current_user)) do |f| %>
+  <%= f.radio_button :level, :'100' %>
+  <%= f.label :level, "絶好良", {value: :'100', style: "display: inline-block;"} %>
+  <%= f.radio_button :level, :'75' %>
+  <%= f.label :level, "良好", {value: :'75', style: "display: inline-block;"} %>
+  <%= f.radio_button :level, :'50' %>
+  <%= f.label :level, "普通", {value: :'50', style: "display: inline-block;"} %>
+  <%= f.radio_button :level, :'25' %>
+  <%= f.label :level, "不調", {value: :'25', style: "display: inline-block;"} %>
+  <%= f.radio_button :level, :'0' %>
+  <%= f.label :level, "絶不調", {value: :'0', style: "display: inline-block;"} %>
+
+  <div class="field">
+    <%= f.label :date, "時間" ,style:'color:blue;' %>
+    <%= f.datetime_select :date %>
+  </div>
+
+  <%= f.submit%>
+<% end %>
+
