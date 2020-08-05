@@ -6,11 +6,11 @@ class ConditionsController < ApplicationController
   def index
     @conditions = Condition.where(params[:user_id]).order(:date)
     search_date = Time.current
-    conditions = @conditions.where(date: search_date.in_time_zone.all_day)
+    @day_conditions = @conditions.where(date: search_date.in_time_zone.all_day)
 
     gon.bardata = []
     gon.linedata = []
-    @graphtimes =  conditions.order(date: "DESC")
+    @graphtimes =  @day_conditions.order(date: "DESC")
     @graphtimes.each do |graphtime|
       data = graphtime.level
       gon.bardata << data
@@ -18,7 +18,7 @@ class ConditionsController < ApplicationController
     end
 
     gon.timedata = []
-    @timedatas =  conditions.order(date: "DESC")
+    @timedatas =  @day_conditions.order(date: "DESC")
     @timedatas.each do |timedata|
       data = timedata.date.strftime("%H時").to_s
       gon.timedata << data
