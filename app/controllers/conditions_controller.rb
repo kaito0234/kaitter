@@ -4,7 +4,7 @@ class ConditionsController < ApplicationController
 
 
   def index
-    @conditions = Condition.where(params[:user_id]).order(:date)
+    @conditions = Condition.where(user_id: params[:user_id]).order(:date)
     search_date = Time.current
     @day_conditions = @conditions.where(date: search_date.in_time_zone.all_day)
 
