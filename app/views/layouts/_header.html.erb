@@ -19,19 +19,19 @@
                 <%= link_to "ホーム", root_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
 
-                <%= link_to "アップデート情報", updates_path, class:"dropdown-item menu_list" %>
-                <div class="dropdown-divider"></div>
-
-                <%= link_to "カレンダー", user_events_path(current_user), class:"dropdown-item menu_list" %>
+                <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 
-                <%= link_to "体調（仮）", user_conditions_path(current_user), class:"dropdown-item menu_list" %>
+                <%= link_to "カレンダー", user_events_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
 
                 <%= link_to "全てのユーザー", users_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
 
                 <%= link_to "ツイート検索", search_path, class:"dropdown-item menu_list" %>
+                <div class="dropdown-divider"></div>
+
+                <%= link_to "アップデート情報", updates_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
 
                 <%= link_to "アイコン一覧", icon_path, class:"dropdown-item menu_list" %>

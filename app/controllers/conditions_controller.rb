@@ -76,6 +76,7 @@ class ConditionsController < ApplicationController
       flash[:success] = "体調を送信しました!"
       redirect_to user_conditions_path(current_user)
     else
+      flash.now[:danger] = "体調を入力してください"
       render 'new'
     end
   end
@@ -101,28 +102,35 @@ class ConditionsController < ApplicationController
       flash[:success] = "体調を編集しました!"
       redirect_to user_conditions_path(current_user)
     else
+      flash.now[:danger] = "体調を入力してください"
       render 'edit'
     end
   end
 
   def condition_graph
     if @conditions.present?
-    @condition = @conditions.first.date.strftime("%m月%d日").to_s
-    gon.bardata = []
-    gon.linedata = []
-    @graphtimes =  @conditions.order(date: "DESC")
-    @graphtimes.each do |graphtime|
-      data = graphtime.level
-      gon.bardata << data
-      gon.linedata << data
+      @condition = @conditions.first.date.strftime("%m月%d日").to_s
+      gon.bardata = []
+      gon.linedata = []
+      @graphtimes =  @conditions.order(date: "DESC")
+      @graphtimes.each do |graphtime|
+        data = graphtime.level
+        gon.bardata << data
+        gon.linedata << data
+      end
+      gon.timedata = []
+      @timedatas =  @conditions.order(date: "DESC")
+      @timedatas.each do |timedata|
+        data = timedata.date.strftime("%H時").to_s
+        gon.timedata << data
+      end
+      gon.memo = []
+      @graphmemos =  @conditions.order(date: "DESC")
+      @graphmemos.each do |graphmemo|
+        data = graphmemo.memo
+        gon.memo << data
+      end
     end
-    gon.timedata = []
-    @timedatas =  @conditions.order(date: "DESC")
-    @timedatas.each do |timedata|
-      data = timedata.date.strftime("%H時").to_s
-      gon.timedata << data
-    end
-  end
   end
 
 

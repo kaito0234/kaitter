@@ -14,8 +14,8 @@
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
   <% if logged_in? %>
-    <%= f.label :icon , "アイコン・コード" %>
-    <%= link_to "( アイコン・コード一覧 )", icon_path %>
+    <p><%= f.label :icon , "アイコン" %>
+    <%= link_to "( アイコン一覧 )", icon_path %></p>
 
     <% if current_user.id.in?([107, 103, 106, 1]) %>
       <%= f.select :icon, ['', 'yuzu2.jpg', 'momiman.jpg', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg', 'sweets.jpg'], class: 'form-control' %>
