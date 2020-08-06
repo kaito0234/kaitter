@@ -404,7 +404,7 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -452,6 +452,15 @@ input {
     margin-left: 20px;
     font-weight: normal;
   }
+}
+
+input[type="radio"] {
+  width: 15px;
+}
+
+.radio_label {
+  margin-right:15px;
+  margin-left: 5px;
 }
 
 #session_remember_me {

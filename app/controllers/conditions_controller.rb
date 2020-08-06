@@ -2,79 +2,68 @@ class ConditionsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:create, :new, :edit, :update, :destroy]
 
-
   def index
-    @conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     search_date = Time.current
-    @day_conditions = @conditions.where(date: search_date.in_time_zone.all_day)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
 
-    gon.bardata = []
-    gon.linedata = []
-    @graphtimes =  @day_conditions.order(date: "DESC")
-    @graphtimes.each do |graphtime|
-      data = graphtime.level
-      gon.bardata << data
-      gon.linedata << data
-    end
+    condition_graph
+  end
 
-    gon.timedata = []
-    @timedatas =  @day_conditions.order(date: "DESC")
-    @timedatas.each do |timedata|
-      data = timedata.date.strftime("%H時").to_s
-      gon.timedata << data
-    end
+  def index_ago1
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(1.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
-    
-    # day_end = Time.current.end_of_day
-    # conditions = @conditions.where(date: day_start..day_end)
+  def index_ago2
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(2.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
-    # gon.bardata = []
-    # gon.linedata = []
-    # @graphtimes =  conditions.order(date: "DESC").reverse
-    # @graphtimes.each do |graphtime|
-    #   data = graphtime.level
-    #   gon.bardata << data
-    #   gon.linedata << data
-    # end
+  def index_ago3
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(3.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
-    # gon.timedata = []
-    # @timedatas =  conditions.order(date: "DESC").reverse
-    # @timedatas.each do |timedata|
-    #   data = timedata.date.strftime("%m月%d日　%H時%M分").to_s
-    #   gon.timedata << data
-    # end
+  def index_ago4
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(4.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
+  def index_ago5
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(5.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
-    # @graphdays =  @conditions.order(created_at: "DESC").limit(6).reverse
-    # @dayline = Array.new
-    # @graphdays.each do |graphday|
-    #     @dayline.push(graphday.created_at.strftime('%d %H:%M').to_s)
-    # end
-    # @graphtimes =  @user.sports.order(sport_day: "DESC").limit(6).reverse
-    # @timeline = Array.new
-    # @graphtimes.each do |graphtime|
-    #     @timeline.push(graphtime.sport_time)
-    # end
+  def index_ago6
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(6.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
+  end
 
-
-    # gon.graphdays = []
-    # gon.graphtimes = []
-
-    # @graphdays =  @conditions.order(created_at: "DESC").limit(6).reverse
-    # @dayline = Array.new
-    # @graphdays.each do |graphday|
-    #   @dayline.push(graphday.created_at.strftime('%d %H:%M').to_s)
-    # end
-    # data = @dayline
-    # gon.graphdays << data
-    
-    # @graphtimes =  @conditions.order(created_at: "DESC").limit(6).reverse
-    # @timeline = Array.new
-    # @graphtimes.each do |graphtime|
-    #   @timeline.push(graphtime.level)
-    # end
-    # data =@timeline
-    # gon.graphtimes << data
+  def index_ago7
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    search_date = Time.current.ago(7.days)
+    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
+    condition_graph
+    render 'index'
   end
 
   def new
@@ -114,6 +103,26 @@ class ConditionsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def condition_graph
+    if @conditions.present?
+    @condition = @conditions.first.date.strftime("%m月%d日").to_s
+    gon.bardata = []
+    gon.linedata = []
+    @graphtimes =  @conditions.order(date: "DESC")
+    @graphtimes.each do |graphtime|
+      data = graphtime.level
+      gon.bardata << data
+      gon.linedata << data
+    end
+    gon.timedata = []
+    @timedatas =  @conditions.order(date: "DESC")
+    @timedatas.each do |timedata|
+      data = timedata.date.strftime("%H時").to_s
+      gon.timedata << data
+    end
+  end
   end
 
 

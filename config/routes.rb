@@ -16,7 +16,19 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :events
-    resources :conditions
+    resources :conditions do
+      collection do
+        get :index_ago1
+        get :index_ago2
+        get :index_ago3
+        get :index_ago4
+        get :index_ago5
+        get :index_ago6
+        get :index_ago7
+        get :index_week
+        get :index_month
+      end
+    end
     resources :meetings do
       collection do
         get :index_week

@@ -1,4 +1,4 @@
-<h1>体調</h1>
+<h1>体調 - <%= @condition %></h1>
 <div class="row">
 <div class="chart-container" style="position: relative; height:70vh; width:95vw">
   <canvas id="myChart"></canvas>
@@ -45,12 +45,25 @@
 </script> 
 </div>
 
-<p><%= link_to '体調', new_user_condition_path(current_user) %></p>
+<p>
+<span>
+        <%= link_to '体調登録', new_user_condition_path(current_user) %>　　
+        <%= link_to '[今日]', user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[昨日]', index_ago1_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[2日前]', index_ago2_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[3日前]', index_ago3_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[4日前]', index_ago4_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[5日前]', index_ago5_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[6日前]', index_ago6_user_conditions_path(user_id: params[:user_id]) %>　
+        <%= link_to '[7日前]', index_ago7_user_conditions_path(user_id: params[:user_id]) %>　
+</span>
+</p>
 
 <% @conditions.each do |condition| %>
   <p>
   <%= condition.date.strftime("%m月%d日　%H時%M分") %>　
   <strong><%= condition.level %></strong>　
+  <%= condition.memo %>　
   <%= link_to '[詳細]', user_condition_path(current_user,condition), class: 'command' %>
   <%= link_to '[編集]', edit_user_condition_path(current_user,condition), class: 'command' %>
   <%= link_to '[削除]', user_condition_path(current_user,condition),
