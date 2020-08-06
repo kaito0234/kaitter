@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
   var select = function(startDate, endDate) { //空のイベント範囲を選択したときに実行
@@ -25,7 +24,7 @@ $(document).ready(function() {
     calendar.fullCalendar('unselect');
   };
 
-  // Documentの読み込みが完了するまで待機し、カレンダーを初期化します。
+  // Documentの読み込みが完了するまで待機し、カレンダーを初期化
   var params_user_url = "/users/"+gon.params_user_id+"/events.json"
   var calendar = $('#calendar').fullCalendar({
     // ヘッダーのタイトルとボタン
@@ -181,12 +180,12 @@ $(document).ready(function() {
       calendar.fullCalendar('unselect');
     }
   });
-  // 動的にオプションを変更する
+  // 動的にオプションを変更
   //$('#calendar').fullCalendar('option', 'height', 700);
 
   // カレンダーをレンダリング。表示切替時などに使用
   //$('#calendar').fullCalendar('render');
 
-  // カレンダーを破棄（イベントハンドラや内部データも破棄する）
+  // カレンダーを破棄（イベントハンドラや内部データも破棄）
   //$('#calendar').fullCalendar('destroy')
 });

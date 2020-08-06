@@ -4,6 +4,7 @@ class ConditionsController < ApplicationController
 
   def index
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current
     search_date = Time.current
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
 
@@ -12,6 +13,7 @@ class ConditionsController < ApplicationController
 
   def index_ago1
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(1.days)
     search_date = Time.current.ago(1.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -20,6 +22,7 @@ class ConditionsController < ApplicationController
 
   def index_ago2
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(2.days)
     search_date = Time.current.ago(2.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -28,6 +31,7 @@ class ConditionsController < ApplicationController
 
   def index_ago3
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(3.days)
     search_date = Time.current.ago(3.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -36,6 +40,7 @@ class ConditionsController < ApplicationController
 
   def index_ago4
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(4.days)
     search_date = Time.current.ago(4.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -44,6 +49,7 @@ class ConditionsController < ApplicationController
 
   def index_ago5
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(5.days)
     search_date = Time.current.ago(5.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -52,6 +58,7 @@ class ConditionsController < ApplicationController
 
   def index_ago6
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(6.days)
     search_date = Time.current.ago(6.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -60,6 +67,7 @@ class ConditionsController < ApplicationController
 
   def index_ago7
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.ago(7.days)
     search_date = Time.current.ago(7.days)
     @conditions = conditions.where(date: search_date.in_time_zone.all_day)
     condition_graph
@@ -108,28 +116,25 @@ class ConditionsController < ApplicationController
   end
 
   def condition_graph
-    if @conditions.present?
-      @condition = @conditions.first.date.strftime("%m月%d日").to_s
-      gon.bardata = []
-      gon.linedata = []
-      @graphtimes =  @conditions.order(date: "DESC")
-      @graphtimes.each do |graphtime|
-        data = graphtime.level
-        gon.bardata << data
-        gon.linedata << data
-      end
-      gon.timedata = []
-      @timedatas =  @conditions.order(date: "DESC")
-      @timedatas.each do |timedata|
-        data = timedata.date.strftime("%H時").to_s
-        gon.timedata << data
-      end
-      gon.memo = []
-      @graphmemos =  @conditions.order(date: "DESC")
-      @graphmemos.each do |graphmemo|
-        data = graphmemo.memo
-        gon.memo << data
-      end
+    gon.bardata = []
+    gon.linedata = []
+    @graphtimes =  @conditions.order(date: "DESC")
+    @graphtimes.each do |graphtime|
+      data = graphtime.level
+      gon.bardata << data
+      gon.linedata << data
+    end
+    gon.timedata = []
+    @timedatas =  @conditions.order(date: "DESC")
+    @timedatas.each do |timedata|
+      data = timedata.date.strftime("%H時").to_s
+      gon.timedata << data
+    end
+    gon.memo = []
+    @graphmemos =  @conditions.order(date: "DESC")
+    @graphmemos.each do |graphmemo|
+      data = graphmemo.memo
+      gon.memo << data
     end
   end
 
