@@ -1,12 +1,17 @@
 <% provide(:title, "Condition") %>
-<h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></h1>
+<h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_month.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_month.wday]})") %></h1>
 <div class="row">
-  <div class="chart-container" style="position: relative; height:65vh; width:95vw">
-    <%# <div id="chart-area"></div> %>
-    <canvas id="myChart"></canvas>
+<div class="chartWrapper" style="position: relative; overflow-x: scroll;">
+  <div class="chartContainer" style="height:350px;">
+    <canvas id="myChart" ></canvas>
   </div>
+</div>
   <script>
     var ctx = document.getElementById('myChart').getContext('2d');
+    var xAxisLabelMinWidth = 60; // データ当たりの幅を設定
+    var width = gon.timedata.length*xAxisLabelMinWidth; // グラフ全体の幅を計算
+    document.getElementById('myChart').style.width = width+"px"; //　グラフの幅を設定
+    document.getElementById('myChart').style.height = "350px"; //htmlと同じ高さを設定
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -24,7 +29,7 @@
           }]
       },
       options: {
-        maintainAspectRatio: false,
+        responsive: false, 
         tooltips: {
         enabled: true,
         mode: 'single',
@@ -56,18 +61,17 @@
 
 <p><%= link_to '[ 体調登録 ]', new_user_condition_path(current_user) %></p>
 <p><span>
-  <%= link_to '今日', user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '昨日', index_ago1_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '2日前', index_ago2_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '3日前', index_ago3_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '4日前', index_ago4_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '5日前', index_ago5_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '6日前', index_ago6_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '7日前', index_ago7_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '今月', index_month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '先月', index_1month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '2ヶ月前', index_2month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '3ヶ月前', index_3month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '4ヶ月前', index_4month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '5ヶ月前', index_5month_user_conditions_path(user_id: params[:user_id]) %>　
+  <%= link_to '6ヶ月前', index_6month_user_conditions_path(user_id: params[:user_id]) %>
 </span></p>
 <p><span>
+  <%= link_to '1日表示', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '1週間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '1ヶ月間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
 </span></p>
 
 <% @conditions.each do |condition| %>
@@ -87,4 +91,3 @@
     <% end %>
   </div>
 <% end %>
-
