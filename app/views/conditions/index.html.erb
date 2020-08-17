@@ -77,7 +77,7 @@
     <%= link_to '[詳細]', user_condition_path(current_user,condition), class: 'command' %>
     <%= link_to '[編集]', edit_user_condition_path(current_user,condition), class: 'command' %>
     <%= link_to '[削除]', user_condition_path(current_user,condition),
-      method: :delete,class: 'command',data: { confirm: 'Sure?' } %>
+      method: :delete,class: 'command',data: { confirm: 'このデータを削除しますか?' } %>
   </div>
   <div class="condition_memo">
     <% if condition.memo.present? %>

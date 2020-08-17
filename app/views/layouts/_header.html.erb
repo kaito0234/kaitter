@@ -5,7 +5,7 @@
         <%= link_to "Kaitter.jp", root_path, id:"logo", class:"navbar-brand p-0 m-0" %>
         <div class="row m-0 text-right">
           <div class="col-11 col-sm-12 ml-n1 mb-1">
-            <%= link_to "β ver.0.9.6.5", updates_path, style:'color: gray;', class:"ver" %>
+            <%= link_to "β ver.0.9.7.0", updates_path, style:'color: gray;', class:"ver" %>
           </div>
         </div>
       </div>
@@ -18,6 +18,8 @@
               <div class="dropdown-menu" aria-labelleby="dropdown1">
                 <%# <%= link_to "ホーム", root_path, class:"dropdown-item menu_list" %>
                 <%# <div class="dropdown-divider"></div> %>
+                <%= link_to "ToDoリスト(仮)", user_tasks_path(current_user), class:"dropdown-item menu_list" %>
+                <div class="dropdown-divider"></div>
                 <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "カレンダー", user_events_path(current_user), class:"dropdown-item menu_list" %>

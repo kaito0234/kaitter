@@ -1,0 +1,8 @@
+<% provide(:title, "Edit Task") %>
+<% provide(:path, user_task_path(current_user, @task)) %>
+<h1>タスク編集</h1>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <%= render 'form'%>
+  </div>
+</div>

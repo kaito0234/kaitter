@@ -1,0 +1,26 @@
+<%= form_for(@task, url: yield(:path)) do |f| %>
+  <div class="field">
+    <%= f.label :task, "タスク" %><span>　※ 入力必須項目</span>
+    <%= f.text_field :task, placeholder: "タスクを入力…" %>
+  </div>
+  <div class="field">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, placeholder: "メモを入力…" %>
+  </div>
+  <div class="field">
+    <%= f.label :state, "ステータス　" %>
+    <%= f.select :state, ['todo', 'doing', '-'], class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :limit_date, "期日　" ,style:'color:blue;' %>
+    <%= f.date_select :limit_date %>
+  </div>
+        <div class="field">
+        <%= f.label :color, "色　" %>
+        <%= f.select :color, ['blue', 'red', 'green', 'pink', 'orange', 'gray', 'yellow', 'skyblue', 'lime', 'white', 'black', 'maroon'], class: 'form-control' %>
+      </div>
+  <div class="margin_top10"></div>
+  <%= f.submit %>
+<% end %>
+<div class="margin_top10"></div>
+<%= link_to '[ 戻る ]', user_tasks_path(params[:user_id]) %>

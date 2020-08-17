@@ -1,0 +1,44 @@
+<% provide(:title, "Tasks") %>
+<h1>ToDo リスト</h1>
+<p><%= link_to '[ タスク登録 ]', new_user_task_path(current_user) %></p>
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Limit</th>
+      <th></th>
+      <th>Task</th>
+      <th>memo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |t| %>
+    <tr>
+      <td>
+        <% if t.state == '-' %>
+          <%= t.state %>
+        <% else %>
+          <%= link_to "#{t.state}", push_user_task_path(current_user,t), method: :patch, class: 'command' %>
+        <% end %>　
+      </td>
+      <td><%= t.limit_date.strftime("%m月%d日") %>　</td>
+      <td><font color="<%=t.color%>">●</font>　</td>
+      <td><%= t.task %>　</td>
+      <td><%= t.memo %>　</td>
+      <td>
+        <% if  t.state == '-' %>
+          <%= link_to "●", check_user_task_path(current_user,t), method: :patch, class: 'command' %>
+        <% else %>
+          <%= link_to "○", check_user_task_path(current_user,t), method: :patch, class: 'command' %>
+        <% end %>　
+      </td>
+      <td><%= link_to '[編集]', edit_user_task_path(current_user,t), class: 'command' %></td>
+      <td><%= link_to '[削除]', user_task_path(current_user,t), method: :delete,class: 'command',data: { confirm: 'このデータを削除しますか?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

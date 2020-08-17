@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
 
   has_many :conditions, dependent: :destroy
+
+  has_many :tasks, dependent: :destroy
   
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true

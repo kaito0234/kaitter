@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_210526) do
+ActiveRecord::Schema.define(version: 2020_08_17_121620) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -115,6 +115,23 @@ ActiveRecord::Schema.define(version: 2020_08_05_210526) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text "state"
+    t.text "task"
+    t.text "memo"
+    t.text "color"
+    t.date "limit_date"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color"], name: "index_tasks_on_color"
+    t.index ["limit_date"], name: "index_tasks_on_limit_date"
+    t.index ["memo"], name: "index_tasks_on_memo"
+    t.index ["state"], name: "index_tasks_on_state"
+    t.index ["task"], name: "index_tasks_on_task"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "updates", force: :cascade do |t|

@@ -16,6 +16,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :events
+    resources :tasks do
+      member do
+        patch :push
+        patch :check
+      end
+    end
     resources :conditions do
       collection do
         get :index_ago1
