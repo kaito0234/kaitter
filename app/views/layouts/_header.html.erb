@@ -3,12 +3,12 @@
     <header class="navbar fixed-top navbar-dark bg-dark p-0">
       <div class="col-5 order-2 text-right ofset-4" >
         <%= link_to "Kaitter.jp", root_path, id:"logo", class:"navbar-brand p-0 m-0" %>
-        <div class="row m-0 text-right">        
+        <div class="row m-0 text-right">
           <div class="col-11 col-sm-12 ml-n1 mb-1">
-            <%= link_to "β ver.0.9.6.4", updates_path, style:'color: gray;', class:"ver" %>
+            <%= link_to "β ver.0.9.6.5", updates_path, style:'color: gray;', class:"ver" %>
           </div>
         </div>
-      </div>   
+      </div>
         <% if logged_in? %>
           <nav class="col-3 order-1">
             <div class="dropdown">
@@ -16,30 +16,23 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="dropdown-menu" aria-labelleby="dropdown1">
-                <%= link_to "ホーム", root_path, class:"dropdown-item menu_list" %>
-                <div class="dropdown-divider"></div>
-
+                <%# <%= link_to "ホーム", root_path, class:"dropdown-item menu_list" %>
+                <%# <div class="dropdown-divider"></div> %>
                 <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-                
                 <%= link_to "カレンダー", user_events_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-
                 <%= link_to "全てのユーザー", users_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-
                 <%= link_to "ツイート検索", search_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-
                 <%= link_to "アップデート情報", updates_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-
                 <%= link_to "アイコン一覧", icon_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-
-                <%= link_to "設定", edit_user_path(current_user), class:"dropdown-item menu_list" %>
+                <%= link_to "ユーザー設定", edit_user_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
-                <%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item menu_list" %>
+                <%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item menu_list", style:"color:red;" %>
               </div>
             </div>
           </nav>

@@ -17,7 +17,12 @@
             <% end %>
           </li>
           <li class="pen col-xs-2">
-            <div data-toggle="modal" data-target="#modal1"><i class="far fa-edit fa-lg" ></i></div>
+            <div data-toggle="modal" data-target="#modal1"><i class="far fa-edit fa-lg"></i></div>
+          </li>
+          <li class="pen col-xs-2">
+            <%= link_to(user_conditions_path(current_user)) do %>
+              <i class="fas fa-heartbeat fa-lg"></i>
+            <% end %>
           </li>
           <li class="pen col-xs-2">
             <%= link_to(user_events_path(current_user)) do %>
@@ -25,22 +30,11 @@
             <% end %>
           </li>
           <li class="bell col-xs-2"><%= render 'shared/notice_maru' %></li>
-          <li class="pen col-xs-2">
-            <%= link_to(edit_user_path(current_user)) do %>
-              <i class="fas fa-user-cog fa-lg"></i>
-            <% end %>
-          </li>
         </nav>
           <div class="modal fade" id="modal1" tabindex="-1"
                 role="dialog" aria-labelledby="label1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <%# <div class="modal-header">
-                  <h5 class="modal-title" id="label1">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div> %>
                 <div class="modal-body">
                   <%= render 'shared/micropost_form' %>
                 </div>
