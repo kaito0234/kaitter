@@ -1,24 +1,27 @@
 <% provide(:title, "Tasks") %>
 <h1>ToDo リスト</h1>
 <p><%= link_to '[ タスク登録 ]', new_user_task_path(current_user) %></p>
-<div class="container px-2 ">
+</div>
+<div class="container-fuild py-3 px-2 my-2 mx-3 task_container">
+<div class="row ml-3 mb-3 task_list">ToDo</div>
   <% @tasks.each do |t| %>
       <% if  t.state == '6' %>
-  <div class="row mt-1 py-2 done_row">
-    <div class="col-1 pr-0">
+  <div class="row mt-1 mx-2 py-2 done_row">
+    <div class="col-1 pl-3 pr-0">
         <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
-        
       <% else %>
-  <div class="row mb-3 py-3 task_row">
-    <div class="col-1 pr-0">
+  <div class="row mb-3 mx-2 py-3 todo_row">
+    <div class="col-1 pl-3 pr-0">
         <%= link_to(push_user_task_path(current_user,t), method: :patch, class: 'task',data: { confirm: 'このタスクの優先順位を下げますか?' }) do %>
           <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
         <% end %>
       <% end %>
     </div>
-    <div class="col-2 px-1"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
-    <div class="col-6 px-1"><strong><%= t.task %></strong> <small><%= t.memo %></small></div>
-    <div class="col-3 px-0 task_icon">
+    <div class="col-11 pl-0"><strong><%= t.task %></strong></div>
+    <div class="offset-1 p-0"></div>
+    <div class="col-2 pl-0 my-2"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
+    <div class="col-9 px-1 my-2"><small><%= t.memo %></small></div>
+    <div class="col-12 mt-2 task_icon">
       <% if t.state == '6' %>
         <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_uncheck',data: { confirm: 'このタスクを戻しますか?' }) do %>
           <i class="fas fa-check-circle fa-lg"></i>
@@ -38,3 +41,4 @@
   </div>
   <% end %>
 </div>
+<div class="container-fuild">

@@ -436,17 +436,30 @@ span.picture {
 
 // tsak
 
-.task_row {
+.task_container {
+  border: solid black 1px;
+  background-color: rgba(211, 211, 211, 0.74);
+  box-shadow:0 0 10px;
+}
+.task_list {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.todo_row {
   border-radius: 5px;
-  background-color: skyblue;
+  background-color: white;
+  border: solid 1px lightgrey;
+  box-shadow:2px 2px 5px;
 }
 .done_row {
   border-radius: 5px;
-  background-color: lightgrey;
+  background-color: gainsboro;
+  border: solid 1px lightgrey;
+  box-shadow:0 0 1px;
 }
 .task_icon {
   text-align: right;
-  letter-spacing: 8px;
+  letter-spacing: 2rem;
 }
 .task_link_check {
   color: blue;
