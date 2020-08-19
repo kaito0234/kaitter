@@ -32,7 +32,7 @@ $(document).ready(function() {
       // title, prev, next, prevYear, nextYear, today
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay,listMonth,listWeek,listDay'
+      right: 'month,agendaWeek,agendaDay listMonth'
     },
     buttonText: {
       prev:     '<',   // &lsaquo;
@@ -41,8 +41,6 @@ $(document).ready(function() {
       nextYear: '>>',  // &raquo;
       today:    '今日',
       listMonth:'M',
-      listWeek:'W',
-      listDay:'D',
       month:    '月',
       week:     '週',
       day:      '日'
@@ -86,8 +84,8 @@ $(document).ready(function() {
     selectMinDistance: 1,
     select: select,        // 選択時に関数にパラメータ引き渡す
     
-    //height: 700,                         // 高さ(px)
-    contentHeight: 'auto',                 // コンテンツの高さ(px,auto)
+    height: 500,                         // 高さ(px)
+    // contentHeight: 'auto',                 // コンテンツの高さ(px,auto)
     aspectRatio: 1.8,                      // カレンダー全体の高さ aspectRatio: 1 比率
     defaultView: 'agendaWeek',             // 初期表示ビュー
     eventLimit: false,                     // allow "more" link when too many events

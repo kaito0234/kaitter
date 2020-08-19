@@ -10,7 +10,7 @@ html {
   box-sizing:         border-box;
 }
 
-/* condition */
+/* conditions */
 
 .chart-container {
   position: relative;
@@ -28,8 +28,24 @@ html {
   margin-left: 15px;
 }
 
-/* calendar */
+/* calendars */
 
+.calendar_new{
+  border: solid #628ddb 1px;
+  border-radius: 5px;
+  background-color: #6495ED;
+  box-shadow: 1px 1px 5px #628ddb;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+.calrendar_new_link {
+  color: white;
+  &:hover {
+    color: #67C7D4;
+    text-decoration: none;
+  }
+}
 .fc-sun {
   color: red;
   background-color: #fff0f0;

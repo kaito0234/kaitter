@@ -1,7 +1,14 @@
-<h1>カレンダー</h1>
+<% provide(:title, "Calendar") %>
 <div id='calendar-container'>
-  <div class="row">
+  <div class="row ">
     <div id='calendar'></div>
   </div>
 </div>
-<%= link_to '[ 予定作成 ]', new_user_event_path(current_user) %>
+<div class="row justify-content-center">
+  <div class="col-6 px-1 mt-3 text-center calendar_new">
+    <%= link_to(new_user_event_path(current_user), class:"calrendar_new_link") do %>
+    <div class="py-2">Schedule new create</div>
+    <% end %>
+  </div>
+</div>
+
