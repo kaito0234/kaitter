@@ -16,7 +16,7 @@
   <% @tasks.each do |t| %>
       <% if  t.state == '6' %>
   <div class="row mt-1 mx-2 py-1 done_row">
-    <div class="col-1 pl-3 pr-0">
+    <div class="col-1 pl-3 pr-0 task_circle">
         <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
       <% else %>
   <div class="row mb-3 mx-2 py-3 todo_row">
