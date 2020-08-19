@@ -131,6 +131,13 @@ p {
 .menu_list {
     font-size: 2em;
 }
+.notice {
+  color: #e8e8e8;
+  &:hover {
+    color: #e8e8e8;
+    text-decoration: none;
+  }
+}
 
 /* footer */
 

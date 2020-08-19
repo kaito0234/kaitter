@@ -29,7 +29,11 @@
               <i class="far fa-calendar-alt fa-lg"></i>
             <% end %>
           </li>
-          <li class="bell col-xs-2"><%= render 'shared/notice_maru' %></li>
+          <li class="pen col-xs-2">
+            <%= link_to(user_tasks_path(current_user)) do %> 
+              <i class="fas fa-tasks fa-lg"></i>
+            <% end %>
+          </li>
         </nav>
           <div class="modal fade" id="modal1" tabindex="-1"
                 role="dialog" aria-labelledby="label1" aria-hidden="true">

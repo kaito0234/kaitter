@@ -2,7 +2,6 @@
 <h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></h1>
 <div class="row">
   <div class="chart-container" style="position: relative; height:65vh; width:95vw">
-    <%# <div id="chart-area"></div> %>
     <canvas id="myChart"></canvas>
   </div>
   <script>
@@ -35,13 +34,6 @@
         }
         },
         scales: {
-          // xAxes: [{
-          //   type: 'time',
-          //   time: {
-          //     unit: 'hour',
-          //     fomat: 'H'
-          //   }
-          // }],
           yAxes: [{
             ticks: {
               beginAtZero: true,
@@ -54,7 +46,13 @@
   </script> 
 </div>
 
-<p><%= link_to '[ 体調登録 ]', new_user_condition_path(current_user) %></p>
+<div class="row justify-content-center">
+  <div class="col-6 px-1 mt-1 mb-3 text-center calendar_new">
+    <%= link_to(new_user_condition_path(current_user), class:"calrendar_new_link") do %>
+    <div class="py-2">Condition new create</div>
+    <% end %>
+  </div>
+</div>
 <p><span>
   <%= link_to '今日', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '昨日', index_ago1_user_conditions_path(user_id: params[:user_id]) %>　
