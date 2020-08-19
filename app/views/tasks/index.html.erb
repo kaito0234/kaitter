@@ -1,44 +1,41 @@
 <% provide(:title, "Tasks") %>
 <h1>ToDo リスト</h1>
 <p><%= link_to '[ タスク登録 ]', new_user_task_path(current_user) %></p>
-<table>
-  <thead>
-    <tr>
-      <th>State</th>
-      <th>Limit</th>
-      <th></th>
-      <th>Task</th>
-      <th>memo</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |t| %>
-    <tr>
-      <td>
-        <% if t.state == '-' %>
-          <%= t.state %>
-        <% else %>
-          <%= link_to "#{t.state}", push_user_task_path(current_user,t), method: :patch, class: 'command' %>
-        <% end %>　
-      </td>
-      <td><%= t.limit_date.strftime("%m月%d日") %>　</td>
-      <td><font color="<%=t.color%>">●</font>　</td>
-      <td><%= t.task %>　</td>
-      <td><%= t.memo %>　</td>
-      <td>
-        <% if  t.state == '-' %>
-          <%= link_to "●", check_user_task_path(current_user,t), method: :patch, class: 'command' %>
-        <% else %>
-          <%= link_to "○", check_user_task_path(current_user,t), method: :patch, class: 'command' %>
-        <% end %>　
-      </td>
-      <td><%= link_to '[編集]', edit_user_task_path(current_user,t), class: 'command' %></td>
-      <td><%= link_to '[削除]', user_task_path(current_user,t), method: :delete,class: 'command',data: { confirm: 'このデータを削除しますか?' } %>
-      </td>
-    </tr>
+<div class="container px-2 ">
+  <% @tasks.each do |t| %>
+      <% if  t.state == '×' %>
+  <div class="row mt-1 py-2 done_row">
+    <div class="col-1 pr-0">
+        <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
+        
+      <% else %>
+  <div class="row mb-3 py-3 task_row">
+    <div class="col-1 pr-0">
+        <%= link_to(push_user_task_path(current_user,t), method: :patch, class: 'task',data: { confirm: 'このタスクの優先順位を下げますか?' }) do %>
+          <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-2 px-2"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
+    <div class="col-4 px-2"><strong><%= t.task %></strong></div>
+    <div class="col-3 px-2"><small><%= t.memo %></small></div>
+    <div class="col-2 px-2 task_icon">
+      <% if t.state == '×' %>
+        <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_uncheck',data: { confirm: 'このタスクを戻しますか?' }) do %>
+          <i class="fas fa-check-circle"></i>
+        <% end %>
+      <% else %>
+        <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_check',data: { confirm: 'このタスクを完了しますか?' }) do %>
+          <i class="fas fa-check"></i>
+        <% end %>
+      <% end %>
+    <%= link_to(edit_user_task_path(current_user,t), class: 'task_link_edit') do %>
+      <i class="fas fa-pencil-alt"></i>
     <% end %>
-  </tbody>
-</table>
+    <%= link_to(user_task_path(current_user,t), method: :delete,class: 'task_link_delete',data: { confirm: 'このデータを削除しますか?' }) do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

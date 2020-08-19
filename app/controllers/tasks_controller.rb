@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :correct_user
 
   def index
-    @tasks = Task.where(user_id: current_user).order(state: "DESC").order('limit_date')
+    @tasks = Task.where(user_id: current_user).order(:state).order('limit_date')
   end
 
   
@@ -38,19 +38,27 @@ class TasksController < ApplicationController
   end
   def push
     @task = Task.find(params[:id])
-    if @task.state == 'todo'
-      @task.update(state: 'doing')
-    elsif @task.state == 'doing'
-      @task.update(state: '-')
+    if @task.state == '1'
+      @task.update(state: '2')
+    elsif @task.state == '2'
+      @task.update(state: '3')
+    elsif @task.state == '3'
+      @task.update(state: '4')
+    elsif @task.state == '4'
+      @task.update(state: '5')
+    elsif @task.state == '×'
+      @task.update(state: '1')
+    else
+      @task.update(state: '×')
     end
     redirect_to user_tasks_path(current_user)
   end
   def check
     @task = Task.find(params[:id])
-    if @task.state == '-'
-      @task.update(state: 'todo')
+    if @task.state == '×'
+      @task.update(state: '1')
     else
-      @task.update(state: '-')
+      @task.update(state: '×')
     end
     redirect_to user_tasks_path(current_user)
   end

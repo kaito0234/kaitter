@@ -8,8 +8,8 @@
     <%= f.text_field :memo, placeholder: "メモを入力…" %>
   </div>
   <div class="field">
-    <%= f.label :state, "ステータス　" %>
-    <%= f.select :state, ['todo', 'doing', '-'], class: 'form-control' %>
+    <%= f.label :state, "優先順位　" %>
+    <%= f.select :state, ['1', '2', '3', '4', '5', '×'], class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :limit_date, "期日　" ,style:'color:blue;' %>

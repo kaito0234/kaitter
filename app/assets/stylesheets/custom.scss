@@ -433,3 +433,45 @@ span.picture {
   padding: 0;
   margin: 0;
 }
+
+// tsak
+
+.task_row {
+  border-radius: 5px;
+  background-color: skyblue;
+}
+.done_row {
+  border-radius: 5px;
+  background-color: lightgrey;
+}
+.task_icon {
+  letter-spacing: 2px;
+}
+.task_link_check {
+  color: blue;
+  &:hover {
+    color: rgba(0, 0, 255, 0.404);
+    text-decoration: none;
+  }
+}
+.task_link_uncheck {
+  color: rgba(0, 0, 255, 0.411);
+  &:hover {
+    color: rgba(0, 0, 255, 0.178);
+    text-decoration: none;
+  }
+}
+.task_link_edit {
+  color: green;
+  &:hover {
+    color: rgba(0, 128, 0, 0.473);
+    text-decoration: none;
+  }
+}
+.task_link_delete {
+  color: red;
+  &:hover {
+    color: rgba(255, 0, 0, 0.486);
+    text-decoration: none;
+  }
+}
