@@ -3,7 +3,7 @@
 <p><%= link_to '[ タスク登録 ]', new_user_task_path(current_user) %></p>
 <div class="container px-2 ">
   <% @tasks.each do |t| %>
-      <% if  t.state == '×' %>
+      <% if  t.state == '6' %>
   <div class="row mt-1 py-2 done_row">
     <div class="col-1 pr-0">
         <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
@@ -16,24 +16,24 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-2 px-2"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
-    <div class="col-4 px-2"><strong><%= t.task %></strong></div>
-    <div class="col-3 px-2"><small><%= t.memo %></small></div>
-    <div class="col-2 px-2 task_icon">
-      <% if t.state == '×' %>
+    <div class="col-2 px-1"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
+    <div class="col-4 px-1"><strong><%= t.task %></strong></div>
+    <div class="col-3 px-0"><small><%= t.memo %></small></div>
+    <div class="col-2 px-0 task_icon">
+      <% if t.state == '6' %>
         <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_uncheck',data: { confirm: 'このタスクを戻しますか?' }) do %>
-          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-check-circle fa-lg"></i>
         <% end %>
       <% else %>
         <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_check',data: { confirm: 'このタスクを完了しますか?' }) do %>
-          <i class="fas fa-check"></i>
+          <i class="fas fa-check fa-lg"></i>
         <% end %>
       <% end %>
     <%= link_to(edit_user_task_path(current_user,t), class: 'task_link_edit') do %>
-      <i class="fas fa-pencil-alt"></i>
+      <i class="fas fa-pencil-alt fa-lg"></i>
     <% end %>
     <%= link_to(user_task_path(current_user,t), method: :delete,class: 'task_link_delete',data: { confirm: 'このデータを削除しますか?' }) do %>
-      <i class="far fa-trash-alt"></i>
+      <i class="far fa-trash-alt fa-lg"></i>
     <% end %>
     </div>
   </div>

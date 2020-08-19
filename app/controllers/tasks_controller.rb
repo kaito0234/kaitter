@@ -46,19 +46,19 @@ class TasksController < ApplicationController
       @task.update(state: '4')
     elsif @task.state == '4'
       @task.update(state: '5')
-    elsif @task.state == '×'
+    elsif @task.state == '6'
       @task.update(state: '1')
     else
-      @task.update(state: '×')
+      @task.update(state: '6')
     end
     redirect_to user_tasks_path(current_user)
   end
   def check
     @task = Task.find(params[:id])
-    if @task.state == '×'
+    if @task.state == '6'
       @task.update(state: '1')
     else
-      @task.update(state: '×')
+      @task.update(state: '6')
     end
     redirect_to user_tasks_path(current_user)
   end
