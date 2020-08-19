@@ -1,13 +1,14 @@
 <% provide(:title, "ToDo List") %>
 <div class="row justify-content-center mt-2 mb-4">
+  <div class="col-6 px-1 text-center task_new">
+    <%= link_to(new_user_task_path(current_user), class:"task_new_link") do %>
+      <div class="py-3">Task new create</div>
+    <% end %>
+  </div>
+</div>
 
-<div class="col-5 px-1 text-center task_new">
-<%= link_to(new_user_task_path(current_user), class:"task_new_link") do %>
-<div class="py-3">タスク登録</div>
-<% end %>
 </div>
-</div>
-</div>
+
 <div class="container-fuild py-3 px-2 my-2 mx-3 task_container">
   <div class="row ml-3 mb-3">
     <div class="col-4 p-0 list_title">ToDo List</div>
@@ -49,4 +50,5 @@
   </div>
   <% end %>
 </div>
+
 <div class="container-fuild">

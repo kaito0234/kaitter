@@ -437,26 +437,26 @@ span.picture {
 /* tasks */
 
 .task_new{
-  border: solid limegreen 1px;
+  border: solid #628ddb 1px;
   border-radius: 5px;
-  background-color: lime;
-  box-shadow:3px 3px 5px;
+  background-color: #6495ED;
+  box-shadow:3px 3px 10px #628ddb;
   font-size: 1.5rem;
   font-weight: bold;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.3rem;
 }
 .task_new_link {
   color: white;
   &:hover {
-    color: gold;
+    color: #67C7D4;
     text-decoration: none;
   }
 }
 .task_container {
   border-radius: 5px;
-  border: solid lightgray 1px;
-  background-color: rgba(211, 211, 211, 0.74);
-  box-shadow:2px 2px 10px;
+  border: solid #B2E2EC 1px;
+  background-color: #B2E2EC;
+  box-shadow:0px 0px 10px;
 }
 .list_title {
   font-size: 2rem;
@@ -465,8 +465,8 @@ span.picture {
 .todo_row {
   border-radius: 5px;
   background-color: white;
-  border: solid 1px whitesmoke;
-  box-shadow:2px 2px 5px;
+  border: solid 1px white;
+  box-shadow:0px 0px 5px ;
 }
 .task_circle {
   line-height: 2.2rem;
@@ -476,9 +476,9 @@ span.picture {
 }
 .done_row {
   border-radius: 5px;
-  background-color: gainsboro;
-  border: solid 1px lightgrey;
-  box-shadow:0 0 1px;
+  background-color: #67C7D4;
+  border: solid 1px #50aab6;
+  box-shadow:2px 2px 5px inset;
 }
 .task_icon {
   text-align: right;
