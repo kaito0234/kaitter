@@ -84,7 +84,7 @@ $(document).ready(function() {
     selectMinDistance: 1,
     select: select,        // 選択時に関数にパラメータ引き渡す
     
-    height: 500,                         // 高さ(px)
+    height: 550,                         // 高さ(px)
     // contentHeight: 'auto',                 // コンテンツの高さ(px,auto)
     aspectRatio: 1.8,                      // カレンダー全体の高さ aspectRatio: 1 比率
     defaultView: 'agendaWeek',             // 初期表示ビュー
