@@ -1,6 +1,6 @@
 <% provide(:title, "Condition") %>
-<h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_week.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_week.wday]})") %></h1>
-<div class="row">
+<h4>体調　<%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_week.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_week.wday]})") %></h4>
+<div class="row justify-content-center">
 <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
   <div class="chartContainer" style="height:350px;">
     <canvas id="myChart" ></canvas>
@@ -59,19 +59,24 @@
   </script> 
 </div>
 
-<p><%= link_to '[ 体調登録 ]', new_user_condition_path(current_user) %></p>
-<p><span>
+<div class="row justify-content-center">
+  <div class="col-6 px-1 mt-3 mb-3 text-center calendar_new">
+    <%= link_to(new_user_condition_path(current_user), class:"calrendar_new_link") do %>
+    <div class="py-2">Condition new create</div>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '今週', index_week_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '先週', index_1week_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '2週間前', index_2week_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '3週間前', index_3week_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '4週間前', index_4week_user_conditions_path(user_id: params[:user_id]) %>
-</span></p>
-<p><span>
+</div>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '1日表示', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '1ヶ月間表示', index_month_user_conditions_path(user_id: params[:user_id]) %>　
-</span></p>
-
+</div>
 <% @conditions.each do |condition| %>
   <div class="condition_day">
     <%= condition.date.strftime("%m月%d日　%H時%M分") %>　

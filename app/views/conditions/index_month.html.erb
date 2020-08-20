@@ -1,8 +1,8 @@
 <% provide(:title, "Condition") %>
-<h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_month.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_month.wday]})") %></h1>
-<div class="row">
+<h2>体調　<%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_month.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_month.wday]})") %></h2>
+<div class="row justify-content-center">
 <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
-  <div class="chartContainer" style="height:350px;">
+  <div class="chartContainer" style="height:380px;">
     <canvas id="myChart" ></canvas>
   </div>
 </div>
@@ -11,7 +11,7 @@
     var xAxisLabelMinWidth = 60; // データ当たりの幅を設定
     var width = gon.timedata.length*xAxisLabelMinWidth; // グラフ全体の幅を計算
     document.getElementById('myChart').style.width = width+"px"; //　グラフの幅を設定
-    document.getElementById('myChart').style.height = "350px"; //htmlと同じ高さを設定
+    document.getElementById('myChart').style.height = "380px"; //htmlと同じ高さを設定
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -59,8 +59,14 @@
   </script> 
 </div>
 
-<p><%= link_to '[ 体調登録 ]', new_user_condition_path(current_user) %></p>
-<p><span>
+<div class="row justify-content-center">
+  <div class="col-6 px-1 mt-3 mb-3 text-center calendar_new">
+    <%= link_to(new_user_condition_path(current_user), class:"calrendar_new_link") do %>
+    <div class="py-2">Condition new create</div>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '今月', index_month_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '先月', index_1month_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '2ヶ月前', index_2month_user_conditions_path(user_id: params[:user_id]) %>　
@@ -68,11 +74,11 @@
   <%= link_to '4ヶ月前', index_4month_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '5ヶ月前', index_5month_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '6ヶ月前', index_6month_user_conditions_path(user_id: params[:user_id]) %>
-</span></p>
-<p><span>
+</div>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '1日表示', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '1週間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
-</span></p>
+</div>
 
 <% @conditions.each do |condition| %>
   <div class="condition_day">

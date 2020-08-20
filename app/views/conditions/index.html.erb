@@ -1,5 +1,5 @@
 <% provide(:title, "Condition") %>
-<h1>体調 - <%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></h1>
+<h1>体調　<%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></h1>
 <div class="row">
   <div class="chart-container" style="position: relative; height:65vh; width:95vw">
     <canvas id="myChart"></canvas>
@@ -53,7 +53,7 @@
     <% end %>
   </div>
 </div>
-<p><span>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '今日', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '昨日', index_ago1_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '2日前', index_ago2_user_conditions_path(user_id: params[:user_id]) %>　
@@ -62,11 +62,11 @@
   <%= link_to '5日前', index_ago5_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '6日前', index_ago6_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '7日前', index_ago7_user_conditions_path(user_id: params[:user_id]) %>　
-</span></p>
-<p><span>
+</div>
+<div class="row justify-content-center mb-2 condition_text">
   <%= link_to '1週間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
-  <%= link_to '1ヶ月間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
-</span></p>
+  <%= link_to '1ヶ月間表示', index_month_user_conditions_path(user_id: params[:user_id]) %>　
+</div>
 
 <% @conditions.each do |condition| %>
   <div class="condition_day">

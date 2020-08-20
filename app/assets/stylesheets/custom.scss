@@ -22,6 +22,9 @@ html {
   padding-top: 5px;
   border-top: 1px solid #e8e8e8;
 }
+.condition_text {
+  font-size: 1.3rem;
+}
 .condition_memo {
   padding-bottom: 5px;
   margin-top: 5px;
@@ -61,6 +64,7 @@ padding-right: 5px;
 }
 
 /* home */
+
 .signup_btn {
   border: solid #6088C6 1px;
   border-radius: 5px;
@@ -93,14 +97,6 @@ padding-right: 5px;
     text-decoration: none;
   }
 }
-// .signup_btn {
-//   background-color: #6088C6;
-//   margin-top: 30px;
-//   margin-right: 20px;
-// }
-// .login_btn{
-//   margin-top: 30px;
-// }
 
 /* typography */
 
@@ -108,22 +104,17 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 h1 {
-  font-size: 4em;
-  margin-bottom: 40px;
+
   text-align: center;
 }
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: gray;
 }
 h3 {
-  font-size: 1.2em;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  text-align: center;
+}
+h4 {
   text-align: center;
 }
 h6 {
@@ -145,7 +136,7 @@ p {
 /* header */
 
 #logo {
-  font-size: 2.2em;
+  font-size: 2em;
   color: red;
   letter-spacing: 2px;
   font-weight: bold;
