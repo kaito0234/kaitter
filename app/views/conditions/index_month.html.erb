@@ -2,7 +2,7 @@
 <h2>体調　<%= @date.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.wday]})") %> ～ <%= @date.end_of_month.strftime("%m月%d日 (#{%w(日 月 火 水 木 金 土)[@date.end_of_month.wday]})") %></h2>
 <div class="row justify-content-center">
 <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
-  <div class="chartContainer" style="height:450px;">
+  <div class="chartContainer" style="height:480px;">
     <canvas id="myChart" ></canvas>
   </div>
 </div>
@@ -11,7 +11,7 @@
     var xAxisLabelMinWidth = 60; // データ当たりの幅を設定
     var width = gon.timedata.length*xAxisLabelMinWidth; // グラフ全体の幅を計算
     document.getElementById('myChart').style.width = width+"px"; //　グラフの幅を設定
-    document.getElementById('myChart').style.height = "450px"; //htmlと同じ高さを設定
+    document.getElementById('myChart').style.height = "480px"; //htmlと同じ高さを設定
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
