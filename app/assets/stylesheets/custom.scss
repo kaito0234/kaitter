@@ -15,6 +15,10 @@ html {
   src: asset_url('CabinSketch-Bold.ttf');
 }
 
+.csb {
+  font-family: 'csb';
+}
+
 /* conditions */
 
 .chart-container {
@@ -142,6 +146,7 @@ p {
 
 #logo {
   font-size: 2em;
+  color: red;
   letter-spacing: 2px;
   font-family: 'csb';
   &:hover {
