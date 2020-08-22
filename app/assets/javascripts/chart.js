@@ -1,7 +1,7 @@
-const condutionData = {
-  level: gon.bardata,
-  date: gon.timedata,
-};
+// const condutionData = {
+//   level: gon.bardata,
+//   date: gon.timedata,
+// }
 
 // const loadCharts = function () {
 //   const chartDataSet = {

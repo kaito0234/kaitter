@@ -10,6 +10,11 @@ html {
   box-sizing:         border-box;
 }
 
+@font-face {
+  font-family: 'csb';
+  src: font-url('/assets/CabinSketch-Bold.ttf');
+}
+
 /* conditions */
 
 .chart-container {
@@ -139,7 +144,7 @@ p {
   font-size: 2em;
   color: red;
   letter-spacing: 2px;
-  font-weight: bold;
+  font-family: 'csb';
   &:hover {
     color: red;
     text-decoration: none;
