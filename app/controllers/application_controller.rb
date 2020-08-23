@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   private
 
     def logged_in_user
+      @condition = current_user.conditions.build if logged_in?
       @post = current_user.microposts.build if logged_in?
       unless logged_in?
         store_location

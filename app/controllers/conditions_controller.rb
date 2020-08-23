@@ -10,6 +10,48 @@ class ConditionsController < ApplicationController
 
     condition_graph
   end
+
+  def new
+    @condition = Condition.new
+  end
+
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+      flash[:success] = "体調を送信しました!"
+      redirect_to user_conditions_path(current_user)
+    else
+      flash.now[:danger] = "体調を入力してください"
+      render 'new'
+    end
+  end
+
+  def edit
+    @condition = Condition.find(params[:id])
+  end
+
+  def show
+    @condition = Condition.find(params[:id])
+  end
+
+  def destroy
+    @condition = Condition.find(params[:id])
+    @condition.destroy
+    flash[:danger] = "体調を削除しました"
+    redirect_to user_conditions_path(current_user)
+  end
+
+  def update
+    @condition = Condition.find(params[:id])
+    if @condition.update (condition_params)
+      flash[:success] = "体調を編集しました!"
+      redirect_to user_conditions_path(current_user)
+    else
+      flash.now[:danger] = "体調を入力してください"
+      render 'edit'
+    end
+  end
+
   def index_ago1
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(1.days)
@@ -161,47 +203,6 @@ class ConditionsController < ApplicationController
     @conditions = conditions.where(date: search_date.in_time_zone.all_month)
     condition_graph_week
     render 'index_month'
-  end
-
-  def new
-    @condition = Condition.new
-  end
-
-  def create
-    @condition = Condition.new(condition_params)
-    if @condition.save
-      flash[:success] = "体調を送信しました!"
-      redirect_to user_conditions_path(current_user)
-    else
-      flash.now[:danger] = "体調を入力してください"
-      render 'new'
-    end
-  end
-
-  def edit
-    @condition = Condition.find(params[:id])
-  end
-
-  def show
-    @condition = Condition.find(params[:id])
-  end
-
-  def destroy
-    @condition = Condition.find(params[:id])
-    @condition.destroy
-    flash[:danger] = "体調を削除しました"
-    redirect_to user_conditions_path(current_user)
-  end
-
-  def update
-    @condition = Condition.find(params[:id])
-    if @condition.update (condition_params)
-      flash[:success] = "体調を編集しました!"
-      redirect_to user_conditions_path(current_user)
-    else
-      flash.now[:danger] = "体調を入力してください"
-      render 'edit'
-    end
   end
 
   def condition_graph

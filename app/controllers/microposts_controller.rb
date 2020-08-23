@@ -5,12 +5,25 @@ class MicropostsController < ApplicationController
 
   def create
     @post = current_user.microposts.build(micropost_params)
-    if @post.save
-      flash[:success] = "ツイートを送信しました!"
-      redirect_to root_url
+    @condition = current_user.conditions.build(condition_params[:condition])
+    if @post.content.present?
+      if @condition.level.present?
+        if @post.save && @condition.save
+          flash[:success] = "ツイートを送信しました!"
+          redirect_to root_url
+        else
+          @feed_items = []
+          flash[:danger] = "ツイートの文字数は140文字以内です"
+          redirect_to request.referrer || root_url
+        end
+      else
+        @feed_items = []
+        flash[:danger] = "体調を選択してください"
+        redirect_to request.referrer || root_url
+      end
     else
       @feed_items = []
-      flash[:danger] = "ツイートの文字数は140文字以内です"
+      flash[:danger] = "ツイートを入力してください"
       redirect_to request.referrer || root_url
     end
   end
@@ -38,6 +51,10 @@ class MicropostsController < ApplicationController
 
     def micropost_params
       params.require(:micropost).permit(:content, :picture)
+    end
+
+    def condition_params
+      params.require(:micropost).permit(condition:[:level, :date, :memo])
     end
 
     def correct_user
