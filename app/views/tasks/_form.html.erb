@@ -8,6 +8,10 @@
     <%= f.text_field :memo, placeholder: "メモを入力…" %>
   </div>
   <div class="field">
+    <%= f.label :checked, "チェック" %>
+    <%= f.text_field :checked, placeholder: "メモを入力…" %>
+  </div>
+  <div class="field">
     <%= f.label :state, "優先順位　" %>
     <%= f.select :state, ['1', '2', '3', '4', '5'], class: 'form-control' %>
   </div>

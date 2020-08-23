@@ -46,19 +46,15 @@ class TasksController < ApplicationController
       @task.update(state: '4')
     elsif @task.state == '4'
       @task.update(state: '5')
-    elsif @task.state == '6'
-      @task.update(state: '1')
-    else
-      @task.update(state: '6')
     end
     redirect_to user_tasks_path(current_user)
   end
   def check
     @task = Task.find(params[:id])
-    if @task.state == '6'
-      @task.update(state: '1')
+    if @task.checked == 'true'
+      @task.update(checked: 'false')
     else
-      @task.update(state: '6')
+      @task.update(checked: 'true')
     end
     redirect_to user_tasks_path(current_user)
   end
@@ -73,7 +69,7 @@ class TasksController < ApplicationController
     private
 
     def task_params
-      params.require(:task).permit(:state, :task, :memo, :limit_date, :color).merge(user_id: current_user.id)
+      params.require(:task).permit(:state, :task, :memo, :limit_date, :color, :checked).merge(user_id: current_user.id)
     end
     
     def correct_user

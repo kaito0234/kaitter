@@ -1,17 +1,10 @@
 <% provide(:title, "ToDo List") %>
-<%# <div class="row justify-content-center mt-2 mb-4">
-  <div class="col-6 px-1 text-center task_new"> %>
-    <%# <%= link_to(new_user_task_path(current_user), class:"task_new_link") do %>
-      <%# <div class="py-3 csb">Task new create</div> %>
-    <%# <% end %>
-  <%# </div>
-</div> %>
 <div class="container-fuild py-3 px-2 my-2 mx-1 task_container">
   <div class="row ml-3 mb-3">
     <div class="col-4 p-0 list_title csb">ToDo List</div>
   </div>
   <% @tasks.each do |t| %>
-      <% if  t.state == '6' %>
+      <% if  t.checked == true %>
   <div class="row mt-1 mx-2 py-1 done_row">
     <div class="col-1 pl-3 pr-0 task_circle">
         <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
@@ -28,7 +21,7 @@
     <div class="col-2 pl-0 my-2"><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></div>
     <div class="col-9 px-1 my-2"><small><%= t.memo %></small></div>
     <div class="col-12 mt-2 task_icon">
-      <% if t.state == '6' %>
+      <% if t.checked == true %>
         <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_uncheck',data: { confirm: 'このタスクを戻しますか?' }) do %>
           <i class="fas fa-check-circle fa-lg"></i>
         <% end %>
@@ -45,7 +38,6 @@
     <% end %>
     </div>
   </div>
-  <div class="mb-4"></div>
   <% end %>
 </div>
 <%= link_to(new_user_task_path(current_user), class:"new_link") do %>
