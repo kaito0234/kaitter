@@ -4,11 +4,8 @@
     <div id='calendar'></div>
   </div>
 </div>
-<div class="row justify-content-center">
-  <div class="col-6 px-1 mt-3 text-center calendar_new">
-    <%= link_to(new_user_event_path(current_user), class:"calrendar_new_link") do %>
-    <div class="py-2 csb">Schedule new create</div>
-    <% end %>
-  </div>
-</div>
+<%= link_to(new_user_event_path(current_user), class:"new_link") do %>
+<div class="fixed">＋</div>
+<% end %>
+
 

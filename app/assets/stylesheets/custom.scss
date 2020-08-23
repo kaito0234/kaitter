@@ -74,6 +74,10 @@ padding-right: 5px;
 
 /* home */
 
+.bg {
+  background: linear-gradient(to right, #b6f0ff8e, #f53a3a31);
+  // background: linear-gradient(to right, #a1ffce, #faffd1);
+}
 .signup_btn {
   border: solid #6088C6 1px;
   border-radius: 5px;
@@ -501,27 +505,17 @@ span.picture {
 
 /* tasks */
 
-.task_new{
-  border: solid #628ddb 1px;
-  border-radius: 5px;
-  background-color: #6495ED;
-  box-shadow:3px 3px 10px #628ddb;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 0.3rem;
-}
-.task_new_link {
-  color: white;
-  &:hover {
-    color: #67C7D4;
-    text-decoration: none;
-  }
-}
 .task_container {
   border-radius: 5px;
   border: solid #B2E2EC 1px;
-  background-color: #B2E2EC;
+  // background-color: #B2E2EC;
+  background: linear-gradient(to right, #b6f0ff8e, #f53a3a31);
   box-shadow:0px 0px 10px;
+  // padding: 0.2em 0.5em;
+  // margin: 2em 0;
+  // background: #d6ebff;
+  // box-shadow: 0px 0px 0px 10px #d6ebff;
+  // border: dashed 2px white;
 }
 .list_title {
   font-size: 2rem;
@@ -532,7 +526,23 @@ span.picture {
   background-color: white;
   border: solid 1px white;
   box-shadow:0px 0px 5px ;
+  // position: relative;
+  // background: #fff0cd;
+  // box-shadow: 0px 0px 0px 5px #fff0cd;
+  // border: dashed 2px white;
+  // padding: 0.2em 0.5em;
+  // color: #454545;
 }
+// .todo_row:after{
+//   position: absolute;
+//   content: '';
+//   right: -7px;
+//   top: -7px;
+//   border-width: 0 15px 15px 0;
+//   border-style: solid;
+//   border-color: #ffdb88 #d6ebff #ffdb88;
+//   box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+// }
 .task_circle {
   line-height: 2.2rem;
 }
@@ -541,9 +551,13 @@ span.picture {
 }
 .done_row {
   border-radius: 5px;
-  background-color: #67C7D4;
+  background-color: #d6ebff;
   border: solid 1px #B2E2EC;
   box-shadow:2px 2px 5px inset;
+  // padding: 0.5em 1em;
+  // margin: 2em 0;
+  // background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  // background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
 }
 .task_icon {
   text-align: right;
@@ -577,3 +591,27 @@ span.picture {
     text-decoration: none;
   }
 }
+
+.new_link {
+  color:#67C7D4;
+  &:hover {
+    color: #6088C6;
+    text-decoration: none;
+  }
+}
+.fixed {
+  z-index: 10;
+  border: solid #6ab7cae5 1px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #b6f0ff8e, #f53a3a31);
+  box-shadow:3px 3px 5px;
+  position: fixed; /* 要素の位置を固定する */
+  bottom: 50px; /* 基準の位置を画面の一番下に指定する */
+  right: 20px; /* 基準の位置を画面の一番右に指定する */
+  width: 40px;
+  height: 40px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  }

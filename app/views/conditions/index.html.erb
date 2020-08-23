@@ -46,13 +46,6 @@
   </script> 
 </div>
 
-<div class="row justify-content-center">
-  <div class="col-6 px-1 mt-1 mb-3 text-center calendar_new">
-    <%= link_to(new_user_condition_path(current_user), class:"calrendar_new_link") do %>
-    <div class="py-2 csb">Condition new create</div>
-    <% end %>
-  </div>
-</div>
 <div class="row justify-content-center mb-2 condition_text">
   <%= link_to '今日', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '昨日', index_ago1_user_conditions_path(user_id: params[:user_id]) %>　
@@ -84,5 +77,9 @@
       <div>　　　　　　　　　 -</div>
     <% end %>
   </div>
+<% end %>
+
+<%= link_to(new_user_condition_path(current_user), class:"new_link") do %>
+<div class="fixed">＋</div>
 <% end %>
 
