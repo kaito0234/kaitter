@@ -7,7 +7,13 @@
     <% if  t.checked == true %>
       <div class="row mt-1 mx-2 py-1 done_row">
         <div class="col-1 pl-3 pr-0 task_circle">
-          <font color="<%=t.color%>"><i class="fas fa-check-circle fa-lg"></i></font>
+          <% if t.state == '5'%>
+            <font color="<%=t.color%>"><i class="fas fa-check-circle fa-lg"></i></font>
+          <% else %>
+            <%= link_to(push_user_task_path(current_user,t), method: :patch, class: 'task',data: { confirm: 'このタスクの優先順位を下げますか?' }) do %>
+            <font color="<%=t.color%>"><i class="fas fa-check-circle fa-lg"></i></font>
+            <% end %>
+          <% end %>
         </div>
         <div class="col-11 pl-0 task_title"><s><strong><%= t.task %></strong></s></div>
         <div class="offset-1 p-0"></div>
@@ -28,8 +34,12 @@
     <% else %>
       <div class="row mb-3 mx-2 py-3 todo_row">
         <div class="col-1 pl-3 pr-0 task_circle">
-          <%= link_to(push_user_task_path(current_user,t), method: :patch, class: 'task',data: { confirm: 'このタスクの優先順位を下げますか?' }) do %>
+          <% if t.state == '5'%>
             <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
+          <% else %>
+            <%= link_to(push_user_task_path(current_user,t), method: :patch, class: 'task',data: { confirm: 'このタスクの優先順位を下げますか?' }) do %>
+              <font color="<%=t.color%>"><i class="fas fa-circle"></i></font>
+            <% end %>
           <% end %>
         </div>
         <div class="col-11 pl-0 task_title"><strong><%= t.task %></strong></div>
