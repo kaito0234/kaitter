@@ -3,15 +3,16 @@ class UpdatesController < ApplicationController
   def index
     @updates = Update.all.order(created_at: 'desc')
     @post = current_user.microposts.build if logged_in?
+    @condition = current_user.microposts.build if logged_in?
   end
 
   def new
     @update = Update.new
     @post = current_user.microposts.build if logged_in?
+    @condition = current_user.microposts.build if logged_in?
   end
 
   def create
-    @post = current_user.microposts.build if logged_in?
     admin_user
     @update = Update.new(update_params)
     if @update.save
@@ -23,17 +24,18 @@ class UpdatesController < ApplicationController
 
   def edit
     @post = current_user.microposts.build if logged_in?
+    @condition = current_user.microposts.build if logged_in?
     admin_user
     @update = Update.find(params[:id])
   end
 
   def show
     @post = current_user.microposts.build if logged_in?
+    @condition = current_user.microposts.build if logged_in?
     @update = Update.find(params[:id])
   end
 
   def destroy
-    @post = current_user.microposts.build if logged_in?
     admin_user
     @update = Update.find(params[:id])
     @update.destroy
@@ -41,7 +43,6 @@ class UpdatesController < ApplicationController
   end
 
   def update
-    @post = current_user.microposts.build if logged_in?
     admin_user
     @update = Update.find(params[:id])
     if @update.update (update_params)

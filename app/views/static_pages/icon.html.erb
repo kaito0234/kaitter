@@ -1,14 +1,16 @@
 <% provide(:title, "Icon") %>
-<h1>アイコン・コード一覧</h1>
-<div class="update_info">使用例 neko.jpg の文字を<%= link_to "設定の編集画面", edit_user_path(current_user) %>のアイコンで選択するとアイコンが猫の画像になります。</div>
-<div class="icon_box">
-  <div class="a1">neko.jpg<%= image_tag 'neko.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">danbo.jpg<%= image_tag 'danbo.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">keisatu.jpg<%= image_tag 'keisatu.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">ushineko.jpg<%= image_tag 'ushineko.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">nyalaryman.jpg<%= image_tag 'nyalaryman.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">momiman.jpg<%= image_tag 'momiman.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">momijif.jpg<%= image_tag 'momijif.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">furoshiki.jpg<%= image_tag 'furoshiki.jpg', size: 200, class: 'allicon' %></div>
-  <div class="a1">sweets.jpg<%= image_tag 'sweets.jpg', size: 200, class: 'allicon' %></div>
+<h1>アイコン一覧</h1>
+<div class="row justify-content-center">
+  <div class="icon_info my-3">アイコンを使用する場合は<%= link_to "ユーザー設定の編集画面", edit_user_path(current_user) %>でアイコンを選択して下さい。</div>
+  <div class="icon_box">
+    <div class="a1">neko.jpg<%= image_tag 'neko.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">danbo.jpg<%= image_tag 'danbo.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">keisatu.jpg<%= image_tag 'keisatu.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">ushineko.jpg<%= image_tag 'ushineko.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">nyalaryman.jpg<%= image_tag 'nyalaryman.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">momiman.jpg<%= image_tag 'momiman.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">momijif.jpg<%= image_tag 'momijif.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">furoshiki.jpg<%= image_tag 'furoshiki.jpg', size: 200, class: 'allicon' %></div>
+    <div class="a1">sweets.jpg<%= image_tag 'sweets.jpg', size: 200, class: 'allicon' %></div>
+  </div>
 </div>

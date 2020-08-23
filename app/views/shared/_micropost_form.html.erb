@@ -1,7 +1,11 @@
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <p>体調とツイート</p>
+  <strong>体調とツイート</strong>
   <%= f.fields(model: @condition) do |i| %>
+    <div class="field mb-2 mt-0">
+      <%= i.label :date, "現在時刻" ,style:'color:blue;' %>
+      <%= i.datetime_select :date %>
+    </div>
     <%= i.radio_button :level, :'100' %>
     <%= i.label :level, "絶好調", {value: :'100', style: "display: inline-block; color:black;", class: "radio_label"} %>
     <%= i.radio_button :level, :'75' %>
@@ -12,10 +16,6 @@
     <%= f.label :level, "不調", {value: :'25', style: "display: inline-block; color:black;", class: "radio_label"} %>
     <%= i.radio_button :level, :'0' %>
     <%= i.label :level, "絶不調", {value: :'0', style: "display: inline-block; color:black;", class: "radio_label"} %>
-    <div class="field">
-      <%= i.label :date, "現在時刻" ,style:'color:blue;' %>
-      <%= i.datetime_select :date %>
-    </div>
   <% end %>
   <div class="field">
     <%= f.text_area :content, placeholder: "ツイートを入力（140文字以内）" %>

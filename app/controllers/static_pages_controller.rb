@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
   end
   def icon
     @post = current_user.microposts.build if logged_in?
+    @condition = current_user.microposts.build if logged_in?
   end
   def contact
   end
