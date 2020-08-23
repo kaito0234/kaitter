@@ -12,7 +12,7 @@
         <div class="col-11 pl-0 task_title"><s><strong><%= t.task %></strong></s></div>
         <div class="offset-1 p-0"></div>
         <div class="col-2 pl-0 my-2"><s><%= t.limit_date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[t.limit_date.wday]})") %></s></div>
-        <div class="col-9 px-1 my-2"><s><small><%= t.memo %></small></s></div>
+        <div class="col-9 px-1 my-2"><small><%= t.memo %></small></div>
         <div class="col-12 mt-2 task_icon">
           <%= link_to(check_user_task_path(current_user,t), method: :patch, class: 'task_link_uncheck',data: { confirm: 'このタスクを戻しますか?' }) do %>
             <i class="fas fa-check-circle fa-lg"></i>
