@@ -1,4 +1,5 @@
 <% provide(:title, "Edit Task") %>
+<% provide(:button_text, 'タスクを更新する') %>
 <% provide(:path, user_task_path(current_user, @task)) %>
 <h1>タスク編集</h1>
 <%= render 'form'%>

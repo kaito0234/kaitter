@@ -1,29 +1,33 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation, "Password　確認" %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.label :password_confirmation, "Password　確認" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <% if logged_in? %>
-    <div>
-      <%= f.label :icon , "アイコン" %>
-      <%= link_to "( アイコン一覧 )", icon_path %>
-    </div>
-    <% if current_user.id.in?([107, 103, 106, 1]) %>
-      <%= f.select :icon, ['', 'yuzu2.jpg', 'momiman.jpg', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg', 'sweets.jpg'], class: 'form-control' %>
-    <% else %>
-      <%= f.select :icon, ['', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'momiman.jpg', 'momijif.jpg', 'furoshiki.jpg', 'sweets.jpg'], class: 'form-control' %>
+      <% if logged_in? %>
+        <div>
+          <%= f.label :icon , "アイコン" %>
+          <%= link_to "( アイコン一覧 )", icon_path %>
+        </div>
+        <% if current_user.id.in?([107, 103, 106, 1]) %>
+          <%= f.select :icon, ['', 'yuzu2.jpg', 'momiman.jpg', 'fu-min.jpg', 'yuzu.jpg', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'furoshiki.jpg', 'momijif.jpg', 'sweets.jpg'], class: 'form-control' %>
+        <% else %>
+          <%= f.select :icon, ['', 'neko.jpg', 'danbo.jpg', 'keisatu.jpg', 'ushineko.jpg', 'nyalaryman.jpg', 'momiman.jpg', 'momijif.jpg', 'furoshiki.jpg', 'sweets.jpg'], class: 'form-control' %>
+        <% end %>
+      <% end %>
+      <div class="mb-4"></div>
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>
-  <% end %>
-  <div class="mb-4"></div>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+  </div>
+</div>

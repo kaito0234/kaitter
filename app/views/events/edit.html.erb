@@ -1,4 +1,5 @@
 <% provide(:title, "Edit Calendar") %>
+<% provide(:button_text, '予定を更新する') %>
 <% provide(:path,  user_event_path(current_user, @event)) %>
 <h1>予定編集</h1>
 <%= render 'form', event: @event %>

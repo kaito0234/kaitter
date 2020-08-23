@@ -1,4 +1,5 @@
 <% provide(:title, "New Calendar") %>
+<% provide(:button_text, '予定を登録する') %>
 <% provide(:path,  user_events_path(current_user)) %>
 <h1>予定作成</h1>
 <%= render 'form', event: @event %>

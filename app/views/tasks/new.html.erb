@@ -1,5 +1,5 @@
 <% provide(:title, "New Task") %>
+<% provide(:button_text, 'タスクを登録する') %>
 <% provide(:path, user_tasks_path(current_user)) %>
 <h1>タスク作成</h1>
-
-    <%= render 'form'%>
+<%= render 'form'%>

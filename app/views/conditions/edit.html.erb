@@ -1,4 +1,5 @@
 <% provide(:title, "Edit Condition") %>
+<% provide(:button_text, '体調を更新する') %>
 <% provide(:path, user_condition_path(current_user, @condition)) %>
-<h1>体調データ編集</h1>
+<h1>体調編集</h1>
 <%= render 'form'%>

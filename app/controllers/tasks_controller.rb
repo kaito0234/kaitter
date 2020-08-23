@@ -6,7 +6,6 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.where(user_id: current_user).order(checked: 'DESC').order(:state).order('limit_date')
   end
-
   
   def new
     @task = Task.new
