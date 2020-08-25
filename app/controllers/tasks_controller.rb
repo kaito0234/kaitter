@@ -2,9 +2,8 @@ class TasksController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user
 
-  # 本番環境ではcheckedの順序は逆(チェック済みのモノが下に来る)
   def index
-    @tasks = Task.where(user_id: current_user).order(checked: 'DESC').order(:state).order('limit_date')
+    @tasks = Task.where(user_id: current_user).order(:checked).order(:state).order('limit_date')
   end
   
   def new

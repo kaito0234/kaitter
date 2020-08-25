@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_161705) do
+ActiveRecord::Schema.define(version: 2020_08_25_135322) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_161705) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "checked"
+    t.boolean "checked", default: false
     t.index ["color"], name: "index_tasks_on_color"
     t.index ["limit_date"], name: "index_tasks_on_limit_date"
     t.index ["memo"], name: "index_tasks_on_memo"
