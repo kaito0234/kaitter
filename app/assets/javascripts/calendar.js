@@ -3,7 +3,7 @@ $(document).ready(function() {
   var select = function(startDate, endDate) { //空のイベント範囲を選択したときに実行
     var title = window.prompt("予定");
     var params_user_url = "/users/"+gon.params_user_id+"/events.json"
-    var allDay = !endDate.hasTime() && !endDate.hasTime();
+    var allDay = !endDate.hasTime() && !startDate.hasTime();
     var data = {
       event: {
         title: title,

@@ -51,10 +51,10 @@ class TasksController < ApplicationController
   end
   def check
     @task = Task.find(params[:id])
-    if @task.checked == 'true'
-      @task.update(checked: 'false')
+    if @task.checked == true
+      @task.update(checked: false)
     else
-      @task.update(checked: 'true')
+      @task.update(checked: true)
     end
     redirect_to user_tasks_path(current_user)
   end
