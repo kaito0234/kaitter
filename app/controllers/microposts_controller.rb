@@ -8,8 +8,9 @@ class MicropostsController < ApplicationController
     @condition = current_user.conditions.build(condition_params[:condition])
     if @post.content.present?
       if @condition.level.present?
+        @condition.memo = @post.content
         if @post.save && @condition.save
-          flash[:success] = "ツイートを送信しました!"
+          flash[:success] = "体調とツイートを送信しました!"
           redirect_to root_url
         else
           @feed_items = []
