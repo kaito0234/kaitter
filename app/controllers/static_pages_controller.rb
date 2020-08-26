@@ -6,12 +6,14 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
   end
-  def help
-  end
   def icon
     @post = current_user.microposts.build if logged_in?
     @condition = current_user.microposts.build if logged_in?
   end
-  def contact
+  def guest_login
+    @user = User.new
+    @user.email = 'guest@gmail.com'
+    @user.password = '123456'
+    render 'sessions/guest_login'
   end
 end
