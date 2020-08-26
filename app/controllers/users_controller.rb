@@ -38,12 +38,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success]="ユーザー情報を変更しました"
-      redirect_to @user
+    if @user.id == '111'
+      flash[:danger] = "ゲストアカウントのユーザー情報は変更できません"
+      redirect_to users_url
     else
-      render 'new'
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params)
+        flash[:success]="ユーザー情報を変更しました"
+        redirect_to @user
+      else
+        render 'new'
+      end
     end
   end
 
