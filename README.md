@@ -10,6 +10,9 @@ https://uminchu-com.herokuapp.com
 機能
 
 ・TwitterのようなSNSサービス
+
 ・Chart.jsを使用した、グラフによる体調管理機能
+
 ・fullcalendarを使用した、直感的に操作できるカレンダー機能
+
 ・優先順位を付けることができるToDoリスト機能
