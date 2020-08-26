@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.id == '111'
+    if @user.id == 111
       flash[:danger] = "ゲストアカウントのユーザー情報は変更できません"
-      redirect_to users_url
+      redirect_to root_url
     else
       @user = User.find(params[:id])
       if @user.update_attributes(user_params)
