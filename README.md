@@ -1,6 +1,6 @@
 # README
 
-kaitter - SNS型自己管理情報共有アプリ -
+Kaitter - SNS型自己管理情報共有アプリ -
 
 App URL
 https://uminchu-com.herokuapp.com
