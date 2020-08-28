@@ -1,6 +1,5 @@
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <strong>体調とツイート</strong>
   <%= f.fields(model: @condition) do |i| %>
     <%= i.radio_button :level, :'100' %>
     <%= i.label :level, "絶好調", {value: :'100', style: "display: inline-block; color:black;", class: "radio_label"} %>
