@@ -175,7 +175,7 @@ class ConditionsController < ApplicationController
     # SQlite
     # ("DATE(DATETIME(date, '+9 hour'))") 
     # PostgreSQL
-    ("DATE(date AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')")
+    ("DATE(date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Toyko')")
     .order(:date_date).average(:level)
     gon.bardata = []
     gon.linedata = []
