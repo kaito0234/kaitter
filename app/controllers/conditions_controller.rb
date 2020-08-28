@@ -171,9 +171,9 @@ class ConditionsController < ApplicationController
 
   def week_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week)
-    # SQlite
+        # SQlite
     # ("DATE(DATETIME(date, '+9 hour'))") 
-    @conditions_avg = @conditions.group("date(date AT TIME ZONE 'JST')").order(:date_date).average(:level)
+    @conditions_avg = @conditions.group("date(date)").order(:date_date).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
