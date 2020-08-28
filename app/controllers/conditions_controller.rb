@@ -207,7 +207,7 @@ class ConditionsController < ApplicationController
 
   def index_week
     @date = Time.current.beginning_of_week
-    @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week).group("date(date)").average(:level)
+    @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week).order(:date).group("date(date)").average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes =  @conditions
