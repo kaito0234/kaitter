@@ -109,13 +109,13 @@ class ConditionsController < ApplicationController
     render 'index'
   end
 
-  # def index_week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.beginning_of_week
-  #   search_date = Time.current.beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  # end
+  def index_week
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @date = Time.current.beginning_of_week
+    search_date = Time.current.beginning_of_week
+    @conditions = conditions.where(date: search_date.in_time_zone.all_week)
+    condition_graph_week
+  end
   def index_1week
     conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(1.week).beginning_of_week
@@ -205,25 +205,25 @@ class ConditionsController < ApplicationController
     render 'index_month'
   end
 
-  def index_week
-    @date = Time.current.beginning_of_week
-    @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week).group("date(date)").from(Condition.order(date: "DESC"), :conditions).average(:level)
+  # def index_week
+  #   @date = Time.current.beginning_of_week
+  #   @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week).group("date(date)").from(Condition.order(date: "DESC"), :conditions).average(:level)
     
-    gon.bardata = []
-    gon.linedata = []
-    @graphtimes =  @conditions
-    @graphtimes.each do |graphtime|
-      data = graphtime[1]
-      gon.bardata << data
-      gon.linedata << data
-    end
-    gon.timedata = []
-    @timedatas =  @conditions
-    @timedatas.each do |timedata|
-      data = timedata[0]  
-      gon.timedata << data
-    end
-  end
+  #   gon.bardata = []
+  #   gon.linedata = []
+  #   @graphtimes =  @conditions
+  #   @graphtimes.each do |graphtime|
+  #     data = graphtime[1]
+  #     gon.bardata << data
+  #     gon.linedata << data
+  #   end
+  #   gon.timedata = []
+  #   @timedatas =  @conditions
+  #   @timedatas.each do |timedata|
+  #     data = timedata[0]  
+  #     gon.timedata << data
+  #   end
+  # end
 
   def condition_graph
     gon.bardata = []
