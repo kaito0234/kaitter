@@ -70,7 +70,23 @@
   <%= link_to '1日表示', user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '1ヶ月表示', index_month_user_conditions_path(user_id: params[:user_id]) %>　
 </div>
-
+<% @conditions.each do |condition| %>
+  <div class="condition_day">
+    <%= condition.date.strftime("%m月%d日　%H時%M分") %>　
+    <strong><%= condition.level %></strong>　
+    <%= link_to '[詳細]', user_condition_path(current_user,condition), class: 'command' %>
+    <%= link_to '[編集]', edit_user_condition_path(current_user,condition), class: 'command' %>
+    <%= link_to '[削除]', user_condition_path(current_user,condition),
+      method: :delete,class: 'command',data: { confirm: 'Sure?' } %>
+  </div>
+  <div class="condition_memo">
+    <% if condition.memo.present? %>
+      <%= condition.memo %>
+    <% else%>
+      <div>　　　　　　　　　 -</div>
+    <% end %>
+  </div>
+<% end %>
 <%= link_to(new_user_condition_path(current_user), class:"new_link") do %>
   <div class="fixed"><i class="fas fa-plus"></i></div>
 <% end %>
