@@ -3,12 +3,8 @@ class ConditionsController < ApplicationController
   before_action :correct_user, only: [:create, :new, :edit, :update, :destroy]
 
   def index
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current
-    search_date = Time.current
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-
-    condition_graph
+    condition_day
   end
 
   def new
@@ -53,157 +49,40 @@ class ConditionsController < ApplicationController
   end
 
   def index_ago1
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(1.days)
-    search_date = Time.current.ago(1.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago2
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(2.days)
-    search_date = Time.current.ago(2.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago3
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(3.days)
-    search_date = Time.current.ago(3.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago4
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(4.days)
-    search_date = Time.current.ago(4.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago5
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(5.days)
-    search_date = Time.current.ago(5.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago6
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(6.days)
-    search_date = Time.current.ago(6.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
   def index_ago7
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
     @date = Time.current.ago(7.days)
-    search_date = Time.current.ago(7.days)
-    @conditions = conditions.where(date: search_date.in_time_zone.all_day)
-    condition_graph
+    condition_day
     render 'index'
   end
-
-  # def index_week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.beginning_of_week
-  #   search_date = Time.current.beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  # end
-  # def index_1week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(1.week).beginning_of_week
-  #   search_date = Time.current.ago(1.week).beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  #   render 'index_week'
-  # end
-  # def index_2week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(2.week).beginning_of_week
-  #   search_date = Time.current.ago(2.week).beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  #   render 'index_week'
-  # end
-  # def index_3week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(3.week).beginning_of_week
-  #   search_date = Time.current.ago(3.week).beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  #   render 'index_week'
-  # end
-  # def index_4week
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(4.week).beginning_of_week
-  #   search_date = Time.current.ago(4.week).beginning_of_week
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_week)
-  #   condition_graph_week
-  #   render 'index_week'
-  # end
-
-  # def index_month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.beginning_of_month
-  #   search_date = Time.current.beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  # end
-  # def index_1month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(1.month).beginning_of_month
-  #   search_date = Time.current.ago(1.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
-  # def index_2month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(2.month).beginning_of_month
-  #   search_date = Time.current.ago(2.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
-  # def index_3month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(3.month).beginning_of_month
-  #   search_date = Time.current.ago(3.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
-  # def index_4month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(4.month).beginning_of_month
-  #   search_date = Time.current.ago(4.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
-  # def index_5month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(5.month).beginning_of_month
-  #   search_date = Time.current.ago(5.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
-  # def index_6month
-  #   conditions = Condition.where(user_id: params[:user_id]).order(:date)
-  #   @date = Time.current.ago(6.month).beginning_of_month
-  #   search_date = Time.current.ago(6.month).beginning_of_month
-  #   @conditions = conditions.where(date: search_date.in_time_zone.all_month)
-  #   condition_graph_week
-  #   render 'index_month'
-  # end
 
   def index_week
     @date = Time.current.beginning_of_week
@@ -265,7 +144,9 @@ class ConditionsController < ApplicationController
     render 'index_month'
   end
 
-  def condition_graph
+  def condition_day
+    conditions = Condition.where(user_id: params[:user_id]).order(:date)
+    @conditions = conditions.where(date: @date.in_time_zone.all_day)
     gon.bardata = []
     gon.linedata = []
     @graphtimes =  @conditions.order(date: "DESC")
@@ -287,28 +168,6 @@ class ConditionsController < ApplicationController
       gon.memo << data
     end
   end
-  # def condition_graph_week
-  #   gon.bardata = []
-  #   gon.linedata = []
-  #   @graphtimes =  @conditions.order(date: "DESC")
-  #   @graphtimes.each do |graphtime|
-  #     data = graphtime.level
-  #     gon.bardata << data
-  #     gon.linedata << data
-  #   end
-  #   gon.timedata = []
-  #   @timedatas =  @conditions.order(date: "DESC")
-  #   @timedatas.each do |timedata|
-  #     data = timedata.date.strftime("%d日%H時").to_s
-  #     gon.timedata << data
-  #   end
-  #   gon.memo = []
-  #   @graphmemos =  @conditions.order(date: "DESC")
-  #   @graphmemos.each do |graphmemo|
-  #     data = graphmemo.memo
-  #     gon.memo << data
-  #   end
-  # end
 
   def week_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week)
@@ -324,7 +183,7 @@ class ConditionsController < ApplicationController
     gon.timedata = []
     @timedatas = @conditions_avg
     @timedatas.each do |timedata|
-      data = timedata[0]  
+      data = timedata[0]
       gon.timedata << data
     end
   end
