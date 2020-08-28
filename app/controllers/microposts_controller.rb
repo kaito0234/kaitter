@@ -9,7 +9,9 @@ class MicropostsController < ApplicationController
     if @post.content.present?
       if @condition.level.present?
         @condition.memo = @post.content
-        if @post.save && @condition.save
+        if @post.save
+          @condition.date = @post.created_at
+          @condition.save
           flash[:success] = "体調とツイートを送信しました!"
           redirect_to root_url
         else
