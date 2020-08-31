@@ -4,7 +4,7 @@
   </div>
   <% @days.each do |day| %>
     <div class="col-1 center">
-      <p><%= day.strftime("%m-%d") %></p>
+      <p><%= day.strftime("%d日") %></p>
     <% @conditions.each do |condition| %>
       <% if Rails.env.development? %>
         <% if day.strftime("%Y-%m-%d") == condition[0] %>
