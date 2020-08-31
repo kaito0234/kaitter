@@ -191,8 +191,30 @@ class ConditionsController < ApplicationController
   end
 
   def week_avg_admin
-    @date = Time.current.beginning_of_month
+    @date = Time.current.beginning_of_week
     @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
+    # SQlite
+    # ("DATE(DATETIME(date, '+9 hour'))")
+    @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
+    gon.bardata = []
+    gon.linedata = []
+    @graphtimes = @conditions_avg
+    @graphtimes.each do |graphtime|
+      data = graphtime[1]
+      gon.bardata << data
+      gon.linedata << data
+    end
+    gon.timedata = []
+    @timedatas = @conditions_avg
+    @timedatas.each do |timedata|
+      data = timedata[0]
+      gon.timedata << data
+    end
+    render 'index_month'
+  end
+  def month_avg_admin
+    @date = Time.current.beginning_of_month
+    @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
     # SQlite
     # ("DATE(DATETIME(date, '+9 hour'))")
     @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
