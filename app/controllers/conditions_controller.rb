@@ -199,7 +199,7 @@ class ConditionsController < ApplicationController
       @conditions_avg = @conditions.group("DATE(datetime, '+9 hour')").order(:datetime).average(:level)
     end
     if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
+      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:datetime_date).average(:level)
     end
     gon.bardata = []
     gon.linedata = []
