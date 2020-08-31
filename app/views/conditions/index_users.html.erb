@@ -1,10 +1,10 @@
 <div class="row mb-3">
-<div class="col-1">
+<div class="col-2">
   <%= current_user.name %>
 </div>
   <% @days.each do |day| %>
     <div class="col-1 center">
-      <p><%= day %></p>
+      <p><%= day.strftime("%m-%d") %></p>
     <% @conditions.each do |condition| %>
       <% if day.strftime("%Y-%m-%d") == condition[0] %>
         <div class="row justify-content-center">
@@ -18,10 +18,10 @@
   <% end %>
 </div>
 <div class="row">
-  <div class="col-1">
+  <div class="col-2">
     <% @users.each do |user| %>
       <div class="row my-3">
-        <div class="col-1">
+        <div class="col-12">
         <%= user.name %>
         </div>
       </div>
