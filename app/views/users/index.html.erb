@@ -1,7 +1,7 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
-  <% if current_user.admin? && !current_user?(current_user) %>
-    <%= link_to "condition_week", week_avg_admin_user_conditions(current_user) %>
+  <% if current_user.admin? && !current_user?(@user) %>
+    <%= link_to "condition_week", week_avg_admin_user_conditions_path(current_user) %>
   <% end %>
 <%= will_paginate %>
 
