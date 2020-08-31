@@ -210,7 +210,7 @@ class ConditionsController < ApplicationController
       data = timedata[0]
       gon.timedata << data
     end
-    render 'index_week'
+    render 'index_month'
   end
 
   def month_avg
