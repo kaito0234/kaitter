@@ -33,7 +33,7 @@
       <% @user_conditions.each do |conditions| %>
         <div class="row justify-content-center center my-3">
           <% conditions.each do |condition| %> 
-              <% if day.strftime("%Y-%m-%d") == condition[0] %>
+              <% if day == condition[0] %>
                 <div class="col-auto">
                   <p><%= condition[1] %></p>
                 </div>
@@ -43,26 +43,4 @@
       <% end %>
     </div>
   <% end %>
-</div>
-
-<div class="row">
-  <div class="col-2">
-    <% @users.each do |user| %>
-      <div class="row my-3">
-        <div class="col-12">
-        <%= user.name %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-      <% @user_conditions.each do |conditions| %>
-        <div class="row justify-content-center center my-3">
-          <% conditions.each do |condition| %> 
-                <div class="col-auto">
-                  <p><%= condition[0] %></p>
-                  <p><%= condition[1] %></p>
-                </div>
-          <% end %>
-        </div>
-      <% end %>
 </div>
