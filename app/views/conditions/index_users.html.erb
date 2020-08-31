@@ -3,8 +3,8 @@
     <%= current_user.name %>
   </div>
   <% @days.each do |day| %>
-    <div class="col-1 center">
-      <p><%= day.strftime("%d日") %></p>
+    <div class="col-1 p-0 mx-2 center">
+      <p><%= day.strftime("%m/%d") %></p>
     <% @conditions.each do |condition| %>
       <% if Rails.env.development? %>
         <% if day.strftime("%Y-%m-%d") == condition[0] %>
@@ -38,7 +38,7 @@
     <% end %>
   </div>
   <% @days.each do |day| %>
-    <div class="col-1 center">
+    <div class="col-1 p-0 mx-2 center">
       <% @user_conditions.each do |conditions| %>
         <div class="row justify-content-center center my-3">
           <% conditions.each do |condition| %> 
