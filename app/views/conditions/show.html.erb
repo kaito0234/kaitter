@@ -4,7 +4,7 @@
   <div class="col-md-6">
     <p>体調：<strong><%= @condition.level %></strong></p>
     <p>メモ：<strong><%= @condition.memo %></strong></p>
-    <p>時間：<strong><%= @condition.date.strftime("%Y年　%m月%d日　%H時%M分") %> </strong></p>
+    <p>時間：<strong><%= @condition.datetime.strftime("%Y年　%m月%d日　%H時%M分") %> </strong></p>
     <%= link_to '[　戻る　]', user_conditions_path(@condition.user_id) %>
     <% if @condition.user_id == current_user.id %>
       <%= link_to '[　編集　]', edit_user_condition_path(current_user, @condition) %>

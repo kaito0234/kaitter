@@ -10,7 +10,7 @@ class MicropostsController < ApplicationController
       if @condition.level.present?
         @condition.memo = @post.content
         if @post.save
-          @condition.date = @post.created_at
+          @condition.datetime = @post.created_at
           @condition.save
           flash[:success] = "体調とツイートを送信しました!"
           redirect_to root_url
@@ -57,7 +57,7 @@ class MicropostsController < ApplicationController
     end
 
     def condition_params
-      params.require(:micropost).permit(condition:[:level, :date, :memo])
+      params.require(:micropost).permit(condition:[:level, :datetime, :memo])
     end
 
     def correct_user

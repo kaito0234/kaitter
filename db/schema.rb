@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_135322) do
+ActiveRecord::Schema.define(version: 2020_08_31_014259) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_135322) do
 
   create_table "conditions", force: :cascade do |t|
     t.integer "level"
-    t.datetime "date"
+    t.datetime "datetime"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "memo"
-    t.index ["date"], name: "index_conditions_on_date"
+    t.index ["datetime"], name: "index_conditions_on_datetime"
     t.index ["level"], name: "index_conditions_on_level"
     t.index ["user_id"], name: "index_conditions_on_user_id"
   end

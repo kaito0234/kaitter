@@ -50,7 +50,7 @@
 </div>
 <% @conditions.each do |condition| %>
   <div class="condition_day">
-    <%= condition.date.strftime("%m月%d日　%H時%M分") %>　
+    <%= condition.datetime.strftime("%m月%d日　%H時%M分") %>　
     <strong><%= condition.level %></strong>　
     <%= link_to '[詳細]', user_condition_path(current_user,condition), class: 'command' %>
     <%= link_to '[編集]', edit_user_condition_path(current_user,condition), class: 'command' %>

@@ -145,24 +145,24 @@ class ConditionsController < ApplicationController
   end
 
   def condition_day
-    conditions = Condition.where(user_id: params[:user_id]).order(:date)
-    @conditions = conditions.where(date: @date.in_time_zone.all_day)
+    conditions = Condition.where(user_id: params[:user_id]).order(:datedtime)
+    @conditions = conditions.where(datetime: @date.in_time_zone.all_day)
     gon.bardata = []
     gon.linedata = []
-    @graphtimes =  @conditions.order(date: "DESC")
+    @graphtimes =  @conditions.order(datetime: "DESC")
     @graphtimes.each do |graphtime|
       data = graphtime.level
       gon.bardata << data
       gon.linedata << data
     end
     gon.timedata = []
-    @timedatas =  @conditions.order(date: "DESC")
+    @timedatas =  @conditions.order(datetime: "DESC")
     @timedatas.each do |timedata|
-      data = timedata.date.strftime("%H時").to_s
+      data = timedata.datetime.strftime("%H時").to_s
       gon.timedata << data
     end
     gon.memo = []
-    @graphmemos =  @conditions.order(date: "DESC")
+    @graphmemos =  @conditions.order(datetime: "DESC")
     @graphmemos.each do |graphmemo|
       data = graphmemo.memo
       gon.memo << data
@@ -170,10 +170,10 @@ class ConditionsController < ApplicationController
   end
 
   def week_avg
-    @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_week)
-        # SQlite
-    # ("DATE(DATETIME(date, '+9 hour'))") 
-    @conditions_avg = @conditions.group("date(date)").order(:date_date).average(:level)
+    @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
+    # SQlite
+    # ("DATE(DATETIME(date, '+9 hour'))")
+    @conditions_avg = @conditions.group("date(datetime)").order(:date_datetime).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
@@ -191,8 +191,8 @@ class ConditionsController < ApplicationController
   end
 
   def month_avg
-    @conditions = Condition.where(user_id: params[:user_id]).where(date: @date.in_time_zone.all_month)
-    @conditions_avg = @conditions.group("date(date)").order(:date_date).average(:level)
+    @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
+    @conditions_avg = @conditions.group("date(datetime)").order(:date_date).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
@@ -212,7 +212,7 @@ class ConditionsController < ApplicationController
   private
 
     def condition_params
-      params.require(:condition).permit(:level, :date, :memo).merge(user_id: current_user.id)
+      params.require(:condition).permit(:level, :datetime, :memo).merge(user_id: current_user.id)
     end
 
     def correct_user
