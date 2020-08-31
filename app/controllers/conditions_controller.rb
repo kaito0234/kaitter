@@ -18,6 +18,7 @@ class ConditionsController < ApplicationController
       conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone).order(:datetime)
       @conditions = conditions.group("DATE(datetime, 'localtime')").average(:level)
       @users = User.where(id: current_user.follower_ids)
+      @users.order('conditions.date_datetime')
       @user_conditions = []
       @users.each do |user|
         @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime, 'localtime')").average(:level)
@@ -28,6 +29,7 @@ class ConditionsController < ApplicationController
       @conditions = conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
       conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone)
       @users = User.where(id: current_user.follower_ids)
+      @users.order('conditions.date_datetime')
       @user_conditions = []
       @users.each do |user|
         @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
