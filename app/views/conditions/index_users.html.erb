@@ -6,7 +6,7 @@
     <div class="col-1 center">
       <p><%= day.strftime("%m-%d") %></p>
     <% @conditions.each do |condition| %>
-      <% if day.strftime("%Y-%m-%d") == condition[0] %>
+      <% if day == condition[0] %>
         <div class="row justify-content-center">
         <div class="col-auto">
         <p><%= condition[1] %></p>
