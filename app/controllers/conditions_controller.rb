@@ -171,12 +171,9 @@ class ConditionsController < ApplicationController
 
   def week_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
-    if Rails.env.development?  # 開発時用の処理 SQlite
-      @conditions_avg = @conditions.group("DATE(datetime, '+9 hour')").order(:datetime).average(:level)
-    end
-    if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
-    end
+    # SQlite
+    # ("DATE(DATETIME(date, '+9 hour'))")
+    @conditions_avg = @conditions.group("date(datetime)").order(:date_datetime).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
@@ -195,12 +192,7 @@ class ConditionsController < ApplicationController
 
   def month_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
-    if Rails.env.development?  # 開発時用の処理 SQlite
-      @conditions_avg = @conditions.group("DATE(datetime, '+9 hour')").order(:datetime).average(:level)
-    end
-    if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime).average(:level)
-    end
+    @conditions_avg = @conditions.group("date(datetime)").order(:date_datetime).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
