@@ -172,10 +172,10 @@ class ConditionsController < ApplicationController
   def week_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
     if Rails.env.development?  # 開発時用の処理 SQlite
-      @conditions_avg = @conditions.group("DATE(datetime, '+9 hour')").average(:level)
+      @conditions_avg = @conditions.group("DATE(datetime, '+9 hour')").order(:datetime).average(:level)
     end
     if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
+      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:datetime).average(:level)
     end
     gon.bardata = []
     gon.linedata = []
