@@ -196,6 +196,7 @@ class ConditionsController < ApplicationController
   end
 
   def month_avg
+    @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
     if Rails.env.development?  # 開発時用の処理 SQlite
       @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week).order(:datetime)
       @conditions_avg = @conditions.group("date(datetime, 'localtime')").average(:level)
