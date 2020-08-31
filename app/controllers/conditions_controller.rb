@@ -176,8 +176,9 @@ class ConditionsController < ApplicationController
       @conditions_avg = @conditions.group("DATE(datetime, 'localtime')").average(:level)
     end
     if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
-      @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week)
+      @conditions = conditions.order(:datetime)
+      @conditions_avg = conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
     end
     gon.bardata = []
     gon.linedata = []
