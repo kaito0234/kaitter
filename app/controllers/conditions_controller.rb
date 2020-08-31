@@ -7,6 +7,35 @@ class ConditionsController < ApplicationController
     condition_day
   end
 
+  def index_users
+    require "date"
+    today =Date.today
+    week = today-6
+    @days = week..today
+    from = 1.weeks.ago
+    to = Time.current
+    if Rails.env.development?  # 開発時用の処理 SQlite
+      conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone).order(:datetime)
+      @conditions = conditions.group("DATE(datetime, 'localtime')").average(:level)
+      @users = User.where(id: current_user.follower_ids)
+      @user_conditions = []
+      @users.each do |user|
+        @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime, 'localtime')").average(:level)
+      end
+    end
+    if Rails.env.production?  # 本番環境用の処理 PostgreSQL
+      conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone)
+      @conditions = conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone)
+      @users = User.where(id: current_user.follower_ids)
+      @user_conditions = []
+      @users.each do |user|
+        @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      end
+      # @conditions = conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+    end
+  end
+
   def new
     @condition = Condition.new
   end
@@ -169,7 +198,6 @@ class ConditionsController < ApplicationController
     end
   end
 
-  # @conditions_avg = @conditions.group("date(datetime)").order(:date_datetime).average(:level)
   def week_avg
     if Rails.env.development?  # 開発時用の処理 SQlite
       @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week).order(:datetime)
@@ -217,7 +245,7 @@ class ConditionsController < ApplicationController
     gon.timedata = []
     @timedatas = @conditions_avg
     @timedatas.each do |timedata|
-      data = timedata[0]  
+      data = timedata[0]
       gon.timedata << data
     end
   end

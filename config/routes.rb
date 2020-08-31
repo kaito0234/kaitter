@@ -44,8 +44,7 @@ Rails.application.routes.draw do
         get :index_4month
         get :index_5month
         get :index_6month
-        get :month_avg_admin
-        get :week_avg_admin
+        get :index_users
       end
     end
     resources :meetings do

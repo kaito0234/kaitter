@@ -11,6 +11,10 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="dropdown-menu" aria-labelleby="dropdown1">
+              <% if current_user.admin? && !current_user?(@user) %>
+                <%= link_to "みんなの体調", index_users_user_conditions_path(current_user), class:"dropdown-item menu_list" %>
+                <div class="dropdown-divider"></div>
+              <% end %>
                 <%= link_to "ToDoリスト", user_tasks_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>

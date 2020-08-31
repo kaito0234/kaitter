@@ -1,0 +1,45 @@
+<div class="row mb-3">
+<div class="col-1">
+  <%= current_user.name %>
+</div>
+  <% @days.each do |day| %>
+    <div class="col-1 center">
+      <p><%= day %></p>
+    <% @conditions.each do |condition| %>
+      <% if day.strftime("%Y-%m-%d") == condition[0] %>
+        <div class="row justify-content-center">
+        <div class="col-auto">
+        <p><%= condition[1] %></p>
+        </div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-1">
+    <% @users.each do |user| %>
+      <div class="row my-3">
+        <div class="col-1">
+        <%= user.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% @days.each do |day| %>
+    <div class="col-1 center">
+      <% @user_conditions.each do |conditions| %>
+        <div class="row justify-content-center center my-3">
+          <% conditions.each do |condition| %> 
+              <% if day.strftime("%Y-%m-%d") == condition[0] %>
+                <div class="col-auto">
+                  <p><%= condition[1] %></p>
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

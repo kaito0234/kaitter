@@ -5,8 +5,6 @@
 <% else %>
     <%= link_to gravatar_for(current_user, size: 150), current_user %>
 <% end %>
-
-
 <h1><%= current_user.name %></h1>
 <div class="user_margin">
   <span><%= link_to "自分のツイート", current_user %></span>

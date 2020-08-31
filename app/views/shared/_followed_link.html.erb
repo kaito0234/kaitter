@@ -1,11 +1,11 @@
 <% if @user != current_user %>
   <% if @user.active_relationships.find_by(followed_id: current_user.id) %>
-    <div class="margin_top10"></div>
+    <div class="mt-2"></div>
     <div class="stats">
       <strong><%= @user.name %></strong> の
       <%= link_to "カレンダー", user_events_path(params[:id])%>
     </div>
-    <div class="margin_top5"></div>
+    <div class="mt-1"></div>
     <div class="stats">
       <strong><%= @user.name %></strong> の
       <%= link_to "体調", user_conditions_path(params[:id])%>
