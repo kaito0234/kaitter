@@ -196,13 +196,12 @@ class ConditionsController < ApplicationController
   end
 
   def month_avg
-    @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
     if Rails.env.development?  # 開発時用の処理 SQlite
-      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_week).order(:datetime)
+      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month).order(:datetime)
       @conditions_avg = @conditions.group("date(datetime, 'localtime')").average(:level)
     end
     if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.month)
+      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
       @conditions_avg = @conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
     end
     gon.bardata = []
