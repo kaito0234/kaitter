@@ -192,7 +192,7 @@ class ConditionsController < ApplicationController
 
   def month_avg
     @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @date.in_time_zone.all_month)
-    @conditions_avg = @conditions.group("date(datetime)").order(:date_date).average(:level)
+    @conditions_avg = @conditions.group("date(datetime)").order(:date_datetime).average(:level)
     gon.bardata = []
     gon.linedata = []
     @graphtimes = @conditions_avg
