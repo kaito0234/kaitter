@@ -60,7 +60,7 @@
   <%= link_to '1週間表示', index_week_user_conditions_path(user_id: params[:user_id]) %>　
   <%= link_to '1ヶ月表示', index_month_user_conditions_path(user_id: params[:user_id]) %>　
     <% if current_user.admin? && !current_user?(@user) %>
-    <%= link_to "condition_week", week_avg_admin_user_conditions_path(current_user) %>
+    <%= link_to "condition_week", week_avg_admin_user_conditions_path(current_user) %>　
     <%= link_to "condition_month", month_avg_admin_user_conditions_path(current_user) %>
   <% end %>
 </div>
