@@ -145,7 +145,7 @@ class ConditionsController < ApplicationController
   end
 
   def condition_day
-    conditions = Condition.where(user_id: params[:user_id]).order(:datedtime)
+    conditions = Condition.where(user_id: params[:user_id]).order(:datetime)
     @conditions = conditions.where(datetime: @date.in_time_zone.all_day)
     gon.bardata = []
     gon.linedata = []
