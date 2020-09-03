@@ -62,3 +62,17 @@
     </div>
   <% end %>
 </div>
+
+
+<div class="row justify-content-center center">
+<% @user_conditions.each do |user_conditions| %>
+  <% if @user_id.blank? || @user_id == user_conditions[0][0] %>
+    <%= user_conditions[1].round %>
+    <% @user_id = user_conditions[0][0] %>
+  <% else %>
+    <div class="w-100"></div>
+    <%= user_conditions[1].round %>
+    <% @user_id = user_conditions[0][0] %>
+  <% end %>
+<% end %>
+</div>

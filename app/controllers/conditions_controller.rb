@@ -8,32 +8,38 @@ class ConditionsController < ApplicationController
   end
 
   def index_users
-    require "date"
-    today =Date.today
-    week = today-6
-    @days = week..today
-    from = 1.weeks.ago
-    to = Time.current
+    from = Time.current.ago(6.days).end_of_day
+    to = Time.current.end_of_day
+    @dates = from..to.in_time_zone
+    @user_dates = (0..6).to_a.map 
+    @user_date = []
+    @user_dates.each do |i|
+      @user_date << Time.now - i.days
+    end
+    @user_date = @user_date.reverse
     if Rails.env.development?  # 開発時用の処理 SQlite
-      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone).order(:datetime).group("DATE(datetime, 'localtime')").average(:level)
+      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @dates).order(:datetime).group("DATE(datetime, 'localtime')").average(:level)
       @users = User.where(id: current_user.follower_ids)
       @condition_users = @users.joins(:conditions).includes(:conditions).order("conditions.datetime DESC")
-      @user_conditions = []
-      @users.each do |user|
-        @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime, 'localtime')").average(:level)
-      end
+      @user_conditions = Condition.where(user_id: current_user.follower_ids).where(datetime: @dates).order(:user_id).order(:datetime).group(:user_id).group("DATE(datetime, 'localtime')").average(:level)
     end
     if Rails.env.production?  # 本番環境用の処理 PostgreSQL
-      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      @conditions = Condition.where(user_id: params[:user_id]).where(datetime: @dates).order(:date_datetime_at_time_zone_utc_at_time_zone_japan).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
       @users = User.where(id: current_user.follower_ids)
-      # @condition_users = Condition.where(user_id: current_user.follower_ids).where(datetime: from..to.in_time_zone).group(:user_id).order(datetime: "DESC")
       @condition_users = @users.joins(:conditions).includes(:conditions).order("conditions.datetime DESC")
-      @user_conditions = []
-      @users.each do |user|
-        @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
-      end
-      # @conditions = conditions.group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      @user_conditions = Condition.where(user_id: current_user.follower_ids).where(datetime: @dates).order(:user_id).order(:date_datetime_at_time_zone_utc_at_time_zone_japan).group(:user_id).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").average(:level)
+
+      # @conditions = Condition.where(user_id: params[:user_id]).where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      # @users = User.where(id: current_user.follower_ids)
+
+      # @condition_users = @users.joins(:conditions).includes(:conditions).order("conditions.datetime DESC")
+      # @user_conditions = []
+      # @users.each do |user|
+      #   @user_conditions << user.conditions.where(datetime: from..to.in_time_zone).group("DATE(datetime AT TIME ZONE 'UTC' AT TIME ZONE 'Japan')").order(:date_datetime_at_time_zone_utc_at_time_zone_japan).average(:level)
+      # end
+
     end
+    render 'index_users_condition'
   end
 
   def new
