@@ -516,6 +516,22 @@ span.picture {
   margin-left: 15px;
 }
 
+.day_border {
+  border-bottom: 1px solid gainsboro;
+  border-top: 1px solid gainsboro;
+  font-size: 1.1rem;
+  color: #628ddb;
+  font-weight: bold;
+}
+.day_border_b {
+  border-bottom: 1px solid gainsboro;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.users_condition {
+  margin: 0 8px;
+}
+
 /* calendars */
 
 .calendar_new{
