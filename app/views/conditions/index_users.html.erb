@@ -16,7 +16,7 @@
   <div class="w-100"></div>
   <div class="col-2">
     <div class="row name_border_b">
-      <div class="col-12">
+      <div class="col-12 text-truncate d-block">
         <p><%= current_user.name %></p>
       </div>
     </div>
@@ -102,7 +102,7 @@
   <div class="col-2">
     <% @users.each do |user| %>
       <div class="row pt-2 name_border_b">
-        <div class="col-12">
+        <div class="col-12 text-truncate d-block">
           <p><%= user.name %></p>
         </div>
       </div>
