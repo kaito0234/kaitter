@@ -11,6 +11,8 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="dropdown-menu" aria-labelleby="dropdown1">
+                <%= link_to "みんなの体調", index_users_user_conditions_path(current_user), class:"dropdown-item menu_list" %>
+                <div class="dropdown-divider"></div>
                 <%= link_to "ToDoリスト", user_tasks_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>
@@ -24,8 +26,6 @@
                 <%= link_to "アイコン一覧", icon_path, class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "ユーザー設定", edit_user_path(current_user), class:"dropdown-item menu_list" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "みんなの体調(作成中)", index_users_user_conditions_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item menu_list", style:"color:red;" %>
               </div>
