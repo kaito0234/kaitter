@@ -8,7 +8,7 @@
     <div class="row py-2 mr-1 day_border">
       <% @days.each do |day| %>
         <div class="col-1 px-0 mx-2 center">
-          <%= day.strftime("%d日%n(#{%w(日 月 火 水 木 金 土)[day.wday]})") %>
+          <%= day.strftime("%d日(#{%w(日 月 火 水 木 金 土)[day.wday]})") %>
         </div>
       <% end %>
     </div>
