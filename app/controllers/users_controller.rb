@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only:[:index, :edit, :update, :destroy,
                                                :following, :followers, :show, :show_event]
   before_action :correct_user,   only:[:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:destroy, :user_logincondition_false]
 
   def index
     @users = User.order("created_at DESC").paginate(page:params[:page])
@@ -55,6 +55,23 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "ユーザーを削除しました"
+    redirect_to users_url
+  end
+
+  def user_logincondition_false
+    logger = Logger.new 'log/false_user_condition.log'
+    User.find_each do |user|
+      begin
+        user.update!(logincondition: false)
+      rescue => e
+        #何かしらエラーが起きたら、エラーログの書き込み ただし次のユーザーの処理へは進む
+        logger.error "user_id: #{user.id}でエラーが発生"
+        logger.error e
+        logger.error e.backtrace.join("\n")
+        next
+      end
+    end
+    flash[:success] = "全てのユーザーのloginconditionをfalseにしました"
     redirect_to users_url
   end
 
