@@ -311,7 +311,7 @@
 
         <% if Rails.env.production? %>
           <% if c == 0 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -323,7 +323,7 @@
           <% end %>
 
           <% if c == 1 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -335,7 +335,7 @@
           <% end %>
 
           <% if c == 2 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -347,7 +347,7 @@
           <% end %>
 
           <% if c == 3 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -359,7 +359,7 @@
           <% end %>
 
           <% if c == 4 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -371,7 +371,7 @@
           <% end %>
 
           <% if c == 5 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
@@ -383,7 +383,7 @@
           <% end %>
 
           <% if c == 6 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0][1] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
               <div class="col-1 px-0 mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
