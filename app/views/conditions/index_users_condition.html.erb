@@ -1,3 +1,10 @@
+<p><%= @user_date %></p>
+<p><%= @user_date[0] %></p>
+<p><%= @user_date[0].strftime("%Y-%m-%d") %></p>
+<p><%= @conditions %></p>
+<p><%= @conditions.keys[0] %></p>
+<p><%= @dates %></p>
+
 <div class="row mb-3">
   <div class="col-2">
     <div class="row my-3"></div>
@@ -29,7 +36,7 @@
         <% if Rails.env.development? %>
 
           <% if c == 0 %>
-            <% if @user_date[c].strftime("%Y-%m-%d") == condition[0] %>
+            <% if @user_date[c].strftime("%Y-%m-%d") == "#{condition[0]}" %>
               <div class="col-1 px-0  mx-2 center">
                 <p><%= condition[1].round %></p>
               </div>
