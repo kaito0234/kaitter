@@ -5,7 +5,7 @@
     <div class="row ml-1 py-3 mb-2 day_border">　</div>
   </div>
   <div class="col-10">
-    <div class="row mr-1 py-3 mb-2 day_border">
+    <div class="row py-3 mb-2 day_border">
       <% @days.each do |day| %>
         <div class="col-1 px-0 mx-2 center">
           <%= day.strftime("%m/%d") %>
@@ -17,7 +17,7 @@
   <div class="col-2">
     <div class="row name_border_b">
       <div class="col-12">
-        <%= current_user.name %>
+        <p><%= current_user.name %></p>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@
     <% @users.each do |user| %>
       <div class="row pt-2 name_border_b">
         <div class="col-12">
-          <%= user.name %>
+          <p><%= user.name %></p>
         </div>
       </div>
     <% end %>
