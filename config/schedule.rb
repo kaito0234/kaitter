@@ -22,6 +22,6 @@
 set :output, 'log/crontab.log'
 set :environment, ENV['RAILS_ENV']
  
-every 1.day, at: '4:00 am' do
+every 1.day, at: '00:10 am' do
   rake "false_user_logincondition:false"
 end
