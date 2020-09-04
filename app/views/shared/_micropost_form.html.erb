@@ -5,7 +5,7 @@
     <%= i.label :level, "絶好調", {value: :'100', style: "display: inline-block; color:black;", class: "radio_label"} %>
     <%= i.radio_button :level, :'75' %>
     <%= i.label :level, "好調", {value: :'75', style: "display: inline-block; color:black;", class: "radio_label"} %>
-    <%= i.radio_button :level, :'50', {checked: true} %>
+    <%= i.radio_button :level, :'50' %>
     <%= i.label :level, "普通", {value: :'50', style: "display: inline-block; color:black;", class: "radio_label"} %>
     <%= i.radio_button :level, :'25' %>
     <%= f.label :level, "不調", {value: :'25', style: "display: inline-block; color:black;", class: "radio_label"} %>
@@ -15,7 +15,7 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "ツイートを入力（140文字以内）" %>
   </div>
-<%= f.submit "体調とツイートを送信する", class: "btn btn-primary btn-lg" %>
+<%= f.submit "ツイートを送信する", class: "btn btn-primary btn-lg" %>
 <span class="picture">
 <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
 </span>

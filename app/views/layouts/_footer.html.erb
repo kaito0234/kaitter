@@ -14,7 +14,7 @@
             <% end %>
           </li>
           <li class="pen col-xs-2">
-            <div data-toggle="modal" data-target="#modal1"><i class="far fa-edit fa-lg"></i></div>
+            <div data-toggle="modal" data-show="true" data-target="#modal1"><i class="far fa-edit fa-lg"></i></div>
           </li>
           <li class="pen col-xs-2">
             <%= link_to(user_conditions_path(current_user)) do %>
@@ -47,5 +47,22 @@
           </div>
       </ul>
     </div>
+    <% unless current_user.logincondition == true %>
+      <div class="modal fade" id="modal_load" tabindex="-1"role="dialog" aria-labelledby="label1" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title1 logincondition mt-2" id="label">今日の体調は？</h5>
+            </div>
+            <div class="modal-body">
+              <%= render 'shared/condition_form' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+      $('#modal_load').modal('show');
+      </script>
+    <% end %>
   <% end %>
 </footer>

@@ -13,16 +13,21 @@ class MicropostsController < ApplicationController
           @condition.datetime = @post.created_at
           @condition.save
           flash[:success] = "体調とツイートを送信しました!"
-          redirect_to root_url
+          redirect_to request.referrer || root_url
         else
           @feed_items = []
           flash[:danger] = "ツイートの文字数は140文字以内です"
           redirect_to request.referrer || root_url
         end
       else
-        @feed_items = []
-        flash[:danger] = "体調を選択してください"
-        redirect_to request.referrer || root_url
+        if @post.save
+          flash[:success] = "ツイートを送信しました!"
+          redirect_to request.referrer || root_url
+        else
+          @feed_items = []
+          flash[:danger] = "ツイートの文字数は140文字以内です"
+          redirect_to request.referrer || root_url
+        end
       end
     else
       @feed_items = []

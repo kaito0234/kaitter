@@ -1,0 +1,18 @@
+<%= form_with(model: @condition, url:create_login_user_conditions_path(current_user), local: true) do |f| %>
+  <%= f.radio_button :level, :'100' %>
+  <%= f.label :level, "絶好調", {value: :'100', style: "display: inline-block; color:black;", class: "radio_label"} %>
+  <%= f.radio_button :level, :'75' %>
+  <%= f.label :level, "好調", {value: :'75', style: "display: inline-block; color:black;", class: "radio_label"} %>
+  <%= f.radio_button :level, :'50', {checked: true} %>
+  <%= f.label :level, "普通", {value: :'50', style: "display: inline-block; color:black;", class: "radio_label"} %>
+  <%= f.radio_button :level, :'25' %>
+  <%= f.label :level, "不調", {value: :'25', style: "display: inline-block; color:black;", class: "radio_label"} %>
+  <%= f.radio_button :level, :'0' %>
+  <%= f.label :level, "絶不調", {value: :'0', style: "display: inline-block; color:black;", class: "radio_label"} %>
+  <div class="field">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, placeholder: "メモがあれば入力…" %>
+  </div>
+  <div class="mt-4"></div>
+  <%= f.submit "体調を送信する", class: "btn btn-primary btn-lg" %>
+<% end %>

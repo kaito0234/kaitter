@@ -46,6 +46,24 @@ class ConditionsController < ApplicationController
     end
   end
 
+  def create_login
+    @condition = current_user.conditions.build(condition_params)
+    @condition.datetime = Time.current
+    user = User.find_by(id: current_user.id)
+    if @condition.save
+      if user.update(logincondition: true)
+        flash[:success] = "ログイン時の体調を送信しました!"
+        redirect_to request.referrer || root_url
+      else
+        flash[:success] = "体調を送信しました!"
+        redirect_to request.referrer || root_url
+      end
+    else
+      flash[:danger] = "体調を入力してください"
+      redirect_to request.referrer || root_url
+    end
+  end
+
   def edit
     @condition = Condition.find(params[:id])
   end

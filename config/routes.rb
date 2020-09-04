@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         get :index_5month
         get :index_6month
         get :index_users
+        post :create_login
       end
     end
     resources :meetings do

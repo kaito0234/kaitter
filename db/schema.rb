@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_014259) do
+ActiveRecord::Schema.define(version: 2020_09_04_125230) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_014259) do
     t.boolean "admin", default: false
     t.string "remember_digest"
     t.string "icon"
+    t.boolean "logincondition", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end
