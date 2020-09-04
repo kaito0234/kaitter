@@ -2,10 +2,10 @@
 <h1>みんなの体調一覧</h1>
 <div class="row mt-5">
   <div class="col-2">
-    <div class="row py-3 mb-2 day_border">　</div>
+    <div class="row py-4 mb-2 ml-1 day_border">　</div>
   </div>
   <div class="col-10">
-    <div class="row py-3 mb-2 day_border">
+    <div class="row py-4 mb-2 mr-1 day_border">
       <% @days.each do |day| %>
         <div class="col-1 px-0 mx-2 center">
           <%= day.strftime("%m/%d") %>
@@ -15,14 +15,14 @@
   </div>
   <div class="w-100"></div>
   <div class="col-2">
-    <div class="row name_border_b">
+    <div class="row pt-1 ml-1 name_border_b">
       <div class="col-12 text-truncate d-block">
         <p><%= current_user.name %></p>
       </div>
     </div>
   </div>
   <div class="col-10">
-    <div class="row center day_border_b">
+    <div class="row pt-1 mr-1 center day_border_b">
       <% c = 0 %>
       <% @conditions.each do |condition| %>
         <% if c == 0 %>
@@ -101,7 +101,7 @@
   <div class="w-100"></div>
   <div class="col-2">
     <% @users.each do |user| %>
-      <div class="row pt-2 name_border_b">
+      <div class="row pt-3 ml-1 name_border_b">
         <div class="col-12 text-truncate d-block">
           <p><%= user.name %></p>
         </div>
@@ -109,7 +109,7 @@
     <% end %>
   </div>
   <div class="col-10">
-    <div class="row pt-2 center day_border_b">
+    <div class="row pt-3 mr-1 center day_border_b">
       <% c = 0 %><% d = 0 %>
       <% condition_user_id = [] %>
       <% @user_conditions.each do |condition| %>
@@ -120,7 +120,7 @@
         <% if condition_user_id == condition[0][0] %>
         <% else %>
           <% c = 0 %>
-          </div><div class="row pt-2 center day_border_b">
+          </div><div class="row pt-3 mr-1 center day_border_b">
         <% end %>
         <% if c == 0 %>
           <% if @days[c].strftime("%Y-%m-%d") == "#{condition[0][1]}" %>
