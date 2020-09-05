@@ -1,0 +1,76 @@
+<h1>みんなの予定<h1>
+<div class="row">
+  <div class="col-12 center">
+    <p><strong><%= current_user.name%></strong>の予定</p>
+  </div>
+  <% @events.each do |event| %>
+    <% if Time.current.beginning_of_day.to_i.between?(event.start.beginning_of_day.to_i, event.end.end_of_day.to_i) %>
+      <% if event.allDay %>
+        <div class="col-6">
+          ●　<%= event.title %>
+        </div>
+        <div class="col-6">
+          終日
+        </div>
+        <% if event.memo.present? %>
+          <div class="col-12">
+          　メモ：<%= event.memo %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-6">
+          ●　<%= event.title %>
+        </div>
+        <div class="col-6">
+        <%= event.start.strftime("%H:%M") %>～<%= event.end.strftime("%H:%M") %>
+        </div>
+        <% if event.memo.present? %>
+          <div class="col-12">
+          　メモ：<%= event.memo %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="mb-3"></div>
+    <% end %>
+  <% end %>
+</div>
+<div class="mt-5"></div>
+<% @user_events.each do |key,events| %>
+  <div class="row">
+    <div class="col-12 center">
+      <p><strong><% user = User.find_by(id: key) %><%= user.name %></strong>の予定</p>
+    </div>
+    <% events.each do |event| %>
+    <% if event.start.present? && event.end.present? %>
+      <% if Time.current.beginning_of_day.to_i.between?(event.start.beginning_of_day.to_i, event.end.end_of_day.to_i) %>
+        <% if event.allDay %>
+          <div class="col-6">
+            ●　<%= event.title %>
+          </div>
+          <div class="col-6">
+            終日
+          </div>
+          <% if event.memo.present? %>
+            <div class="col-12">
+            　メモ：<%= event.memo %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-6">
+            ●　<%= event.title %>
+          </div>
+          <div class="col-6">
+          <%= event.start.strftime("%H:%M") %>～<%= event.end.strftime("%H:%M") %>
+          </div>
+          <% if event.memo.present? %>
+            <div class="col-12">
+            　メモ：<%= event.memo %>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="mb-3"></div>
+      <% end %>
+    <% end %>
+    <% end %>
+  </div>
+<% end %>

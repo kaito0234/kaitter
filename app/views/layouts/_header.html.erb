@@ -13,6 +13,8 @@
               <div class="dropdown-menu" aria-labelleby="dropdown1">
                 <%= link_to "みんなの体調", index_users_user_conditions_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
+                <%= link_to "みんなの予定（作成中）", users_event_user_events_path(current_user), class:"dropdown-item menu_list" %>
+                <div class="dropdown-divider"></div>
                 <%= link_to "ToDoリスト", user_tasks_path(current_user), class:"dropdown-item menu_list" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "体調管理", user_conditions_path(current_user), class:"dropdown-item menu_list" %>

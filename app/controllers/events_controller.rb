@@ -11,14 +11,6 @@ class EventsController < ApplicationController
 
     gon.params_user_id = @user.id
 
-    
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.xml { render :xml => {:events => @events, :user => @user }}
-  #     format.json { render :json => {:events => @events, :user => @user }}
-  #   end
-  # end
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @events }
@@ -37,15 +29,13 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def users_event
+    @events = Event.where(user_id: current_user.id).order(:allDay, :start)
+    @user_events = Event.where(user_id: current_user.follower_ids).order(:user_id, :allDay, :start).includes(:user).group_by(&:user_id)
+  end
+
   def create
     @event = Event.new(event_params)
-    # if @event.save
-    #   flash[:success] = "予定を作成しました!"
-    #   redirect_to @event
-    # else
-    #   flash.now[:danger] = "入力項目が足りません!"
-    #   render 'new'
-    # end
 
     respond_to do |format|
       if @event.save
@@ -61,13 +51,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    # if @event.update_attributes(event_params)
-    #   flash[:success] = "予定を更新しました!"
-    #   redirect_to @event
-    # else
-    #   flash.now[:danger] = "入力項目が足りません!"
-    #   render 'index'
-    # end
+
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to user_event_path(current_user,@event), notice: '予定を更新しました' }
@@ -83,10 +67,6 @@ class EventsController < ApplicationController
     @event.destroy
     flash[:danger] = "予定を削除しました"
     redirect_to user_events_path(current_user)
-    # respond_to do |format|
-    #   format.html { redirect_to user_events_path(current_user), notice: '予定を削除しました' }
-    #   format.json { head :no_content }
-    # end
   end
 
   private

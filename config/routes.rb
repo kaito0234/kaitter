@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     collection do
       get :user_logincondition_false
     end
-    resources :events
+    resources :events do
+      collection do
+        get :users_event
+      end
+    end
     resources :tasks do
       member do
         patch :push
