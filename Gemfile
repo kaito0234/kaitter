@@ -24,7 +24,7 @@ gem 'simple_calendar', '2.4.1'
 gem 'fullcalendar-rails','3.9.0.0'
 gem 'momentjs-rails', '2.20.1'
 gem 'chart-js-rails', '0.1.7'
-gem 'gon', '6.2.1'
+gem 'gon', '6.4.0'
 gem 'whenever', '1.0.0', require: false
 
 group :development, :test do
